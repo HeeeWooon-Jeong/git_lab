@@ -27,7 +27,7 @@
 					<c:forEach var="result" items="${resultList}" varStatus="status">
 						<tr class="cursor">
 							<td onclick="fncPageBoard('view','view.do','${result.seq}','seq')">
-								${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageSize + status.count)}
+								${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageUnit + status.count)}
 							</td>
 							<td class="subject" onclick="fncPageBoard('view','view.do','${result.seq}','seq')">${util:cutText(result.title,30,'...') }</td>
 							<td onclick="fncPageBoard('view','view.do','${result.seq}','seq')">${result.name }</td>
