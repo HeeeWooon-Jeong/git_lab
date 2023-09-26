@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.open.Member">
+
+	<sql id="Where">
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			<if
+				test="searchCondition !=null and searchCondition !='' and searchCondition ==0">
+				AND (TITLE LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like
+				CONCAT('%',#{searchKeyword},'%'))
+			</if>
+			<if
+				test="searchCondition !=null and searchCondition !='' and searchCondition ==1">
+				AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')
+			</if>
+			<if
+				test="searchCondition !=null and searchCondition !='' and searchCondition ==2">
+				AND CONT LIKE CONCAT('%',#{searchKeyword},'%')
+			</if>
+		</if>
+	</sql>
+
+	<select id="selectContents" parameterType="memberVO" resultType="memberVO">
+		/* Member.selectContents */
+      <![CDATA[
+          SELECT  
+              ME_SEQ 							meSeq
+            , DATE_FORMAT(ME_RGST_DT,'%Y.%m.%d') meRgstDt
+            , ME_RGST_SEQ 						meRgstSeq
+            , ME_CNUM 							meCnum
+            , ME_MNAM 							meMnam
+            , ME_CALL 							meCall
+            , ME_BUSU 							meBusu
+            , ME_LEVE 							meLeve
+            , ME_STADATE 						meStaDate
+            , ME_ENDDATE						meEndDate
+            , ME_VAC 							meVac
+            , ME_TOTAL 							meTotaL
+            , ME_ADRE 							meAdre
+            , ME_GOOD 							meGood
+            , ME_YEAR 							meYear
+            , ME_MAIL 							meMail
+            , ME_TID 							meTid
+            , ME_NAME							meRgstSeq
+            , ME_CONT							meCount
+           FROM  T_MEMBER 
+          WHERE  ME_USE_YN='Y'   
+             AND ME_SEQ = #{meSeq}
+      ]]>
+	</select>
+
+
+
+	<select id="selectList" parameterType="cmmnDefaultVO"
+		resultType="memberVO">
+		/* Member.selectList */
+      <![CDATA[
+          SELECT  
+              ME_SEQ 							meSeq
+            , DATE_FORMAT(ME_RGST_DT,'%Y.%m.%d') meRgstDt
+            , ME_RGST_SEQ 						meRgstSeq
+            , ME_CNUM 							meCnum
+            , ME_MNAM 							meMnam
+            , ME_CALL 							meCall
+            , ME_BUSU 							meBusu
+            , ME_LEVE 							meLeve
+            , ME_STADATE 						meStaDate
+            , ME_ENDDATE						meEndDate
+            , ME_VAC 							meVac
+            , ME_TOTAL 							meTotaL
+            , ME_ADRE 							meAdre
+            , ME_GOOD 							meGood
+            , ME_YEAR 							meYear
+            , ME_MAIL 							meMail
+            , ME_TID 							meTid
+            , ME_NAME							meRgstSeq
+                       , ME_CONT							meCount
+           FROM T_MEMBER 
+          WHERE ME_USE_YN='Y'   
+         ]]>
+		<include refid="Where" />    
+        <![CDATA[ 
+             ORDER BY ME_SEQ DESC
+            LIMIT  #{firstIndex} , #{recordCountPerPage}
+      ]]>
+	</select>
+
+
+	<select id="selectCount" parameterType="cmmnDefaultVO"
+		resultType="int">
+		/* Member.selectCount */
+      <![CDATA[
+         SELECT 
+            COUNT(ME_SEQ) cnt 
+         FROM T_MEMBER
+         WHERE ME_USE_YN='Y' 
+      ]]>
+		<include refid="Where" />
+	</select>
+
+	<insert id="insertContents" parameterType="memberVO">
+		/* Member.insertContents */
+      <![CDATA[
+         INSERT INTO T_MEMBER(
+              ME_SEQ 
+            , ME_RGST_SEQ 
+            , ME_CNUM 
+            , ME_MNAM
+            , ME_CALL 
+            , ME_BUSU 
+            , ME_LEVE
+            , ME_STADATE
+            , ME_ENDDATE 							
+            , ME_VAC 							
+            , ME_TOTAL 							
+            , ME_ADRE 							
+            , ME_GOOD 							
+            , ME_YEAR 							
+            , ME_MAIL
+            , ME_TID 
+         )
+         VALUES (
+             (SELECT IFNULL(MAX(TW.ME_SEQ)+1,1) FROM T_MEMBER TW)
+            , #{meRgstSeq}
+            , #{meCnum}
+            , #{meMnam}
+            , #{meCall}
+            , #{meBusu}
+            , #{meLeve}
+            , #{meStaDate}
+            , #{meEndDate}
+            , #{meVac}
+            , #{meTotaL}
+            , #{meAdre}
+            , #{meGood}
+            , #{meYear}
+            , #{meMail}
+            , #{meTid}
+         )
+      ]]>
+	</insert>
+
+	<update id="updateContents" parameterType="memberVO">
+		/* Member.updateContents */
+      <![CDATA[
+         UPDATE T_MEMBER     
+          SET 
+     		  ME_RGST_SEQ = #{meRgstSeq}	          
+            , ME_CNUM = #{meCnum} 
+            , ME_MNAM = #{meMnam}
+            , ME_CALL  = #{meCall}
+            , ME_BUSU  = #{meBusu}
+            , ME_LEVE = #{meLeve}
+            , ME_STADATE = #{meStaDate}
+            , ME_ENDDATE = #{meEndDate}
+            , ME_VAC = #{meVac}
+            , ME_TOTAL = #{meTotaL}
+            , ME_ADRE = #{meAdre}
+            , ME_GOOD = #{meGood}
+            , ME_YEAR = #{meYear}
+            , ME_MAIL = #{meMail}
+            , ME_TID = #{meTid}
+            , ME_RVSE_DT = NOW()
+         WHERE  ME_SEQ = #{meSeq}  
+      ]]>
+	</update>
+
+	<update id="deleteContents" parameterType="memberVO">
+		/* Member.deleteContents */
+      <![CDATA[
+         UPDATE T_MEMBER
+             SET
+                 ME_USE_YN='N'
+         WHERE ME_SEQ=#{meSeq}
+      ]]>
+	</update>
+
+
+
+
+
+
+</mapper>

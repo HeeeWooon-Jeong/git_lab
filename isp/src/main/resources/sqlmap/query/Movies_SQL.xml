@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.open.Movies">
+
+   <sql id="Where">
+      <if test="searchKeyword !=null and searchKeyword !=''">
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==0">
+            AND (TITLE LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like CONCAT('%',#{searchKeyword},'%'))
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==1">
+            AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==2">
+            AND CONT LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+       </if>
+   </sql>
+   
+   <select id="selectContents" parameterType="moviesVO" resultType="moviesVO">
+      /* Movies.selectContents */
+      <![CDATA[
+          SELECT  
+  				 TW_SEQ 							twSeq
+               , DATE_FORMAT(TW_RGST_DT,'%Y.%m.%d') twRgstDt
+               , TW_RGST_SEQ 						twRgstSeq
+               , F_USER_NM(TW_RGST_SEQ) 			twName
+               , TW_TITLE 							twTitle
+               , TW_E_TITLE 						twETitle
+               , TW_CODE 							twCode
+               , TW_MAKE_YEAR 						twMakeYear
+               , TW_NATIONAL 						twNational
+               , TW_STADATE 						twStaDate
+               , TW_ENDDATE 						twEndDate
+               , TW_TYPE 							twType
+               , TW_GENRE							twGenre
+               , TW_DIRECTOR 						twDirector
+               , TW_COMPANY 						twCompany
+               , TW_ACTOR 							twActor
+               , TW_TCOM 							twTcom
+	           , TW_LATI 							twLati
+	           , TW_CONT 							twCont
+	           , TW_ATCH_FILE_SEQ 					twAtchFileSeq
+	           , TW_NAME							twRgstSeq
+           FROM  T_MOVIES 
+          WHERE  TW_USE_YN='Y'   
+             AND TW_SEQ = #{twSeq}
+      ]]>
+   </select>
+   
+   
+   
+   <select id="selectList" parameterType="cmmnDefaultVO" resultType="moviesVO">
+      /* Movies.selectList */
+      <![CDATA[
+          SELECT  
+              TW_SEQ 							twSeq
+            , DATE_FORMAT(TW_RGST_DT,'%Y.%m.%d') twRgstDt
+            , TW_RGST_SEQ 						twRgstSeq
+            , F_USER_NM(TW_RGST_SEQ) 			twName
+            , TW_TITLE 							twTitle
+            , TW_E_TITLE 						twETitle
+            , TW_CODE 							twCode
+            , TW_MAKE_YEAR 						twMakeYear
+            , TW_NATIONAL 						twNational
+            , TW_STADATE 						twStaDate
+            , TW_ENDDATE 						twEndDate
+            , TW_TYPE 							twType
+            , TW_GENRE							twGenre
+            , TW_DIRECTOR 						twDirector
+            , TW_COMPANY 						twCompany
+            , TW_ACTOR 							twActor
+            , TW_TCOM 							twTcom
+            , TW_LATI 							twLati
+            , TW_CONT 							twCont
+            , TW_ATCH_FILE_SEQ 					twAtchFileSeq
+            , TW_NAME							twRgstSeq
+            
+           FROM T_MOVIES 
+          WHERE TW_USE_YN='Y'   
+         ]]>
+           <include refid="Where"/>    
+        <![CDATA[ 
+             ORDER BY TW_SEQ DESC
+            LIMIT  #{firstIndex} , #{recordCountPerPage}
+      ]]>
+   </select>   
+
+
+   <select id="selectCount" parameterType="cmmnDefaultVO" resultType="int">
+      /* Movies.selectCount */
+      <![CDATA[
+         SELECT 
+            COUNT(TW_SEQ) cnt 
+         FROM T_MOVIES
+         WHERE TW_USE_YN='Y' 
+      ]]>
+          <include refid="Where"/>
+   </select>
+   
+   <insert id="insertContents" parameterType="moviesVO">
+      /* Movies.insertContents */
+      <![CDATA[
+         INSERT INTO T_MOVIES(
+              TW_SEQ 
+            , TW_RGST_SEQ 
+            , TW_TITLE 
+            , TW_E_TITLE
+            , TW_CODE 
+            , TW_MAKE_YEAR 
+            , TW_NATIONAL
+            , TW_STADATE
+            , TW_ENDDATE
+            , TW_TYPE
+            , TW_GENRE 							
+            , TW_DIRECTOR 							
+            , TW_COMPANY 							
+            , TW_ACTOR 							
+            , TW_TCOM 							
+            , TW_LATI 							
+            , TW_CONT
+            , TW_ATCH_FILE_SEQ 
+            , TW_NAME 
+         )
+         VALUES (
+             (SELECT IFNULL(MAX(TW.TW_SEQ)+1,1) FROM T_MOVIES TW)
+            ,#{twRgstSeq}
+            ,#{twTitle}
+            ,#{twETitle}
+            ,#{twCode}
+            ,#{twMakeYear}
+            ,#{twNational}
+            ,#{twStaDate}
+            ,#{twEndDate}
+            ,#{twType}
+            ,#{twGenre}
+            ,#{twDirector}
+            ,#{twCompany}
+            ,#{twActor}
+            ,#{twTcom}
+            ,#{twLati}
+            ,#{twCont}
+            ,#{twAtchFileSeq}
+            ,#{twRgstSeq}
+         )
+      ]]>
+   </insert>
+   
+   <update id="updateContents" parameterType="moviesVO">
+      /* Movies.updateContents */
+      <![CDATA[
+         UPDATE T_MOVIES     
+          SET 
+              TW_TITLE = 		#{twTitle} 
+            , TW_RVSE_DT = 		NOW()
+            , TW_E_TITLE = #{twETitle}
+            , TW_CODE  = #{twCode}
+            , TW_MAKE_YEAR  = #{twMakeYear}
+            , TW_NATIONAL = #{twNational}
+            , TW_TYPE = #{twType}
+            , TW_GENRE = #{twGenre}
+            , TW_DIRECTOR = #{twDirector}
+            , TW_COMPANY = #{twCompany}
+            , TW_ACTOR = #{twActor}
+            , TW_TCOM = #{twTcom}
+            , TW_LATI = #{twLati}
+            , TW_CONT = #{twCont}
+            , TW_ATCH_FILE_SEQ = #{twAtchFileSeq}
+            , TW_NAME = #{twRgstSeq}
+         WHERE  TW_SEQ = #{twSeq}  
+      ]]>
+   </update>
+   
+   <update id="deleteContents" parameterType="moviesVO">
+      /* Movies.deleteContents */
+      <![CDATA[
+         UPDATE T_MOVIES
+             SET
+                 TW_USE_YN='N'
+         WHERE TW_SEQ=#{twSeq}
+      ]]>
+   </update>
+
+
+   
+   
+   
+   
+</mapper>
