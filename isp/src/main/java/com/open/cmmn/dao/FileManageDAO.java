@@ -32,6 +32,16 @@ import com.open.cmmn.model.FileVO;
 @Repository("FileManageDAO")
 public class FileManageDAO {
 
+/*@Repository("FileManageDAO")는 Spring Framework에서 사용되는 어노테이션입니다. 이 어노테이션은 해당 클래스를 Spring의 빈(Bean)으로 등록하는 역할을 합니다.
+ *  클래스명 뒤에 어노테이션을 사용하면 Spring 컨테이너가 이 클래스를 인식하고 필요한 빈으로 관리합니다.
+ *  Spring Framework에서 @Repository 어노테이션을 사용하면 다음과 같은 이점이 있습니다:
+
+빈 등록: 해당 클래스가 Spring의 컨테이너에 빈으로 등록되므로, 다른 클래스에서 이 빈을 주입(Injection)받아 사용할 수 있습니다.
+
+예외 전환: @Repository 어노테이션을 사용하면 해당 DAO 클래스에서 발생하는 데이터 액세스 관련 예외를 Spring의 일관된 예외 계층 구조로 변환해줍니다. 이렇게 하면 코드에서 데이터 액세스 예외를 처리하기가 더 쉬워집니다.
+
+트랜잭션 관리: Spring은 @Repository 어노테이션이 붙은 클래스에서 트랜잭션을 관리해줍니다. 이를 통해 데이터베이스 작업 중에 예외가 발생하면 자동으로 롤백할 수 있습니다.
+*/
 	/**
 	 * SqlSessionTemplate.
 	 */
@@ -52,6 +62,8 @@ public class FileManageDAO {
 	 * @throws Exception Exception
 	 */
 	@SuppressWarnings("rawtypes")
+	//이 어노테이션은 제네릭 타입 관련 경고를 숨기는 용도로 사용됩니다. 제네릭 타입을 사용하지 않고, 원시(raw) 타입을 사용하는 경우 컴파일러 경고가 발생할 수 있습니다. 이 어노테이션을 사용하여 해당 경고를 무시합니다.
+	
 	public final String insertFileInfs(final List fileList) throws Exception {
 		FileVO vo = (FileVO) fileList.get(0);
 		String atchFileId = vo.getAtchFileId();
@@ -65,6 +77,8 @@ public class FileManageDAO {
 
 		return atchFileId;
 	}
+//	이 코드는 파일 정보를 데이터베이스에 저장하는 데 사용될 수 있습니다.
+	
 
 	/**
 	 * <pre>
