@@ -24,7 +24,7 @@
 				<th scope="col">감독</th>
 				<th scope="col">장르</th>
 				<th scope="col">배급사</th>
-				<th scope="col">영확코드</th>
+				<th scope="col">영화코드</th>
 			</tr>
 		</thead>
 		<tbody>

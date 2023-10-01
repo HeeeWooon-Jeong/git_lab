@@ -385,7 +385,7 @@ box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.24);}
 .tbl_col_scroll tr th:first-child,
 .tbl_col_scroll tr td:first-child {border-left: 0;}
 
-.tbl_answer {margin-top:20px;}
+.tbl_answer {margin-top:20px;}f
 .tbl_answer th {padding:8px 0 8px 3%;background: url(../images/icon_reply.png) no-repeat 1.5% 7px;}
 .tbl_text {min-height:150px;line-height:1.5;padding:10px;vertical-align:top;}
 .no_hover td {background:none !important;}
@@ -395,7 +395,7 @@ box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.24);}
 .th_tit {display:inline-block;position: relative; margin-left: -9px; padding-left: 10px;}
 .th_tit::before {position: absolute;top: 13px;left: 0;display: block;content: '*';transform: translateY(-50%); color: #e61212;}
 
-.txt_area {border:1px solid #cccccc; padding:5px; height:150px;width:100%;}
+.txt_area {border:1px solid #cccccc; padding:5px; height:150px; width:100%; margin-right:5px;}
 .txt_area02 {width:100% !important;}
 
 .mail_count {display:inline-block;vertical-align: top;margin-right: 10px;padding:10px;}

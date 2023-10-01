@@ -35,8 +35,9 @@ public class MoviesVO extends CmmnDefaultVO implements Serializable {
 	private String twSeq;			//시퀀스 넘버
 	private String twRgstDt;		//등록일
 	private String twRgstSeq;		//등록자
-	private String twRvseSeq;		// 수정자
 	private String twRvseDt;		// 수정일
+	private String twRvseSeq;		// 수정자
+	private String twAtchFileSeq;	// 파일첨부
 	private String twTitle;			// 제목
 	private String twETitle;		// 영제목
 	private String twCode;			// 영화코드
@@ -48,11 +49,10 @@ public class MoviesVO extends CmmnDefaultVO implements Serializable {
 	private String twGenre;			// 장르
 	private String twDirector;		// 감독
 	private String twCompany;		// 회사
-	private String twActor;			// 배우
-	private String twTcom;			// 몰라
+	private String twActor;			// 주연
+	private String twTcom;			// 배급사
 	private String twLati;			// 평점
 	private String twCont;			// 컨텐츠내용
-	private String twAtchFileSeq;	// 파일첨부
 	private String twName;			// 
 	
 	public String getTwSeq() {

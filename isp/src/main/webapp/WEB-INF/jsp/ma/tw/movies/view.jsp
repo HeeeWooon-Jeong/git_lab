@@ -16,7 +16,7 @@
 	 	  
 	 	   -->
 		<form:hidden path="twSeq" id="twSeq"/>
-		<%-- <form:hidden path="pageIndex" id="pageIndex"/>  --%>
+		<%-- form:hidden path="pageIndex" id="pageIndex"/>  --%>
 		<!-- 페이지 인덱싱을 위해  값을 물고있어야 하기위함
 			지워도 페이지를 머물수 있게 할 수 있다 
 			왜냐 = 
@@ -42,13 +42,13 @@
 					<col style="width:35%;">
 				</colgroup>
 				<tbody>
-				<!--  원래는 아래 나오는 ${} EL은 cout 을 써야함 
+				<!--  원래는 아래 나오는 {} EL은 cout 을 써야함 
 				
 				-->
 					<tr>
 						<th scope="row"><strong>등록자</strong></th>
 						<td>
-							${moviesVO.twRgstSeq }
+							${moviesVO.twName }
 							
 						
 						</td>
@@ -122,11 +122,11 @@
 c:out: 
 JSTL의 c:out 태그는 출력할 내용을 화면에 표시하는 데 사용됩니다.
 
-value="${util:unEscape(moviesVO.twCont)}": 
+value="{util:unEscape(moviesVO.twCont)}": 
 c:out 태그의 value 속성을 사용하여 출력할 값을 지정합니다. 
 util:unEscape(moviesVO.twCont)는 어떤 문자열을 출력하기 전에 특수 문자를 이스케이프(escape)하지 않고 출력하도록 지정합니다. 
 escapeXml="false"는 XML 이스케이프를 사용하지 않도록 설정합니다. 
-따라서 ${util:unEscape(moviesVO.twCont)}의 값인 moviesVO.
+따라서 {util:unEscape(moviesVO.twCont)}의 값인 moviesVO.
 twCont가 HTML 특수 문자(예: <, >, & 등)를 포함하고 있더라도 이스케이프되지 않고 그대로 출력될 것입니다.
 --%>
 							</div>

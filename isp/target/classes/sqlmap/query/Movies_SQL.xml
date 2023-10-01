@@ -28,13 +28,14 @@
       		안에는 주석을 사용하려고해도 그대로 무시하기때문에 주석 사용 불가
       		대신 부등호가 사용가능
       		무조건 쓸필요는 없다.
-      		
        -->
       <![CDATA[
           SELECT TW_SEQ 							twSeq
                , DATE_FORMAT(TW_RGST_DT,'%Y.%m.%d') twRgstDt
                , TW_RGST_SEQ 						twRgstSeq
                , F_USER_NM(TW_RGST_SEQ) 			twName
+	           , TW_CONT 							twCont
+	           , TW_ATCH_FILE_SEQ 					twAtchFileSeq
                , TW_TITLE 							twTitle
                , TW_E_TITLE 						twETitle
                , TW_CODE 							twCode
@@ -49,14 +50,15 @@
                , TW_ACTOR 							twActor
                , TW_TCOM 							twTcom
 	           , TW_LATI 							twLati
-	           , TW_CONT 							twCont
-	           , TW_ATCH_FILE_SEQ 					twAtchFileSeq
-	           , TW_NAME							twRgstSeq
             FROM T_MOVIES 
            WHERE TW_USE_YN='Y'   
              AND TW_SEQ = #{twSeq}
      ]]>
-<!--    , F_USER_NM(TW_RGST_SEQ) 			twName 
+<!--    
+DATE_FORMAT(TW_RGST_DT,'%Y.%m.%d')는 데이터베이스 쿼리에서 사용되는 MySQL의 함수입니다. 
+이 함수는 TW_RGST_DT라는 날짜형 데이터를 'YYYY.MM.DD' 형식의 문자열로 변환하는 역할을 합니다.
+
+ F_USER_NM(TW_RGST_SEQ) 			twName 
 		heidi 가보면 F_USER_NM 함수 정리되어 있음
 BEGIN
 	DECLARE R_VAR VARCHAR(50);
@@ -148,7 +150,6 @@ RETURN R_VAR;
             , TW_LATI 							
             , TW_CONT
             , TW_ATCH_FILE_SEQ 
-            , TW_NAME 
          )
          VALUES (
          	  (SELECT IFNULL(MAX(TW.TW_SEQ)+1,1) FROM T_MOVIES TW)
@@ -169,7 +170,6 @@ RETURN R_VAR;
             , #{twLati}
             , #{twCont}
             , #{twAtchFileSeq}
-            , #{twRgstSeq}
          )
       ]]>
    </insert>
