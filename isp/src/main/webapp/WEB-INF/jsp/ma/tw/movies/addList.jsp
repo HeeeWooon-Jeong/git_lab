@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp"/>
+<jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp"/> 
+<!-- 태그라이브러리 불러올것들을 한번에 불러오는 코드임  -->
 <div class="tbl_top">
 	<div class="tbl_left"><i class="i_all"></i><span>전체 : <strong>${paginationInfo.totalRecordCount}</strong> 건(${searchVO.pageIndex}/${paginationInfo.totalPageCount} Page) </span></div>
 	<div class="tbl_right"></div>
@@ -28,11 +29,12 @@
 		</thead>
 		<tbody>
 			<c:choose>
-				<c:when test="${fn:length(resultList) > 0}">
+				<c:when test="${fn:length(resultList) gt 0}">
 					<c:forEach var="result" items="${resultList}" varStatus="status">
 						<tr class="cursor">
 							<td onclick="fncPageBoard('view','view.do','${result.twSeq}','twSeq')">
 								${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageUnit + status.count)}
+								<!-- 페이징처리 상단에도 있음 -->
 							</td>
 							<td class="subject" onclick="fncPageBoard('view','view.do','${result.twSeq}','twSeq')">${util:cutText(result.twTitle,30,'...') }</td>
 							<%-- <td onclick="fncPageBoard('view','view.do','${result.twSeq}','twSeq')">${result.twName }</td> --%>
@@ -58,6 +60,10 @@
 	</div>
 	<div class="btn_right">
 		<a href="javascript:void(0);" class="btn btn_mdl btn_save" onclick="fncPageBoard('write','insertForm.do'); return false; ">등록</a>
+		<!-- 버튼은 기본값이 submit이라서 까딱 애러가 나올수 있기 때문에 버튼을 만들때 a 태그로 만든다 
+			href = "#" 일경우 화면 맨위로 올려주는 효과가 있기때문에  javascript:void(0); 로 대체
+			a 태그에  onclick 할때는 가끔 오작동하는 경우가 있다 하기때문에 마지막에 return false 걸어주기
+		-->
 	</div>
 </div>
 <%-- //paging end--%>

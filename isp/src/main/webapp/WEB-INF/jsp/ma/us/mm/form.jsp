@@ -16,7 +16,7 @@ $(document).ready(function(){
 	fileFrm.target="atchFileIdFrame";
 	fileFrm.submit();
 	
-	$("#btn_submit").bind("click", function(){
+	$("#btn_submit").on("click", function(){
 		
 		<c:if test="${searchVO.procType ne 'update'}">
 			if(overChk == false){

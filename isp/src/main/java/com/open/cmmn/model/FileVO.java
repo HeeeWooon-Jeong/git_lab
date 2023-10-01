@@ -25,8 +25,13 @@ import org.apache.ibatis.type.Alias;
  */
 @Alias("FileVO")
 @SuppressWarnings("serial")
+/*  이 어노테이션은 컴파일러 경고를 억제하는 데 사용됩니다. "serial"은 직렬화와 관련된 경고를 억제하는 것을 의미합니다. 
+ * 직렬화는 객체를 이진 형식으로 변환하여 저장하거나 네트워크로 전송하는 프로세스를 의미합니다. 이 어노테이션은 컴파일러가 "serial" 관련 경고를 표시하지 않도록 합니다.*/
 public class FileVO extends CmmnDefaultVO implements Serializable {
-
+// "FileVO" 클래스는 "CmmnDefaultVO" 클래스를 상속
+//	 "Serializable" 인터페이스를 구현
+/*	implements Serializable: 이 클래스는 "Serializable" 인터페이스를 구현합니다.
+ *  이것은 객체를 직렬화할 수 있게 해주는 인터페이스로, 객체를 이진 형식으로 변환하고 다시 역직렬화하여 저장 및 전송할 수 있게 해줍니다. 이 인터페이스를 구현하면 객체를 직렬화할 수 있습니다.*/
 	/**
 	 * 파일내용.
 	 */

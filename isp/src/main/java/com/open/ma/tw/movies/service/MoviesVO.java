@@ -21,6 +21,16 @@ public class MoviesVO extends CmmnDefaultVO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2172623835339565860L;
+/*	는 Java 직렬화(serialization)를 위한 필드입니다. 직렬화란 객체의 상태를 바이트 스트림으로 변환하여 저장하거나 네트워크를 통해 전송하고, 이후에 원래 객체로 복원하는 과정을 말합니다. 
+	직렬화는 객체를 저장하고 다른 프로세스 또는 기기 간에 데이터를 공유할 때 유용합니다.
+	
+	serialVersionUID는 직렬화된 객체의 버전을 식별하기 위한 고유한 식별자입니다. 이 식별자는 객체 클래스의 버전이 변경되었을 때, 예를 들어 새로운 필드가 추가되거나 삭제되었을 때 중요합니다. 
+	직렬화된 객체가 이전 버전과 호환되는지 여부를 결정하는 데 사용됩니다.
+	serialVersionUID는 long 데이터 타입으로 선언되며, 클래스 내부에 private static final로 선언됩니다.
+	직렬화된 객체가 읽힐 때 해당 객체의 serialVersionUID와 클래스의 현재 serialVersionUID를 비교하게 됩니다. 
+	만약 두 값이 다르다면 직렬화된 데이터와 클래스 간의 버전 호환성 문제가 발생할 수 있습니다.
+	따라서 serialVersionUID는 객체 직렬화와 버전 관리에 중요한 역할을 합니다. 이를 통해 객체의 직렬화 버전이 일치하는지 확인하고 호환성을 유지할 수 있게 됩니다.*/
+	
 	
 	private String twSeq;			//시퀀스 넘버
 	private String twRgstDt;		//등록일
@@ -42,7 +52,7 @@ public class MoviesVO extends CmmnDefaultVO implements Serializable {
 	private String twTcom;			// 몰라
 	private String twLati;			// 평점
 	private String twCont;			// 컨텐츠내용
-	private String twAtchFileSeq;			// 파일첨부
+	private String twAtchFileSeq;	// 파일첨부
 	private String twName;			// 
 	
 	public String getTwSeq() {

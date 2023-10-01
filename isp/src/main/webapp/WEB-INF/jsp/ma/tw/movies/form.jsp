@@ -8,6 +8,8 @@
 
 <div class="content_box">
 	<form:form commandName="moviesVO" name="defaultFrm" id="defaultFrm" method="post">
+	<!--  commandName이 VO와 일치한다면 자동으로 값을 넣어줌  일치하지 않으면 500 에러  -->
+	<!-- path는 name같은 것  -->
 		<form:hidden path="twSeq" id="twSeq"/>
 		<form:hidden path="pageIndex" id="pageIndex"/> 
 		<form:hidden path="twAtchFileSeq" id="twAtchFileSeq"/>
@@ -22,13 +24,7 @@
 					<col style="width:30%;">
 				</colgroup> 
 				<tbody>
-					<tr>
-						<th scope="row"><strong class="th_tit">등록자</strong></th>
-						<td colspan="3">
-							<input type="text" name="twRgstSeq" id="twRgstSeq" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(moviesVO.twRgstSeq) }" />
-							<form:errors path="twRgstSeq" cssClass="error" cssStyle="color:#ff0000" /> 
-						</td>
-					</tr>
+
 					<tr>
 						<th scope="row"><strong class="th_tit">제목</strong></th>
 						<td colspan="3">

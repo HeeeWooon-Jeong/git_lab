@@ -20,7 +20,7 @@ $(document).ready(function(){
 	    sSkinURI: "/resource/editor/SmartEditor2Skin.html",
 	    fCreator: "createSEditor2"
 	}); 
-	$("#btn_submit").bind("click", function(){
+	$("#btn_submit").on("click", function(){
 		<c:if test="${util:getMenuCd(url).depth2 eq 'cb' }">
 		if($("input[name=siteClcd]:checked").length == 0){
 			alert("사이트 구분을 1개 이상 선택해주세요.");

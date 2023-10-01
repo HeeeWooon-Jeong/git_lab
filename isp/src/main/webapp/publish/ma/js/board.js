@@ -1,3 +1,5 @@
+// 게시판 관련 공통함수들
+
 $(document).ready(function(){
 	
 	//등록폼
@@ -34,7 +36,8 @@ $(document).ready(function(){
 			fncPageBoard('addList','addList.do','1');
 		 }
 	});
-	
+	// 버튼에 ID 를 걸어놓고 해당하는 동작들을 미리 걸어놓은 것  
+	// board js 나 common js 처럼 미리 만들어 놓은것들은 손대지 말것
 });
 
 var process = "N";

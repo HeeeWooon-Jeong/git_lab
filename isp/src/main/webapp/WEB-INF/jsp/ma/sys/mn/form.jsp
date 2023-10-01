@@ -4,7 +4,7 @@
 <script type="text/javascript">
 var overChk=false;
 $(document).ready(function(){		
-	$("#btn_submit_id").bind("click", function(){		
+	$("#btn_submit_id").on("click", function(){		
 		if($("#menuNm").val() == '' || $("#url").val() == '' || $("#no").val() == ''){
 			alert("요청내용을 입력해주세요");
 			return false;
@@ -18,7 +18,7 @@ $(document).ready(function(){
 		fncPageBoard('submit','${searchVO.procType}Proc.do');
 		return false;
 	});
-	$("#btn_view2").bind("click", function(){
+	$("#btn_view2").on("click", function(){
 		$("#menuSeq").val($("#menuGroupSeq").val());
 		fncPageBoard('view','view.do');
 		return false;

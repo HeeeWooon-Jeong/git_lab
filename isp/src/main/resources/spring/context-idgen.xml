@@ -11,9 +11,9 @@
 	</bean>
 	
 	<bean name="mixPrefixFile" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
-		<property name="prefix" value="FILE" />
-		<property name="cipers" value="16" />
-		<property name="fillChar" value="0" />
+		<property name="prefix" value="FILE" /> <!-- 앞부분은 FILE 로 -->
+		<property name="cipers" value="16" /> <!-- 중간은 16자로 채우고 -->
+		<property name="fillChar" value="0" /> <!-- 0으로 채워라 -->
 	</bean>	
 	
 	<bean name="cntntIdGnrService" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">

@@ -14,7 +14,7 @@ $(document).ready(function(){
 	    sSkinURI: "/resource/editor/SmartEditor2Skin.html",
 	    fCreator: "createSEditor2"
 	}); 
-	$("#btn_submit").bind("click", function(){
+	$("#btn_submit").on("click", function(){
 		
 		if($("#title").val() == "" || $("#title").val() == null) {
 			alert("제목을 입력해주세요");

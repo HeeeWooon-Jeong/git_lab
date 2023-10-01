@@ -17,7 +17,19 @@
    </sql>
    
    <select id="selectContents" parameterType="moviesVO" resultType="moviesVO">
+<!--    제시된 코드는 MyBatis XML 파일에서 <select> 문을 사용하여 데이터베이스에서 데이터를 조회하는 부분을 나타냅니다. 
+	id="selectContents" :  나중에 이 쿼리를 호출할 때 사용
+	parameterType="moviesVO": 이 속성은 쿼리에 전달되는 매개변수의 타입 / moviesVO 클래스나 해당 클래스의 하위 클래스의 인스턴스가 쿼리에 전달
+	resultType="moviesVO": 이 속성은 쿼리의 결과가 매핑될 객체의 타입을 나타냅니다. 쿼리의 결과가 moviesVO 클래스의 인스턴스로 매핑되며, 이 인스턴스가 반환됩니다.
+-->
       /* Movies.selectContents */
+      <!-- 이스케이프 처리하지 않고 그대로 표시할 수 있습니다.
+      		<![CDATA[내용]]>
+      		안에는 주석을 사용하려고해도 그대로 무시하기때문에 주석 사용 불가
+      		대신 부등호가 사용가능
+      		무조건 쓸필요는 없다.
+      		
+       -->
       <![CDATA[
           SELECT TW_SEQ 							twSeq
                , DATE_FORMAT(TW_RGST_DT,'%Y.%m.%d') twRgstDt
@@ -43,7 +55,28 @@
             FROM T_MOVIES 
            WHERE TW_USE_YN='Y'   
              AND TW_SEQ = #{twSeq}
-      ]]>
+     ]]>
+<!--    , F_USER_NM(TW_RGST_SEQ) 			twName 
+		heidi 가보면 F_USER_NM 함수 정리되어 있음
+BEGIN
+	DECLARE R_VAR VARCHAR(50);
+	SELECT (SELECT NAME FROM T_AD_USER WHERE SEQ = PARAM1 LIMIT 1) INTO R_VAR;
+	
+	RETURN R_VAR;
+END
+
+DECLARE R_VAR VARCHAR(50);
+: R_VAR라는 문자열 변수를 선언합니다.
+SELECT (SELECT NAME FROM T_AD_USER WHERE SEQ = PARAM1 LIMIT 1) INTO R_VAR;
+: T_AD_USER 테이블에서 SEQ 값이 PARAM1과 일치하는 첫 번째 레코드의 NAME 값을 R_VAR 변수에 저장합니다.
+RETURN R_VAR;
+: R_VAR 변수에 저장된 값을 반환합니다.
+-->
+
+<!-- 서브쿼리 안에는 서브쿼리를 넣으면 안된다.
+	작업이 제곱이 되어버림 
+	저얼대 쓰면 안된다.
+ -->
    </select>
    
    
@@ -140,7 +173,18 @@
          )
       ]]>
    </insert>
-   
+<!--  (SELECT IFNULL(MAX(TW.TW_SEQ)+1,1) FROM T_MOVIES TW) 
+	   IFNULL = 마이에스큐엘 함수
+	   T_MOVIES 에서 TW_SEQ 를 가져오는데  max 값을 가져와 + 1   ex) 1이면 2 2면 3
+	   등록된 값이 없어서 null 이라면 1 로 만들어준다~
+	   alias를 안쓰면 인식 못함  
+	   
+	   alias 필수!!
+	   
+	   동시에 조회는 가능하지만
+	   insert/ update는 순차적으로 진행되기 때문에 충돌
+	   원래는 이방식으로 사용하면 안된다!
+-->
    <update id="updateContents" parameterType="moviesVO">
       /* Movies.updateContents */
       <![CDATA[

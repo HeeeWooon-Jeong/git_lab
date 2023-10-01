@@ -2,17 +2,6 @@
 <jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp"/>
 <c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <script type="text/javascript" src="/publish/ma/js/board.js"></script>
-<script type="text/javaScript">
-$(document).ready(function(){
-	/* fncDate('searchStartDate','searchEndDate'); */	
-	var page = Number('${searchVO.pageIndex}');
-	if(page == 0){
-		fncPageBoard('addList','addList.do',1);		
-	}else{
-		fncPageBoard('addList','addList.do',page);		
-	};
-});
-</script>
 <%-- content --%>
 <div class="content_box">
 	<%-- search  --%>
@@ -22,6 +11,7 @@ $(document).ready(function(){
 			<input type="hidden" id="pageIndex" name="pageIndex"/>
 			<fieldset>
 				<legend>검색</legend>
+
 				<div class="search_basic">
 					<strong class="tit">검색구분</strong>
 					<form:select path="searchCondition" id="searchCondition" title="구분 선택" cssClass="w100"  >  
@@ -40,5 +30,20 @@ $(document).ready(function(){
 	<%--// search  --%>
 	<div class="tbl">
 	</div>
+	
+	<script type="text/javaScript">
+$(document).ready(function(){
+	/* fncDate('searchStartDate','searchEndDate'); */	
+	var page = Number('${searchVO.pageIndex}');
+	if(page == 0){
+		fncPageBoard('addList','addList.do',1);		
+	}else{
+		fncPageBoard('addList','addList.do',page);		
+	};
+});
+// Ajax
+// addList.do 를 호출
+
+</script>
 </div>
 

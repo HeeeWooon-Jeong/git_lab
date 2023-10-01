@@ -4,7 +4,7 @@
 var overChk=false;
 $(document).ready(function(){	
 	
-	$("#btn_submit").bind("click", function(){		
+	$("#btn_submit").on("click", function(){		
 		if($("#id").val() == ""){
 			alert("아이디를 입력해 주세요.");
 			$("#id").focus();
@@ -26,19 +26,19 @@ $(document).ready(function(){
 		return false;
 	});
 	
-	$("#btn_list").bind("click", function(){
+	$("#btn_list").on("click", function(){
 		board.list();
 		return false;
 	});	
-	$("#btn_del").bind("click", function(){
+	$("#btn_del").on("click", function(){
 		board.del();
 		return false;
 	});	
-	$("#btn_view").bind("click", function(){
+	$("#btn_view").on("click", function(){
 		board.view();
 		return false;
 	});	
-	$("#btn_view2").bind("click", function(){
+	$("#btn_view2").on("click", function(){
 		$("#sea").val($("#groupSeq").val());
 		board.view();
 		return false;
