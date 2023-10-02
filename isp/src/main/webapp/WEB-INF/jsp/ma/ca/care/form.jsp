@@ -1,10 +1,8 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp" />
-<c:set var="url"
-	value="${requestScope['javax.servlet.forward.request_uri']}" />
+<c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <script type="text/javascript" src="/publish/ma/js/board.js"></script>
-<script type="text/javascript"
-	src="/resource/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="/resource/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <div class="content_box">
 	<form:form commandName="careVO" name="defaultFrm" id="defaultFrm" method="post">
@@ -23,88 +21,61 @@
 				</colgroup> 
 				<tbody>
 					<tr>
-						<th scope="row"><strong class="th_tit">이름</strong></th>
-						<td colspan="3">
-							<input type="text" name="caErum" id="caErum" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(careVO.caErum) }" />
+						<th scope="row"><strong class="th_tit" style="font-weight:bold; !important;">이름</strong></th>
+						<td>
+							<input type="text" name="caErum" id="caErum" class="text w100p" maxlength="50" value="${careVO.caErum}" />
 						</td>
-					</tr>
-					<tr>
 						<th scope="row">연락처</th>
-						<td colspan="3">
-							<input type="text" name="caPhon" id="caPhon" class="text w100p" required="required"	maxlength="50" value="${util:unEscape(careVO.caPhon) }" /> 
+						<td>
+							<input type="text" name="caPhon" id="caPhon" class="text w100p"	maxlength="50" value="${careVO.caPhon}" /> 
 					</tr>
 					<tr>
 						<th scope="row">관리차량</th>
-						<td colspan="14"><input type="text" name="caVehi"
-							id="caVehi" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caVehi) }" />
-					</tr>
-					<tr>
+						<td><input type="text" name="caVehi" id="caVehi" class="text w100p" maxlength="50" value="${careVO.caVehi}" />
 						<th scope="row">차량번호</th>
-						<td colspan="14"><input type="text" name="caNum"
-							id="caNum" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caNum) }" />
+						<td><input type="text" name="caNum" id="caNum" class="text w100p" maxlength="50" value="${careVO.caNum}" />
 					</tr>
 					<tr>
 						<th scope="row">배송지</th>
-						<td colspan="14"><input type="text" name="caDel"
-							id="caDel" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caDel) }" />
+						<td><input type="text" name="caDel" id="caDel" class="text w100p" maxlength="50" value="${careVO.caDel}" />
 						</td>
-					</tr>
-					<tr>
 						<th scope="row">방문지역</th>
-						<td colspan="14"><input type="text" name="caLocal"
-							id="caLocal" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caLocal) }" />
+						<td><input type="text" name="caLocal" id="caLocal" class="text w100p" maxlength="50" value="${careVO.caLocal}" />
 					</tr>
 					<tr>
 						<th scope="row">배송여부</th>
-						<td colspan="14"><input type="text" name="caTf"
-							id="caTf" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caTf) }" />
-					</tr>
-					<tr>
+						<td><input type="text" name="caTf"	id="caTf" class="text w100p" maxlength="50" value="${careVO.caTf}" />
 						<th scope="row">특이사항</th>
-						<td colspan="14"><input type="text" name="caEtc"
-							id="caEtc" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caEtc) }" /> 
+						<td><input type="text" name="caEtc" id="caEtc" class="text w100p" maxlength="50" value="${careVO.caEtc}" /> 
 					</tr>
 					<tr>
 						<th scope="row">출근시간</th>
-						<td colspan="14"><input type="text" name="caStart"
-							id="caStart" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caStart) }" />
+						<td><input type="text" name="caStart" id="caStart" class="text w100p" maxlength="50" value="${careVO.caStart}" />
+						<th scope="row">퇴근시간</th>
+						<td><input type="text" name="caEnd" id="caEnd" class="text w100p" maxlength="50" value="${careVO.caEnd}" />
 					</tr>
 					<tr>
-						<th scope="row">퇴근시간<strong></th>
-						<td colspan="14"><input type="text" name="caEnd"
-							id="caEnd" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caEnd) }" />
-					</tr>
-					<tr>
-						<th scope="row">휴가일<strong></th>
-						<td colspan="14"><input type="text" name="caVac"
-							id="caVac" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caVac) }" /> 
-					</tr>
-					<tr>
-						<th scope="row">사원코드<strong></th>
-						<td colspan="14"><input type="text" name="caCode"
-							id="caCode" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caCode) }" />
+						<th scope="row">휴가일</th>
+						<td><input type="text" name="caVac" id="caVac" class="text w100p" maxlength="50" value="${careVO.caVac}" /> 
+						<th scope="row">사원코드</th>
+						<td><input type="text" name="caCode" id="caCode" class="text w100p" maxlength="50" value="${careVO.caCode}" />
 					</tr>
 					<tr>
 						<th scope="row">사원레벨</th>
-						<td colspan="14"><input type="text" name="caLev"
-							id="caLev" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caLev) }" /> 
+						<td><input type="text" name="caLev" id="caLev" class="text w100p" maxlength="50" value="${careVO.caLev}" /> 
+						<th scope="row">인사평점</th>
+						<td><input type="text" name="caSco" id="caSco" class="text w100p" maxlength="50" value="${careVO.caSco}" />
+					</tr>
+					<tr>
+						<th scope="row" >인사평점</th>
+						<td><input type="text" name="caSco" id="caSco" class="text w100p" maxlength="50" value="${careVO.caSco}" />
+						<td colspan="2" rowspan="2" style="position: relative; padding:0; width: 100%; height: 200px;">
+					    		<img alt="#" src="https://x6i3g8y3.rocketcdn.me/wp-content/uploads/2023/02/20211216_02_01.jpg.webp?v=1685601196" style="position: absolute; width: 100%; height: 200px; transform: translateY(-100px)">
+						</td>	
 					</tr>
 					<tr>
 						<th scope="row">인사평점</th>
-						<td colspan="14"><input type="text" name="caSco"
-							id="caSco" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caSco) }" />
+						<td><input type="text" name="caSco" id="caSco" class="text w100p" maxlength="50" value="${careVO.caSco}" />
 					</tr>
 					<tr>
 						<th scope="row">특이사항 내용</th>
@@ -113,7 +84,7 @@
 						</td> 
 					</tr>
 					<tr>
-						<th scope="row"><strong>첨부파일</th>
+						<th scope="row">첨부파일</th>
 						<td colspan="3">
 							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?caAtchFileSeq=${careVO.caAtchFileSeq }&fileCnt=5&atchFileIdNm=caAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
 						</td>
