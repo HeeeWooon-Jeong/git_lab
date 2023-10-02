@@ -35,7 +35,7 @@
                , TW_RGST_SEQ 						twRgstSeq
                , F_USER_NM(TW_RGST_SEQ) 			twName
 	           , TW_CONT 							twCont
-	           , TW_ATCH_FILE_SEQ 					twAtchFisleSeq
+	           , TW_ATCH_FILE_SEQ 					twAtchFileSeq
                , TW_TITLE 							twTitle
                , TW_E_TITLE 						twETitle
                , TW_CODE 							twCode

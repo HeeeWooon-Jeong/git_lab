@@ -80,16 +80,16 @@
 						<td>${memberVO.meTid }</td>
 					</tr> 
 		
-			<%-- 
 					<!-- content , file --> 
 					<tr>
-						<th scope="row"><strong>줄거리</strong></th>
+						<th scope="row"><strong>인적사항</strong></th>
 						<td colspan="3">
 							<div class="text_area">
-								<c:out value="${util:unEscape(memberVO.twCont)}" escapeXml="false"/>
+								<c:out value="${util:unEscape(memberVO.meCont)}" escapeXml="false"/>
 							</div>
 						</td>
 					</tr>
+			<%-- 
 					<tr>
 						<th scope="row"><strong>첨부파일</strong></th>
 						<td colspan="3">

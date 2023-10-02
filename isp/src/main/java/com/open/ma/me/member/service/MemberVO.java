@@ -41,7 +41,7 @@ public class MemberVO extends CmmnDefaultVO implements Serializable {
 	private String meYear;         // 근무연차
 	private String meMail;           // 이메일
 	private String meTid;            // 인트라아이디
-	private String meName;			// 
+	private String meCont;			// 
 	
 	public String getMeSeq() {
 		return meSeq;
@@ -157,12 +157,13 @@ public class MemberVO extends CmmnDefaultVO implements Serializable {
 	public void setMeTid(String meTid) {
 		this.meTid = meTid;
 	}
-	public String getMeName() {
-		return meName;
+	public String getMeCont() {
+		return meCont;
 	}
-	public void setMeName(String meName) {
-		this.meName = meName;
+	public void setMeCont(String meCont) {
+		this.meCont = meCont;
 	}
+
 
 				
 }

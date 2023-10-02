@@ -133,7 +133,8 @@ twCont가 HTML 특수 문자(예: <, >, & 등)를 포함하고 있더라도 이�
 					<tr>
 						<th scope="row"><strong>첨부파일</strong></th>
 						<td colspan="3">
-							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${moviesVO.twAtchFileSeq }&fileCnt=5&atchFileIdNm=atchFileId&updateType=view" style="width: 100%;" height="70px" frameborder="0" title="파일 업로드 폼"></iframe>
+							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${moviesVO.twAtchFileSeq}&fileCnt=5&atchFileIdNm=twAtchFileSeq&updateType=view" style="width: 100%;" height="70px" frameborder="0" title="파일 업로드 폼"></iframe>
+					   <%-- <iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${sampleVO.atchFileId      }&fileCnt=5&atchFileIdNm=atchFileId&updateType=view" style="width: 100%;" height="50" frameborder="0" title="파일 업로드 폼"></iframe> --%>
 							<!-- iframe 다른 페이지에 있는 것을 가져와 붙이는 것 한 페이지에 있는 것 같지만 다른 곳에 있음
 							사용처 :	다른 웹 페이지의 내용을 현재 페이지에 삽입하여 보여줄 때.
 									지도, 동영상 플레이어, 소셜 미디어 위젯 등 외부 서비스를 웹 페이지에 통합할 때.

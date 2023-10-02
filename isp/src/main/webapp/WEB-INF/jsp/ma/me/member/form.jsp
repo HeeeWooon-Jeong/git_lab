@@ -23,118 +23,96 @@
 				</colgroup> 
 				<tbody>
 					<tr>
-						<th scope="row"><strong class="th_tit">등록자</strong></th>
-						<td colspan="3">
-							<input type="text" name="meRgstSeq" id="meRgstSeq" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meRgstSeq) }" />
-							<form:errors path="meRgstSeq" cssClass="error" cssStyle="color:#ff0000" /> 
-						</td>
-					</tr>
-					<tr>
 						<th scope="row"><strong class="th_tit">사번</strong></th>
 						<td colspan="3">
-							<input type="text" name="meCnum" id="meCnum" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meCnum) }" />
-							<form:errors path="meCnum" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meCnum" id="meCnum" class="text w100p"  value="${util:unEscape(memberVO.meCnum) }" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><strong class="th_tit">이름</strong></th>
 						<td colspan="3">
-							<input type="text" name="meMnam" id="meMnam" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meMnam) }" />
-							<form:errors path="meMnam" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meMnam" id="meMnam" class="text w100p"  value="${util:unEscape(memberVO.meMnam) }" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><strong class="th_tit">연락처</strong></th>
 						<td colspan="3">
-							<input type="text" name="meCall" id="meCall" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meCall) }" />
-							<form:errors path="meCall" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meCall" id="meCall" class="text w100p"  value="${util:unEscape(memberVO.meCall) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">부서</strong></th>
+						<th scope="row">부서</th>
 						<td colspan="3">
-							<input type="text" name="meBusu" id="meBusu" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meBusu) }" />
-							<form:errors path="meBusu" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meBusu" id="meBusu" class="text w100p"  value="${util:unEscape(memberVO.meBusu) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">직급</strong></th>
+						<th scope="row">직급</th>
 						<td colspan="3">
-							<input type="text" name="meLeve" id="meLeve" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meLeve) }" />
-							<form:errors path="meLeve" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meLeve" id="meLeve" class="text w100p"  value="${util:unEscape(memberVO.meLeve) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">입사일</strong></th>
+						<th scope="row">입사일</th>
 						<td colspan="3">
-							<input type="text" name="meStaDate" id="meStaDate" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meStaDate) }" />
-							<form:errors path="meStaDate" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="date" name="meStaDate" id="meStaDate" class="text w100p"  value="${util:unEscape(memberVO.meStaDate) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">퇴사일</strong></th>
+						<th scope="row">퇴사일</th>
 						<td colspan="3">
-							<input type="text" name="meEndDate" id="meEndDate" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meEndDate) }" />
-							<form:errors path="meEndDate" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meEndDate" id="meEndDate" class="text w100p"  value="${util:unEscape(memberVO.meEndDate) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">휴가일</strong></th>
+						<th scope="row">휴가일</th>
 						<td colspan="3">
-							<input type="text" name="meVac" id="meVac" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meVac) }" />
-							<form:errors path="meVac" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meVac" id="meVac" class="text w100p"  value="${util:unEscape(memberVO.meVac) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">총근무일수</strong></th>
+						<th scope="row">총근무일수</th>
 						<td colspan="3">
-							<input type="text" name="meTotaL" id="meTotaL" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meTotaL) }" />
-							<form:errors path="meTotaL" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meTotaL" id="meTotaL" class="text w100p"  value="${util:unEscape(memberVO.meTotaL) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">주소</strong></th>
+						<th scope="row">주소</th>
 						<td colspan="3">
-							<input type="text" name="meAdre" id="meAdre" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meAdre) }" />
-							<form:errors path="meAdre" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meAdre" id="meAdre" class="text w100p"  value="${util:unEscape(memberVO.meAdre) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">인사고과</strong></th>
+						<th scope="row">인사고과</th>
 						<td colspan="3">
-							<input type="text" name="meGood" id="meGood" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meGood) }" />
-							<form:errors path="meGood" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meGood" id="meGood" class="text w100p"  value="${util:unEscape(memberVO.meGood) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">근무연차</strong></th>
+						<th scope="row">근무연차</th>
 						<td colspan="3">
-							<input type="text" name="meYear" id="meYear" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meYear) }" />
-							<form:errors path="meYear" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meYear" id="meYear" class="text w100p"  value="${util:unEscape(memberVO.meYear) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">이메일</strong></th>
+						<th scope="row">이메일</th>
 						<td colspan="3">
-							<input type="text" name="meMail" id="meMail" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meMail) }" />
-							<form:errors path="meMail" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meMail" id="meMail" class="text w100p"  value="${util:unEscape(memberVO.meMail) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">인트라아이디</strong></th>
+						<th scope="row">인트라아이디</th>
 						<td colspan="3">
-							<input type="text" name="meTid" id="meTid" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(memberVO.meTid) }" />
-							<form:errors path="meTid" cssClass="error" cssStyle="color:#ff0000" /> 
+							<input type="text" name="meTid" id="meTid" class="text w100p"  value="${util:unEscape(memberVO.meTid) }" />
 						</td>
 					</tr>
 				
-					</tr>
-<%-- 				<tr>	
-						<th scope="row"><strong class="th_tit">내용</strong></th>
+					<tr>	
+						<th scope="row">인적사항</strong></th>
 						<td colspan="3">
-							<textarea name="meCont" id="cont" class="txt_area w_100p" >${util:unEscape(memberVO.meCont)}</textarea>
+							<textarea name="meCont" id="meCont" class="txt_area w_100p" >${util:unEscape(memberVO.meCont)}</textarea>
 						</td> 
-					</tr> --%>
+					</tr> 
 					
 	<%--  				<tr>
 						<th scope="row"><strong>첨부파일</strong></th>

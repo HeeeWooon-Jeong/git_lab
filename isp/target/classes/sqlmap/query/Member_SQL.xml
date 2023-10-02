@@ -42,7 +42,7 @@
             , ME_MAIL 							meMail
             , ME_TID 							meTid
             , ME_NAME							meRgstSeq
-            , ME_CONT							meCount
+            , ME_CONT							meCont
            FROM  T_MEMBER 
           WHERE  ME_USE_YN='Y'   
              AND ME_SEQ = #{meSeq}
@@ -73,8 +73,7 @@
             , ME_YEAR 							meYear
             , ME_MAIL 							meMail
             , ME_TID 							meTid
-            , ME_NAME							meRgstSeq
-                       , ME_CONT							meCount
+            , ME_CONT							meCont
            FROM T_MEMBER 
           WHERE ME_USE_YN='Y'   
          ]]>
@@ -118,10 +117,11 @@
             , ME_YEAR 							
             , ME_MAIL
             , ME_TID 
+            , ME_CONT
          )
          VALUES (
-             (SELECT IFNULL(MAX(TW.ME_SEQ)+1,1) FROM T_MEMBER TW)
-            , #{meRgstSeq}
+             (SELECT IFNULL(MAX(ME.ME_SEQ)+1,1) FROM T_MEMBER ME)
+            , #{loginSeq}
             , #{meCnum}
             , #{meMnam}
             , #{meCall}
@@ -136,6 +136,7 @@
             , #{meYear}
             , #{meMail}
             , #{meTid}
+            , #{meCont}
          )
       ]]>
 	</insert>
@@ -160,6 +161,7 @@
             , ME_YEAR = #{meYear}
             , ME_MAIL = #{meMail}
             , ME_TID = #{meTid}
+            , ME_CONT = #{meCont}
             , ME_RVSE_DT = NOW()
          WHERE  ME_SEQ = #{meSeq}  
       ]]>

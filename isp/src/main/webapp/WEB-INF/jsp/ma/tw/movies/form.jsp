@@ -98,7 +98,7 @@
 					<tr>
 						<th scope="row"><strong>첨부파일</th>
 						<td colspan="3">
-						<iframe name="atchFileIdFrame" id="atchFileIdFrame"	src="/atch/fileUpload.do?atchFileId=${moviesVO.twAtchFileSeq }&fileCnt=5&atchFileIdNm=atchFileId&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe></td>
+						<iframe name="atchFileIdFrame" id="atchFileIdFrame"	src="/atch/fileUpload.do?twAtchFileSeq=${moviesVO.twAtchFileSeq }&fileCnt=5&atchFileIdNm=twAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe></td>
 		<%-- cmmndefault.vo 확인  atchFileIdNm 으로 사용중 --%> 				
 					</tr>
 				</tbody>

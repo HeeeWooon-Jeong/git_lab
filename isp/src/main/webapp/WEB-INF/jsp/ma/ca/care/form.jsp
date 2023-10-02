@@ -23,126 +23,99 @@
 				</colgroup> 
 				<tbody>
 					<tr>
-						<th scope="row"><strong class="th_tit">등록자</strong></th>
-						<td colspan="3">
-							<input type="text" name="caRgstSeq" id="caRgstSeq" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(careVO.caRgstSeq) }" />
-							<form:errors path="caRgstSeq" cssClass="error" cssStyle="color:#ff0000" /> 
-						</td>
-					</tr>
-					<tr>
 						<th scope="row"><strong class="th_tit">이름</strong></th>
 						<td colspan="3">
 							<input type="text" name="caErum" id="caErum" class="text w100p"  required="required"  maxlength="50" value="${util:unEscape(careVO.caErum) }" />
-							<form:errors path="caErum" cssClass="error" cssStyle="color:#ff0000" /> 
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">연락처</strong></th>
+						<th scope="row">연락처</th>
 						<td colspan="3">
-							<input type="text" name="caPhon" id="caPhon" class="text w100p" required="required"	maxlength="50" value="${util:unEscape(careVO.caPhon) }" /> <form:errors
-								path="caPhon" cssClass="error" cssStyle="color:#ff0000" /></td>
+							<input type="text" name="caPhon" id="caPhon" class="text w100p" required="required"	maxlength="50" value="${util:unEscape(careVO.caPhon) }" /> 
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">관리차량</strong></th>
+						<th scope="row">관리차량</th>
 						<td colspan="14"><input type="text" name="caVehi"
 							id="caVehi" class="text w100p" required="required"
 							maxlength="50" value="${util:unEscape(careVO.caVehi) }" />
-							<form:errors path="caVehi" cssClass="error"
-								cssStyle="color:#ff0000" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">차량번호</strong></th>
+						<th scope="row">차량번호</th>
 						<td colspan="14"><input type="text" name="caNum"
 							id="caNum" class="text w100p" required="required"
 							maxlength="50" value="${util:unEscape(careVO.caNum) }" />
-							<form:errors path="caNum" cssClass="error"
-								cssStyle="color:#ff0000" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">배송지</strong></th>
+						<th scope="row">배송지</th>
 						<td colspan="14"><input type="text" name="caDel"
 							id="caDel" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caDel) }" /> <form:errors
-								path="caDel" cssClass="error" cssStyle="color:#ff0000" />
+							maxlength="50" value="${util:unEscape(careVO.caDel) }" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">방문지역</strong></th>
+						<th scope="row">방문지역</th>
 						<td colspan="14"><input type="text" name="caLocal"
 							id="caLocal" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caLocal) }" /> <form:errors
-								path="caLocal" cssClass="error" cssStyle="color:#ff0000" /></td>
+							maxlength="50" value="${util:unEscape(careVO.caLocal) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">배송여부</strong></th>
+						<th scope="row">배송여부</th>
 						<td colspan="14"><input type="text" name="caTf"
 							id="caTf" class="text w100p" required="required"
 							maxlength="50" value="${util:unEscape(careVO.caTf) }" />
-							<form:errors path="caTf" cssClass="error"
-								cssStyle="color:#ff0000" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">특이사항</strong></th>
+						<th scope="row">특이사항</th>
 						<td colspan="14"><input type="text" name="caEtc"
 							id="caEtc" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caEtc) }" /> <form:errors
-								path="caEtc" cssClass="error" cssStyle="color:#ff0000" /></td>
+							maxlength="50" value="${util:unEscape(careVO.caEtc) }" /> 
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">출근시간</strong></th>
+						<th scope="row">출근시간</th>
 						<td colspan="14"><input type="text" name="caStart"
 							id="caStart" class="text w100p" required="required"
 							maxlength="50" value="${util:unEscape(careVO.caStart) }" />
-							<form:errors path="caStart" cssClass="error"
-								cssStyle="color:#ff0000" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">퇴근시간<strong></th>
+						<th scope="row">퇴근시간<strong></th>
 						<td colspan="14"><input type="text" name="caEnd"
 							id="caEnd" class="text w100p" required="required"
 							maxlength="50" value="${util:unEscape(careVO.caEnd) }" />
-							<form:errors path="caEnd" cssClass="error"
-								cssStyle="color:#ff0000" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">휴가일<strong></th>
+						<th scope="row">휴가일<strong></th>
 						<td colspan="14"><input type="text" name="caVac"
 							id="caVac" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caVac) }" /> <form:errors
-								path="caVac" cssClass="error" cssStyle="color:#ff0000" /></td>
+							maxlength="50" value="${util:unEscape(careVO.caVac) }" /> 
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">사원코드<strong></th>
+						<th scope="row">사원코드<strong></th>
 						<td colspan="14"><input type="text" name="caCode"
 							id="caCode" class="text w100p" required="required"
 							maxlength="50" value="${util:unEscape(careVO.caCode) }" />
-							<form:errors path="caCode" cssClass="error"
-								cssStyle="color:#ff0000" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">사원레벨</strong></th>
+						<th scope="row">사원레벨</th>
 						<td colspan="14"><input type="text" name="caLev"
 							id="caLev" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caLev) }" /> <form:errors
-								path="caLev" cssClass="error" cssStyle="color:#ff0000" /></td>
+							maxlength="50" value="${util:unEscape(careVO.caLev) }" /> 
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">인사평점</strong></th>
+						<th scope="row">인사평점</th>
 						<td colspan="14"><input type="text" name="caSco"
 							id="caSco" class="text w100p" required="required"
-							maxlength="50" value="${util:unEscape(careVO.caSco) }" /> <form:errors
-								path="caSco" cssClass="error" cssStyle="color:#ff0000" /></td>
+							maxlength="50" value="${util:unEscape(careVO.caSco) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">특이사항 내용</strong></th>
+						<th scope="row">특이사항 내용</th>
 						<td colspan="3">
-							<textarea name="caCont" id="caCont" class="txt_area w_100p" >${util:unEscape(careVO.caCont)}</textarea>
+							<textarea name="caCont" id="caCont" class="txt_area w_100p" style="position: absolute; width: 100%;" height="100%" left:0; top:0; frameborder="0">${util:unEscape(careVO.caCont)}</textarea>
 						</td> 
 					</tr>
 					<tr>
-						<th scope="row"><strong>첨부파일</strong></th>
+						<th scope="row"><strong>첨부파일</th>
 						<td colspan="3">
-							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?caAtchFileSeq=${careVO.caAtchFileSeq }&fileCnt=5&atchFileIdNm=caAtchFileSeq&updateType=upload" style="width: 100%;" height="50" frameborder="0" title="파일 업로드 폼"></iframe>
+							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?caAtchFileSeq=${careVO.caAtchFileSeq }&fileCnt=5&atchFileIdNm=caAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
 						</td>
 					</tr> 
 				</tbody>
