@@ -35,7 +35,7 @@
                , TW_RGST_SEQ 						twRgstSeq
                , F_USER_NM(TW_RGST_SEQ) 			twName
 	           , TW_CONT 							twCont
-	           , TW_ATCH_FILE_SEQ 					twAtchFileSeq
+	           , TW_ATCH_FILE_SEQ 					twAtchFisleSeq
                , TW_TITLE 							twTitle
                , TW_E_TITLE 						twETitle
                , TW_CODE 							twCode
@@ -106,7 +106,6 @@ RETURN R_VAR;
 				, TW_LATI 							twLati
 				, TW_CONT 							twCont
 				, TW_ATCH_FILE_SEQ 					twAtchFileSeq
-				, TW_NAME							twRgstSeq
              FROM T_MOVIES 
             WHERE TW_USE_YN='Y'   
          ]]>
@@ -133,7 +132,7 @@ RETURN R_VAR;
       <![CDATA[
        INSERT INTO T_MOVIES(
               TW_SEQ 
-            , TW_RGST_SEQ 
+            , TW_RGST_SEQ
             , TW_TITLE 
             , TW_E_TITLE
             , TW_CODE 
@@ -153,7 +152,7 @@ RETURN R_VAR;
          )
          VALUES (
          	  (SELECT IFNULL(MAX(TW.TW_SEQ)+1,1) FROM T_MOVIES TW)
-            , #{twRgstSeq}
+            , #{loginSeq}
             , #{twTitle}
             , #{twETitle}
             , #{twCode}
@@ -191,6 +190,7 @@ RETURN R_VAR;
          UPDATE T_MOVIES     
             SET TW_TITLE		 	= #{twTitle} 
               , TW_RVSE_DT 			= NOW()
+              , TW_RVSE_SEQ			= #{loginSeq}
               , TW_E_TITLE 			= #{twETitle}
               , TW_CODE  			= #{twCode}
               , TW_MAKE_YEAR 		= #{twMakeYear}
@@ -204,7 +204,6 @@ RETURN R_VAR;
               , TW_LATI 			= #{twLati}
               , TW_CONT 			= #{twCont}
               , TW_ATCH_FILE_SEQ	= #{twAtchFileSeq}
-              , TW_NAME				= #{twRgstSeq}
           WHERE TW_SEQ 				= #{twSeq}  
       ]]>
    </update>

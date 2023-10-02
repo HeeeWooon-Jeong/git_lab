@@ -20,7 +20,8 @@
 				<caption>내용(제목, 작성자, 작성일 등으로 구성)</caption>
 				<colgroup>
 					<col style="width: 20%;">
-					<col style="width: 80%;">
+					<col style="width: 30%;">
+					<col style="width: 50%;">
 				</colgroup>
 				<tbody>
 					<!-- required="required"  삭제함 -->
@@ -29,69 +30,81 @@
 						<td colspan="3"><input type="text" name="twTitle" id="twTitle" class="text w100p" maxlength="50" value="${util:unEscape(moviesVO.twTitle) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">영제목</strong></th>
-						<td colspan="3"><input type="text" name="twETitle" id="twETitle" class="text w100p" maxlength="50"	value="${util:unEscape(moveVO.twETitle) }" />
+						<th scope="row">영제목</th>
+						<td colspan="3"><input type="text" name="twETitle" id="twETitle" class="text w100p" maxlength="50"	value="${moviesVO.twETitle }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">영화코드</strong></th>
-						<td colspan="3"><input type="text" name="twCode" id="twCode" class="text w100p" maxlength="50"	value="${util:unEscape(moveVO.twCode) }" />
+						<th scope="row">영화코드</th>
+						<td colspan="3"><input type="text" name="twCode" id="twCode" class="text w100p" maxlength="50"	value="${util:unEscape(moviesVO.twCode) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">제작년도</strong></th>
-						<td colspan="3"><input type="text" name="twMakeYear" id="twMakeYear" class="text w100p" maxlength="50" value="${util:unEscape(moveVO.twMakeYear) }" />
+						<th scope="row">제작년도</th>
+						<td colspan="3"><input type="text" name="twMakeYear" id="twMakeYear" class="text w100p" maxlength="50" value="${util:unEscape(moviesVO.twMakeYear) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">국가</strong></th>
-						<td colspan="3"><input type="text" name="twNational" id="twNational" class="text w100p" maxlength="50" value="${util:unEscape(moveVO.twNational) }" /></td>
+						<th scope="row">국가</th>
+						<td colspan="3"><input type="text" name="twNational" id="twNational" class="text w100p" maxlength="50" value="${util:unEscape(moviesVO.twNational) }" /></td>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">개봉</strong></th>
-						<td colspan="3"><input type="text" name="twStaDate" id="twStaDate" class="text w100p" maxlength="50" value="${util:unEscape(moveVO.twStaDate) }" />
+						<th scope="row">개봉</th>
+						<td colspan="3">
+							<label for="twStaDate">
+								<input type="date" name="twStaDate" id="twStaDate" class="text w100p" maxlength="10" value="${util:unEscape(moviesVO.twStaDate) }" />
+							</label>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">마감</strong></th>
-						<td colspan="3"><input type="text" name="twEndDate" id="twEndDate" class="text w100p" maxlength="50" value="${util:unEscape(moveVO.twEndDate) }" />
+						<th scope="row">마감</th>
+						<td colspan="3">
+							<label for="twEndDate">
+								<input type="date" name="twEndDate" id="twEndDate" class="text w100p" maxlength="10" value="${util:unEscape(moviesVO.twEndDate) }" />
+							</label>
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">유형</strong></th>
-						<td colspan="3"><input type="text" name="twType" id="twType" class="text w100p" maxlength="50"	value="${util:unEscape(moveVO.twType) }" />
+						<th scope="row">유형</th>
+						<td colspan="3"><input type="text" name="twType" id="twType" class="text w100p" maxlength="50"	value="${util:unEscape(moviesVO.twType) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">장르</strong></th>
-						<td colspan="3"><input type="text" name="twGenre" id="twGenre" class="text w100p" maxlength="50" value="${util:unEscape(moveVO.twGenre) }" />
+						<th scope="row">장르</th>
+						<td colspan="3"><input type="text" name="twGenre" id="twGenre" class="text w100p" maxlength="50" value="${util:unEscape(moviesVO.twGenre) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">감독<strong></th>
-						<td colspan="3"><input type="text" name="twDirector" id="twDirector" class="text w100p" maxlength="50"	value="${util:unEscape(moveVO.twDirector) }" />
+						<th scope="row">감독<strong></th>
+						<td colspan="3"><input type="text" name="twDirector" id="twDirector" class="text w100p" maxlength="50"	value="${util:unEscape(moviesVO.twDirector) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">회사<strong></th>
-						<td colspan="3"><input type="text" name="twCompany" id="twCompany" class="text w100p" maxlength="50" value="${util:unEscape(moveVO.twCompany) }" />
+						<th scope="row">회사<strong></th>
+						<td colspan="3"><input type="text" name="twCompany" id="twCompany" class="text w100p" maxlength="50" value="${util:unEscape(moviesVO.twCompany) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">배우<strong></th>
-						<td colspan="3"><input type="text" name="twActor" id="twActor" class="text w100p" maxlength="50" value="${util:unEscape(moveVO.twActor) }" />
+						<th scope="row">배우<strong></th>
+						<td colspan="3"><input type="text" name="twActor" id="twActor" class="text w100p" maxlength="50" value="${util:unEscape(moviesVO.twActor) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">배급사</strong></th>
-						<td colspan="3"><input type="text" name="twTcom" id="twTcom" class="text w100p" maxlength="50"	value="${util:unEscape(moveVO.twTcom) }" />
+						<th scope="row">배급사</th>
+						<td colspan="3"><input type="text" name="twTcom" id="twTcom" class="text w100p" maxlength="50"	value="${util:unEscape(moviesVO.twTcom) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">평점</strong></th>
-						<td colspan="3"><input type="text" name="twLati" id="twLati" class="text w100p" maxlength="50"	value="${util:unEscape(moveVO.twLati) }" />
+						<th scope="row">평점</th>
+						<td colspan="3"><input type="text" name="twLati" id="twLati" class="text w100p" maxlength="50"	value="${util:unEscape(moviesVO.twLati) }" />
 					</tr>
 					<tr>
-						<th scope="row"><strong class="th_tit">내용</strong></th>
-						<td colspan="3" ><textarea name="twCont" id="twCont" class="txt_area w_100p">${util:unEscape(moviesVO.twCont)}</textarea>
+						<th scope="row">내용</th>
+						<td colspan="3">
+							<div style="position:relative; heigth:0;">
+								<textarea name="twCont" id="twCont" class="txt_area w_100p" style="position: absolute; width: 100%;" height="100%" left:0; top:0; frameborder="0">${util:unEscape(moviesVO.twCont)}</textarea>
+							</div>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><strong>첨부파일</strong></th>
-						<td colspan="3"><iframe name="atchFileIdFrame" id="atchFileIdFrame"	src="/atch/fileUpload.do?twAtchFileSeq=${moviesVO.twAtchFileSeq }&fileCnt=5&atchFileIdNm=twAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe></td>
+						<th scope="row"><strong>첨부파일</th>
+						<td colspan="3">
+						<iframe name="atchFileIdFrame" id="atchFileIdFrame"	src="/atch/fileUpload.do?atchFileId=${moviesVO.twAtchFileSeq }&fileCnt=5&atchFileIdNm=atchFileId&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe></td>
+		<%-- cmmndefault.vo 확인  atchFileIdNm 으로 사용중 --%> 				
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		
 		<div class="btn_area">
 			<a href="#"
 				class="btn btn_mdl btn_${searchVO.procType eq 'update'? 'rewrite':'save'}"

@@ -395,7 +395,7 @@ box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.24);}
 .th_tit {display:inline-block;position: relative; margin-left: -9px; padding-left: 10px;}
 .th_tit::before {position: absolute;top: 13px;left: 0;display: block;content: '*';transform: translateY(-50%); color: #e61212;}
 
-.txt_area {border:1px solid #cccccc; padding:5px; height:150px; width:100%; margin-right:5px;}
+.txt_area {border:1px solid #cccccc; padding:5px 0 5px 5px; height:150px; width:100%; box-sizing: border-box;}
 .txt_area02 {width:100% !important;}
 
 .mail_count {display:inline-block;vertical-align: top;margin-right: 10px;padding:10px;}
