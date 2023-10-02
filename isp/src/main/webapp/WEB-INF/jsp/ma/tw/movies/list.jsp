@@ -42,8 +42,8 @@ $(document).ready(function(){
 	};
 });
 // Ajax
-자바스크립트는 자동으로 형변환 해줌 addList.do 를 호출
- var
+// 자바 스크립트는 자동으로 형변환 해줌 addList.do 를 호출
+
 </script>
 </div>
 
