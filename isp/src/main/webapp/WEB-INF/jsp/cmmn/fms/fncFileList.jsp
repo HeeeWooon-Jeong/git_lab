@@ -1,5 +1,12 @@
 <%@ page language="java" isELIgnored="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp"/>
+<%-- jsp page 지시문 JSP 페이지의 속성을 설정하는 데 사용됩니다.
+	language="java": JSP 페이지의 스크립트 요소에 사용할 언어를 지정합니다. 이 경우, Java 언어를 사용하도록 설정되어 있습니다.
+	isELIgnored="false": Expression Language (EL) 사용 여부를 설정합니다. EL은 ${} 형식으로 데이터를 표현하고 처리할 때 사용됩니다. 
+	isELIgnored="false"로 설정되어 있으므로 EL을 사용할 수 있습니다. isELIgnored="true"로 설정하면 EL을 사용하지 않도록 설정됩니다.
+	contentType="text/html; charset=UTF-8": JSP 페이지의 출력 콘텐츠 유형 및 문자 인코딩을 설정합니다. 
+	이 경우, 텍스트 형식의 HTML 콘텐츠이며, UTF-8 문자 인코딩을 사용합니다.
+ --%>
+<jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp"/> <!--  포함시킬 파일의 경로를 지정하는 속성  파일의 내용이 현재 JSP 페이지에 포함되어 렌더링됩니다. -->
 <!DOCTYPE html>
 <html lang="ko" style="height: auto;">
 <head>
@@ -13,7 +20,6 @@
 	var atchId;
 	var fileSize=2147483647;
 	$(document).ready(function(){
-		
 		var parentUrl = parent.document.location.href;
 		var myUrl = document.location.href;
 		if(parentUrl == myUrl){
@@ -248,7 +254,7 @@
 		<c:choose>
 			<c:when test="${fileVO.updateType eq 'imageUpload' }">
 				<ul class="file_thum">	
-					<c:if test="${fn:length(resultList) < fileVO.fileCnt }">
+					<c:if test="${fn:length(resultList) lt fileVO.fileCnt }">
 	       				<li>
 	       					<div class="file_img"><img src="/publish/ma/images/no_img.png" alt=""></div>
 	       					<div class="file_btns_box r">

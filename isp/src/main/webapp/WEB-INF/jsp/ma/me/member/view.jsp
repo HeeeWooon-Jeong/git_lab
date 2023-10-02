@@ -75,6 +75,14 @@
 	                    <th scope="row"><strong>인트라아이디</strong></th>
 						<td>${memberVO.meTid }</td>
 					</tr> 
+					<tr>
+						<th scope="row"><strong>차량번호</strong></th>
+						<td>
+							${memberVO.meGun }
+						</td>
+	                    <th scope="row"><strong>연봉</strong></th>
+						<td>${memberVO.meDon }</td>
+					</tr> 
 		
 					<!-- content , file --> 
 					<tr>

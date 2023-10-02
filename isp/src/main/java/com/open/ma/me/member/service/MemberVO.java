@@ -42,7 +42,9 @@ public class MemberVO extends CmmnDefaultVO implements Serializable {
 	private String meMail;            // 이메일
 	private String meTid;             // 인트라아이디
 	private String meCont;			  // 인적사항
-	
+	private String meGun;			  // 총기번호
+	private String meDon;			  // 연봉
+
 	public String getMeSeq() {
 		return meSeq;
 	}
@@ -162,6 +164,18 @@ public class MemberVO extends CmmnDefaultVO implements Serializable {
 	}
 	public void setMeCont(String meCont) {
 		this.meCont = meCont;
+	}
+	public String getMeGun() {
+		return meGun;
+	}
+	public void setMeGun(String meGun) {
+		this.meGun = meGun;
+	}
+	public String getMeDon() {
+		return meDon;
+	}
+	public void setMeDon(String meDon) {
+		this.meDon = meDon;
 	}
 
 

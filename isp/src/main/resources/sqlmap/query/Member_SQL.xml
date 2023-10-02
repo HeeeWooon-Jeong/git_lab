@@ -41,6 +41,8 @@
 	            , ME_MAIL 							meMail
 	          	, ME_TID 							meTid
 	           	, ME_CONT							meCont
+	           	, ME_GUN							meGun
+	           	, ME_DON							meDon
              FROM T_MEMBER 
             WHERE ME_USE_YN='Y'   
               AND ME_SEQ = #{meSeq}
@@ -71,6 +73,8 @@
 	            , ME_MAIL 							meMail
 	            , ME_TID 							meTid
 	            , ME_CONT							meCont
+	           	, ME_GUN							meGun
+	           	, ME_DON							meDon
              FROM T_MEMBER 
             WHERE ME_USE_YN='Y'   
          ]]>
@@ -114,6 +118,8 @@
 	            , ME_MAIL
 	            , ME_TID 
 	            , ME_CONT
+	            , ME_GUN
+	            , ME_DON
 	         )
          VALUES (
              (SELECT IFNULL(MAX(ME.ME_SEQ)+1,1) FROM T_MEMBER ME)
@@ -133,6 +139,8 @@
 	            , #{meMail}
 	            , #{meTid}
 	            , #{meCont}
+	            , #{meGun}
+	            , #{meDon}
          )
       ]]>
 	</insert>
@@ -157,6 +165,8 @@
             , ME_MAIL 		= #{meMail}
             , ME_TID 		= #{meTid}
             , ME_CONT 		= #{meCont}
+            , ME_GUN 		= #{meGun}
+            , ME_DON 		= #{meDon}
             , ME_RVSE_DT 	= NOW()
        WHERE  ME_SEQ		= #{meSeq}  
       ]]>

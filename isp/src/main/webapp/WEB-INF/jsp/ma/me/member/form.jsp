@@ -92,6 +92,16 @@
 							<input type="text" name="meTid" id="meTid" class="text w100p"  value="${memberVO.meTid}" />
 						</td>
 					</tr>
+					<tr>
+						<th scope="row">차량번호</th>
+						<td colspan="1">
+							<input type="text" name="meGun" id="meGun" class="text w100p"  value="${memberVO.meGun}" />
+						</td>
+						<th scope="row">연봉</th>
+						<td colspan="1">
+							<input type="text" name="meDon" id="meDon" class="text w100p"  value="${memberVO.meDon}" />
+						</td>
+					</tr>
 					<tr>	
 						<th scope="row">인적사항</strong></th>
 						<td colspan="3">

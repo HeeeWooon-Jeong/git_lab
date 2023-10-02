@@ -11,3 +11,23 @@
    </cache>
    
 </ehcache>
+
+<!-- <ehcache updateCheck="false">: Ehcache 라이브러리의 업데이트 확인을 비활성화합니다.
+
+<diskStore path="user.dir/second"/>: 디스크 스토어의 경로를 설정합니다. user.dir은 Java 시스템 속성 중 하나로 현재 작업 디렉토리를 나타냅니다. second 디렉토리에 디스크 스토어 데이터를 저장하겠다는 의미입니다.
+
+<cache name="properties">: 캐시의 이름을 지정합니다.
+
+maxElementsInMemory="50": 메모리에 저장할 수 있는 최대 캐시 항목 수를 50개로 지정합니다.
+
+eternal="false": 캐시 항목이 영구적인지 여부를 나타냅니다. 여기서는 false로 설정되어 있으므로 캐시 항목은 만료될 수 있습니다.
+
+timeToIdleSeconds="360": 캐시 항목이 아무 작업도 수행하지 않고 메모리에 유지되는 최대 시간(초)을 설정합니다. 이 시간이 경과하면 캐시 항목이 제거됩니다.
+
+timeToLiveSeconds="1000": 캐시 항목이 메모리에 유지되는 최대 수명(초)을 설정합니다. 이 시간이 경과하면 캐시 항목이 제거됩니다.
+
+overflowToDisk="false": 메모리에 저장된 캐시 항목이 최대 개수를 초과할 경우 디스크로 넘치지 않도록 설정합니다.
+
+diskPersistent="false": 디스크에 저장된 캐시 항목이 영구적인지 여부를 나타냅니다. 여기서는 false로 설정되어 있으므로 디스크에 저장된 캐시 항목도 만료될 수 있습니다.
+
+memoryStoreEvictionPolicy="LRU": 메모리 스토어에서 캐시 항목을 제거할 때 사용할 정책을 지정합니다. 여기서는 LRU (Least Recently Used) 정책을 사용하여 가장 오래된 항목을 제거합니다. -->
