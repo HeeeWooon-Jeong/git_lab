@@ -22,26 +22,26 @@ public class MemberVO extends CmmnDefaultVO implements Serializable {
 	 */
 	private static final long serialVersionUID = 2172623835339565860L;
 	
-	private String meSeq;             //시퀀스 넘버
-	private String meRgstDt;          //등록일
-	private String meRgstSeq;         //등록자
+	private String meSeq;             // 시퀀스 넘버
+	private String meRgstDt;          // 등록일
+	private String meRgstSeq;         // 등록자
 	private String meRvseSeq;         // 수정자
 	private String meRvseDt;          // 수정일
-	private String meCnum;           // 사번
-	private String meMnam;          // 이름
+	private String meCnum;            // 사번
+	private String meMnam;            // 이름
 	private String meCall;            // 연락처
-	private String meBusu;        // 부서
-	private String meLeve;        // 직급
-	private String meStaDate;        // 입사일
-	private String meEndDate;        // 퇴사일
-	private String meVac;        // 휴가일
-	private String meTotaL;            // 총근무일수
-	private String meAdre;           // 주소
-	private String meGood;        // 인사고과
-	private String meYear;         // 근무연차
-	private String meMail;           // 이메일
-	private String meTid;            // 인트라아이디
-	private String meCont;			// 
+	private String meBusu;       	  // 부서
+	private String meLeve;        	  // 직급
+	private String meStaDate;         // 입사일
+	private String meEndDate;         // 퇴사일
+	private String meVac;        	  // 휴가일
+	private String meTotaL;           // 총근무일수
+	private String meAdre;            // 주소
+	private String meGood;            // 인사고과
+	private String meYear;         	  // 근무연차
+	private String meMail;            // 이메일
+	private String meTid;             // 인트라아이디
+	private String meCont;			  // 인적사항
 	
 	public String getMeSeq() {
 		return meSeq;

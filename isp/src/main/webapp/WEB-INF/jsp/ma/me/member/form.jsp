@@ -24,89 +24,74 @@
 				<tbody>
 					<tr>
 						<th scope="row"><strong class="th_tit">사번</strong></th>
-						<td colspan="3">
-							<input type="text" name="meCnum" id="meCnum" class="text w100p"  value="${util:unEscape(memberVO.meCnum) }" />
+						<td colspan="1">
+							<input type="text" name="meCnum" id="meCnum" class="text w100p"  value="${memberVO.meCnum}" />
 						</td>
-					</tr>
-					<tr>
 						<th scope="row"><strong class="th_tit">이름</strong></th>
-						<td colspan="3">
-							<input type="text" name="meMnam" id="meMnam" class="text w100p"  value="${util:unEscape(memberVO.meMnam) }" />
+						<td colspan="1">
+							<input type="text" name="meMnam" id="meMnam" class="text w100p"  value="${memberVO.meMnam}" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><strong class="th_tit">연락처</strong></th>
-						<td colspan="3">
-							<input type="text" name="meCall" id="meCall" class="text w100p"  value="${util:unEscape(memberVO.meCall) }" />
+						<td colspan="1">
+							<input type="text" name="meCall" id="meCall" class="text w100p"  value="${memberVO.meCall}" />
 						</td>
-					</tr>
-					<tr>
 						<th scope="row">부서</th>
-						<td colspan="3">
-							<input type="text" name="meBusu" id="meBusu" class="text w100p"  value="${util:unEscape(memberVO.meBusu) }" />
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">직급</th>
-						<td colspan="3">
-							<input type="text" name="meLeve" id="meLeve" class="text w100p"  value="${util:unEscape(memberVO.meLeve) }" />
+						<td colspan="1">
+							<input type="text" name="meBusu" id="meBusu" class="text w100p"  value="${memberVO.meBusu}" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">입사일</th>
-						<td colspan="3">
-							<input type="date" name="meStaDate" id="meStaDate" class="text w100p"  value="${util:unEscape(memberVO.meStaDate) }" />
+						<td colspan="1">
+							<input type="date" name="meStaDate" id="meStaDate" class="text w100p"  value="${memberVO.meStaDate}" />
 						</td>
-					</tr>
-					<tr>
 						<th scope="row">퇴사일</th>
-						<td colspan="3">
-							<input type="text" name="meEndDate" id="meEndDate" class="text w100p"  value="${util:unEscape(memberVO.meEndDate) }" />
-						</td>
+						<td colspan="1">
+							<input type="text" name="meEndDate" id="meEndDate" class="text w100p"  value="${memberVO.meEndDate}" />
+						</td>						
 					</tr>
 					<tr>
+						<th scope="row">직급</th>
+						<td colspan="1">
+							<input type="text" name="meLeve" id="meLeve" class="text w100p"  value="${memberVO.meLeve}" />
+						</td>
 						<th scope="row">휴가일</th>
-						<td colspan="3">
-							<input type="text" name="meVac" id="meVac" class="text w100p"  value="${util:unEscape(memberVO.meVac) }" />
+						<td colspan="1">
+							<input type="text" name="meVac" id="meVac" class="text w100p"  value="${memberVO.meVac}" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">총근무일수</th>
-						<td colspan="3">
-							<input type="text" name="meTotaL" id="meTotaL" class="text w100p"  value="${util:unEscape(memberVO.meTotaL) }" />
+						<td colspan="1">
+							<input type="text" name="meTotaL" id="meTotaL" class="text w100p"  value="${memberVO.meTotaL}" />
 						</td>
-					</tr>
-					<tr>
 						<th scope="row">주소</th>
-						<td colspan="3">
-							<input type="text" name="meAdre" id="meAdre" class="text w100p"  value="${util:unEscape(memberVO.meAdre) }" />
+						<td colspan="1">
+							<input type="text" name="meAdre" id="meAdre" class="text w100p"  value="${memberVO.meAdre}" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">인사고과</th>
-						<td colspan="3">
-							<input type="text" name="meGood" id="meGood" class="text w100p"  value="${util:unEscape(memberVO.meGood) }" />
+						<td colspan="1">
+							<input type="text" name="meGood" id="meGood" class="text w100p"  value="${memberVO.meGood}" />
 						</td>
-					</tr>
-					<tr>
 						<th scope="row">근무연차</th>
-						<td colspan="3">
-							<input type="text" name="meYear" id="meYear" class="text w100p"  value="${util:unEscape(memberVO.meYear) }" />
+						<td colspan="1">
+							<input type="text" name="meYear" id="meYear" class="text w100p"  value="${memberVO.meYear}" />
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">이메일</th>
-						<td colspan="3">
-							<input type="text" name="meMail" id="meMail" class="text w100p"  value="${util:unEscape(memberVO.meMail) }" />
+						<td colspan="1">
+							<input type="text" name="meMail" id="meMail" class="text w100p"  value="${memberVO.meMail}" />
 						</td>
-					</tr>
-					<tr>
 						<th scope="row">인트라아이디</th>
-						<td colspan="3">
-							<input type="text" name="meTid" id="meTid" class="text w100p"  value="${util:unEscape(memberVO.meTid) }" />
+						<td colspan="1">
+							<input type="text" name="meTid" id="meTid" class="text w100p"  value="${memberVO.meTid}" />
 						</td>
 					</tr>
-				
 					<tr>	
 						<th scope="row">인적사항</strong></th>
 						<td colspan="3">

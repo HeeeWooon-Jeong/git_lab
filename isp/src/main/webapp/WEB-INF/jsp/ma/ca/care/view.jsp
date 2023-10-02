@@ -1,11 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp"/>
 <c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}"/>
-<%
-    pageContext.setAttribute("crcn", "\r\n"); 
-    pageContext.setAttribute("br", "<br>");
-%> 
-<script type="text/javascript" src="/publish/ma/js/board.js"></script>
+
 <div class="Content_box">
 	<form:form commandName="searchVO" name="defaultFrm" id="defaultFrm" method="post">
 		<form:hidden path="caSeq" id="caSeq"/>
@@ -90,17 +86,23 @@
 			
 					<!-- content , file --> 
 					<tr>
-						<th scope="row"><strong>줄거리</strong></th>
-						<td colspan="3">
+						<th scope="row"><strong>특이사항</strong></th>
+						<td colspan="1">
 							<div class="text_area">
 								<c:out value="${util:unEscape(careVO.caCont)}" escapeXml="false"/>
 							</div>
 						</td>
+						
+						<td colspan="2" style="width: 100%%; height: 30px; padding: 0; margin: 0; text-align: center; vertical-align: middle;">
+  <img alt="#" src="https://previews.123rf.com/images/gmast3r/gmast3r1605/gmast3r160500005/55962922-%EC%82%B0-%EB%B2%94%EC%9C%84-%EC%97%AC%EB%A6%84-%EA%B0%80%EB%A1%9C-%EA%B0%80%EB%A1%9C-%EB%B0%B0%EB%84%88-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4-%EC%85%98.jpg"
+       style="width: 100%; height: 100%; object-fit: cover; overflow: hidden;  height: 41px;">
+</td>
+
 					</tr>
 					<tr>
 						<th scope="row"><strong>첨부파일</strong></th>
 						<td colspan="3">
-							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${careVO.caAtchFileSeq }&fileCnt=5&atchFileIdNm=caAtchFileSeq&updateType=view" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
+							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${careVO.caAtchFileSeq}&fileCnt=5&atchFileIdNm=caAtchFileSeq&updateType=view" style="width: 100%;" height="70" frameborder="0" title="파일 업로드 폼"></iframe>
 						</td>
 					</tr>
 				</tbody>
@@ -108,9 +110,10 @@
 		</div>
 		
 	<div class="btn_area">
-		<a href="#" id="btn_update" class="btn btn_mdl btn_rewrite" >수정</a> 
-		<a href="#" id="btn_del" class="btn btn_mdl btn_del" >삭제</a>
-		<a href="#" id="btn_list" class="btn btn_mdl btn_list" >목록</a>
+		<a href="javascript:void(0);" id="btn_update" class="btn btn_mdl btn_rewrite" >수정</a> 
+		<a href="javascript:void(0);" id="btn_del" class="btn btn_mdl btn_del" >삭제</a>
+		<a href="javascript:void(0);" id="btn_list" class="btn btn_mdl btn_list" >목록</a>
 	</div>	
 	</form:form>
+	<script type="text/javascript" src="/publish/ma/js/board.js"></script>
 </div>

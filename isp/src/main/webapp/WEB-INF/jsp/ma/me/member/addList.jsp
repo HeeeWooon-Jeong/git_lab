@@ -28,11 +28,11 @@
 		</thead>
 		<tbody>
 			<c:choose>
-				<c:when test="${fn:length(resultList) > 0}">
+				<c:when test="${fn:length(resultList) gt 0}">
 					<c:forEach var="result" items="${resultList}" varStatus="status">
 						<tr class="cursor">
 							<td onclick="fncPageBoard('view','view.do','${result.meSeq}','meSeq')">
-								${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageSize + status.count)}
+								${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageUnit + status.count)}
 							</td>
 							<td class="subject" onclick="fncPageBoard('view','view.do','${result.meSeq}','meSeq')">${util:cutText(result.meMnam,30,'...') }</td>
 							<%-- <td onclick="fncPageBoard('view','view.do','${result.meSeq}','meSeq')">${result.twName }</td> --%>

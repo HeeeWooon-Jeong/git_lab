@@ -55,7 +55,7 @@ var fncPageBoard = function(){
 	if(getBoard.length > 1){ // getBoard 배열의 길이 확인: getBoard 배열의 길이를 확인하여 다양한 경우에 대한 처리를 수행합니다.
 		switch (getBoard.length) {
 	 		case 2: gubun = getBoard[0]; url = getBoard[1];break;
-	 		case 3: gubun = getBoard[0]; url = getBoard[1]; idx = getBoard[2];break;
+	 		case 3: gubun = getBoard[0]; url = getBoard[1]; idx    = getBoard[2];break;
 	 		case 4: gubun = getBoard[0]; url = getBoard[1]; seqVal = getBoard[2].split(','); seqNm = getBoard[3].split(',');break;
 	 		case 5: gubun = getBoard[0]; url = getBoard[1]; seqVal = getBoard[2].split(','); seqNm = getBoard[3].split(','); wth = getBoard[4]; break;
 	 		case 6: gubun = getBoard[0]; url = getBoard[1]; seqVal = getBoard[2].split(','); seqNm = getBoard[3].split(','); wth = getBoard[4]; het = getBoard[5]; break;

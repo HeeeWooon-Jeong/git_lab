@@ -1,11 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp"/>
 <c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}"/>
-<%
-    pageContext.setAttribute("crcn", "\r\n"); 
-    pageContext.setAttribute("br", "<br>");
-%> 
-<script type="text/javascript" src="/publish/ma/js/board.js"></script>
+
 <div class="Content_box">
 	<form:form commandName="searchVO" name="defaultFrm" id="defaultFrm" method="post">
 		<form:hidden path="meSeq" id="meSeq"/>
@@ -106,4 +102,5 @@
 		<a href="javascript:void(0);" id="btn_list" class="btn btn_mdl btn_list" >목록</a>
 	</div>	
 	</form:form>
+	<script type="text/javascript" src="/publish/ma/js/board.js"></script>
 </div>

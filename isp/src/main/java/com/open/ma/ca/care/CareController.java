@@ -94,13 +94,10 @@ public class CareController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping(folderPath + "addList.do")
 	public String addList(@ModelAttribute("searchVO") CmmnDefaultVO searchVO, ModelMap model) throws Exception {
-		
 
-			/** EgovPropertyService.Care */
-			searchVO.setPageUnit(5);
-			searchVO.setPageSize(6);
-
-
+		/** EgovPropertyService.Care */
+		searchVO.setPageUnit(5);
+		searchVO.setPageSize(6);
 
 		/** pageing setting */
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -111,17 +108,13 @@ public class CareController {
 		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 		
-		
 		int totCnt = cmmnService.selectCount(searchVO, PROGRAM_ID );
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
-		
 
 		@SuppressWarnings("unchecked")
 		List<CareVO> resultList = (List<CareVO>) cmmnService.selectList(searchVO, PROGRAM_ID );
 		model.addAttribute("resultList", resultList);
-		
-
 		
 		return folderPath + "addList";
 	}
@@ -164,7 +157,6 @@ public class CareController {
 		if (procType.equals("update")) {
 			careVO = (CareVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
 
-			
 		}
 		searchVO.setProcType(procType);
 		careVO.setSearchVO(searchVO);
@@ -195,7 +187,6 @@ public class CareController {
 				cmmnService.updateContents(searchVO, PROGRAM_ID);				
 			} else if (procType.equals("delete")) {				
 				cmmnService.deleteContents(searchVO, PROGRAM_ID);
-				
 			} 
 			
 			status.setComplete(); // 중복 Submit 방지 : 세션에 저장된 model 을 삭제한다.

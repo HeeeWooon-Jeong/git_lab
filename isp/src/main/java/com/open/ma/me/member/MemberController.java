@@ -54,7 +54,6 @@ public class MemberController {
 	@Resource
 	private MappingJackson2JsonView ajaxView;
 	
-	
     /** Program ID **/
     private final static String PROGRAM_ID = "Member";
 
@@ -94,13 +93,10 @@ public class MemberController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping(folderPath + "addList.do")
 	public String addList(@ModelAttribute("searchVO") CmmnDefaultVO searchVO, ModelMap model, HttpServletRequest request) throws Exception {
-		
 
-			/** EgovPropertyService.Member */
-			searchVO.setPageUnit(5);
-			searchVO.setPageSize(6);
-
-
+		/** EgovPropertyService.Member */
+		searchVO.setPageUnit(5);
+		searchVO.setPageSize(6);
 
 		/** pageing setting */
 		PaginationInfo paginationInfo = new PaginationInfo();
@@ -111,22 +107,16 @@ public class MemberController {
 		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 		
-		
 		int totCnt = cmmnService.selectCount(searchVO, PROGRAM_ID );
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
-		
 
 		@SuppressWarnings("unchecked")
 		List<MemberVO> resultList = (List<MemberVO>) cmmnService.selectList(searchVO, PROGRAM_ID );
 		model.addAttribute("resultList", resultList);
 		
-
-		
 		return folderPath + "addList";
 	}
-
-
 
 	/**
 	 * 메뉴권한 상세화면
@@ -163,11 +153,7 @@ public class MemberController {
 		MemberVO memberVO = new MemberVO();
 		if (procType.equals("update")) {
 			memberVO = (MemberVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
-			if(!StringUtil.nullString(SessionUtil.getUserDetails().getAuthCode()).equals("1") && !StringUtil.nullString(memberVO.getMeRgstSeq()).equals(StringUtil.nullString(SessionUtil.getUserDetails().getLoginSeq()))){
-				model.addAttribute("message", "비정상적인 접근입니다.");
-				model.addAttribute("cmmnScript", "list.do");
-				return "cmmn/execute";
-			}
+
 		}
 		searchVO.setProcType(procType);
 		memberVO.setSearchVO(searchVO);
@@ -189,18 +175,14 @@ public class MemberController {
 	@RequestMapping(value = folderPath + "{procType}Proc.do", method = RequestMethod.POST)
 	public String proc(@ModelAttribute("searchVO") MemberVO searchVO, Model model, SessionStatus status,@PathVariable String procType, HttpServletRequest request) throws Exception {
 		
-		
 		if(procType != null){
 			
 			if (procType.equals("insert")) {
-				
 				cmmnService.insertContents(searchVO, PROGRAM_ID);
-				
 			} else if (procType.equals("update") ) {				
 				cmmnService.updateContents(searchVO, PROGRAM_ID);				
 			} else if (procType.equals("delete")) {				
 				cmmnService.deleteContents(searchVO, PROGRAM_ID);
-				
 			} 
 			
 			status.setComplete(); // 중복 Submit 방지 : 세션에 저장된 model 을 삭제한다.
@@ -223,14 +205,6 @@ public class MemberController {
 	    		return "redirect:list.do";
 	    	}
 		}
-
 		return "redirect:list.do";
-
 	}
-
-	
-
-	
-		
-
 }

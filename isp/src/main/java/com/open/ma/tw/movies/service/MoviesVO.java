@@ -53,7 +53,7 @@ public class MoviesVO extends CmmnDefaultVO implements Serializable {
 	private String twTcom;			// 배급사
 	private String twLati;			// 평점
 	private String twCont;			// 컨텐츠내용
-	private String twName;			// 
+	private String twName;			// 사용자
 	
 	public String getTwSeq() {
 		return twSeq;
@@ -187,6 +187,5 @@ public class MoviesVO extends CmmnDefaultVO implements Serializable {
 	public void setTwName(String twName) {
 		this.twName = twName;
 	}
-	
 			
 }

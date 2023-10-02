@@ -40,7 +40,6 @@
 	            , ME_YEAR 							meYear
 	            , ME_MAIL 							meMail
 	          	, ME_TID 							meTid
-	            , ME_NAME							meRgstSeq
 	           	, ME_CONT							meCont
              FROM T_MEMBER 
             WHERE ME_USE_YN='Y'   

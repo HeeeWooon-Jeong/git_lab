@@ -2,7 +2,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp"/>
 <c:set var="url" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 
-<script type="text/javascript" src="/publish/ma/js/board.js"></script>
+
 <div class="twContent_box">
 	<form:form commandName="searchVO" name="defaultFrm" id="defaultFrm" method="post">
 	 <!-- ID 	- 중복 불가
@@ -157,4 +157,5 @@ twCont가 HTML 특수 문자(예: <, >, & 등)를 포함하고 있더라도 이�
 		<a href="javascript:void(0);" id="btn_list" class="btn btn_mdl btn_list" >목록</a>
 	</div>	
 	</form:form>
+	<script type="text/javascript" src="/publish/ma/js/board.js"></script>
 </div>

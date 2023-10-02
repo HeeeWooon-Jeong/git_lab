@@ -29,7 +29,7 @@
 		<tbody>
 		
 			<c:choose>
-				<c:when test="${fn:length(resultList) > 0}">
+				<c:when test="${fn:length(resultList) gt 0}">
 					<c:forEach var="result" items="${resultList}" varStatus="status">
 						<tr class="cursor">
 							<td onclick="fncPageBoard('view','view.do','${result.caSeq}','caSeq')">
