@@ -33,6 +33,7 @@
 					<c:forEach var="result" items="${resultList}" varStatus="status">
 						<tr class="cursor">
 							<td onclick="fncPageBoard('view','view.do','${result.twSeq}','twSeq')">
+							<!-- list의  폼태그 안에 	<input type="hidden" id="twSeq" name="twSeq"/>  id와 관련있음 -->
 								${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageUnit + status.count)}
 								<!-- 페이징처리 상단에도 있음 -->
 							</td>

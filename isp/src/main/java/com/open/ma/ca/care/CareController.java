@@ -163,11 +163,8 @@ public class CareController {
 		CareVO careVO = new CareVO();
 		if (procType.equals("update")) {
 			careVO = (CareVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
-			if(!StringUtil.nullString(SessionUtil.getUserDetails().getAuthCode()).equals("1") && !StringUtil.nullString(careVO.getCaRgstSeq()).equals(StringUtil.nullString(SessionUtil.getUserDetails().getLoginSeq()))){
-				model.addAttribute("message", "비정상적인 접근입니다.");
-				model.addAttribute("cmmnScript", "list.do");
-				return "cmmn/execute";
-			}
+
+			
 		}
 		searchVO.setProcType(procType);
 		careVO.setSearchVO(searchVO);
@@ -193,9 +190,7 @@ public class CareController {
 		if(procType != null){
 			
 			if (procType.equals("insert")) {
-				
 				cmmnService.insertContents(searchVO, PROGRAM_ID);
-				
 			} else if (procType.equals("update") ) {				
 				cmmnService.updateContents(searchVO, PROGRAM_ID);				
 			} else if (procType.equals("delete")) {				

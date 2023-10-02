@@ -42,8 +42,9 @@ $(document).ready(function(){
 
 var process = "N";
 /* 구분,url,(pageIndex && 일련번호),일련번호명 */
-var fncPageBoard = function(){
-	var getBoard = arguments;
+var fncPageBoard = function(){ 
+	var getBoard = arguments; 	// getBoard 배열: 이 함수의 모든 인수가 배열 getBoard에 저장됩니다.
+								// arguments는 JavaScript 함수 내에서 사용할 수 있는 특별한 객체입니다. 이 객체는 현재 함수가 호출될 때 전달된 모든 인수(argument)를 저장하고 있는 배열처럼 동작
 	var gubun="";
 	var url="";
 	var idx= "";
@@ -51,7 +52,7 @@ var fncPageBoard = function(){
 	var seqNm=[];
 	var wth="800";
 	var het="600";
-	if(getBoard.length > 1){
+	if(getBoard.length > 1){ // getBoard 배열의 길이 확인: getBoard 배열의 길이를 확인하여 다양한 경우에 대한 처리를 수행합니다.
 		switch (getBoard.length) {
 	 		case 2: gubun = getBoard[0]; url = getBoard[1];break;
 	 		case 3: gubun = getBoard[0]; url = getBoard[1]; idx = getBoard[2];break;

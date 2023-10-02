@@ -22,9 +22,9 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	 */
 	private static final long serialVersionUID = 2172623835339565860L;
 	
-	private String caSeq;			//시퀀스 넘버
-	private String caRgstDt;		//등록일
-	private String caRgstSeq;		//등록자
+	private String caSeq;			// 시퀀스 넘버
+	private String caRgstDt;		// 등록일
+	private String caRgstSeq;		// 등록자
 	private String caRvseSeq;		// 수정자
 	private String caRvseDt;		// 수정일
 	private String caErum;			// 이름
@@ -41,9 +41,8 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	private String caCode;			// 사원코드
 	private String caLev;			// 사원레벨
 	private String caSco;			// 인사평점
-	private String caName;			// 	
 	private String caCont;			// 컨텐츠내용
-	private String caAtchFileSeq;			// 파일첨부
+	private String caAtchFileSeq;	// 파일첨부
 
 	public String getCaSeq() {
 		return caSeq;
@@ -158,12 +157,6 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	}
 	public void setCaSco(String caSco) {
 		this.caSco = caSco;
-	}
-	public String getCaName() {
-		return caName;
-	}
-	public void setCaName(String caName) {
-		this.caName = caName;
 	}
 	public String getCaCont() {
 		return caCont;

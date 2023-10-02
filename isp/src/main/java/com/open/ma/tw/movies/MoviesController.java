@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -80,8 +79,7 @@ public class MoviesController {
 	@RequestMapping(folderPath + "list.do")
 	// HTTP 요청 경로를 지정합니다. folderPath + "list.do"는 요청 경로를 결정하는데 사용되며, 컨트롤러의 list
 	// 메서드가 이 경로의 요청을 처리
-	public String list(@ModelAttribute("searchVO") CmmnDefaultVO searchVO, ModelMap model, HttpServletRequest request)
-			throws Exception {
+	public String list(@ModelAttribute("searchVO") CmmnDefaultVO searchVO, ModelMap model, HttpServletRequest request)throws Exception {
 		// HTTP GET 또는 POST 요청을 처리
 		// ModelMap model: 이것은 데이터를 뷰로 전달하는 데 사용되는 모델입니다. 컨트롤러는 이 모델을 사용하여 뷰에
 		// 데이터를 전달
@@ -118,8 +116,7 @@ public class MoviesController {
 	 */
 	@SuppressWarnings("deprecation")
 	@RequestMapping(folderPath + "addList.do")
-	public String addList(@ModelAttribute("searchVO") CmmnDefaultVO searchVO, ModelMap model,
-			HttpServletRequest request) throws Exception {
+	public String addList(@ModelAttribute("searchVO") CmmnDefaultVO searchVO, ModelMap model) throws Exception {
 
 		/** EgovPropertyService.Movies */
 		searchVO.setPageUnit(5);
@@ -165,8 +162,7 @@ public class MoviesController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(folderPath + "view.do")
-	public String view(@ModelAttribute("searchVO") MoviesVO searchVO, ModelMap model, HttpServletRequest request)
-			throws Exception {
+	public String view(@ModelAttribute("searchVO") MoviesVO searchVO, ModelMap model, HttpServletRequest request)throws Exception {
 
 		/* 게시판 상세정보 */
 		MoviesVO moviesVO = new MoviesVO();
@@ -223,8 +219,7 @@ public class MoviesController {
 	@RequestMapping(folderPath + "{procType}Form.do")
 	// {procType}은 URL 경로의 일부로 사용되는 경로 변수입니다. 이 경로 변수의 값은 요청 URL에서 추출되고,
 	// procType 매개변수에 전달됩니다
-	public String form(@ModelAttribute("searchVO") MoviesVO searchVO, ModelMap model, @PathVariable String procType,
-			HttpServletRequest request) throws Exception {
+	public String form(@ModelAttribute("searchVO") MoviesVO searchVO, ModelMap model, @PathVariable String procType, HttpServletRequest request) throws Exception {
 		// "searchVO"라는 모델 속성의 값을 받아옵니다. 이 모델 속성은 HTTP 요청의 파라미터를 객체로 변환하고 이 객체를
 		// 컨트롤러에 전달합니다. 이 객체는 MoviesVO 클래스의 인스턴스입니다.
 
@@ -296,19 +291,17 @@ public class MoviesController {
 	@RequestMapping(value = folderPath + "{procType}Proc.do", method = RequestMethod.POST)
 	// : 이 메서드는 folderPath와 procType 경로 변수를 사용하여 POST 요청을 처리합니다. procType은 URL
 	// 경로의 일부로 사용되는 경로 변수입니다. 이 변수의 값은 요청 URL에서 추출되어 procType 매개변수에 전달
-	public String proc(@ModelAttribute("searchVO") MoviesVO searchVO, ModelMap model, SessionStatus status,
+	public String proc(@ModelAttribute("searchVO") MoviesVO searchVO, ModelMap model, SessionStatus status, @PathVariable String procType, HttpServletRequest request) throws Exception {
 // @ModelAttribute("searchVO") MoviesVO searchVO: searchVO라는 이름의 모델 속성을 받아옵니다. 이 모델 속성은 HTTP 요청의 파라미터를 MoviesVO 클래스의 객체로 변환한 것입니다.
 // ModelMap model: 모델 객체로, 데이터를 뷰로 전달하는데 사용됩니다.
 // SessionStatus status: 세션 상태를 관리하는 객체로, 중복 Submit 방지를 위해 세션에 저장된 모델을 삭제합니다.
-			@PathVariable String procType, HttpServletRequest request) throws Exception {
+			
 //		@PathVariable String procType: URL 경로에서 추출된 procType 값을 받아옵니다. 이 값에 따라 다양한 작업을 수행합니다.		
 		
 		if (procType != null) {
 
 			if (procType.equals("insert")) {
-
 				cmmnService.insertContents(searchVO, PROGRAM_ID);
-
 			} else if (procType.equals("update")) {
 				cmmnService.updateContents(searchVO, PROGRAM_ID);
 			} else if (procType.equals("delete")) {

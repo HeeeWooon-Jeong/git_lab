@@ -23,29 +23,28 @@
 	<select id="selectContents" parameterType="memberVO" resultType="memberVO">
 		/* Member.selectContents */
       <![CDATA[
-          SELECT  
-              ME_SEQ 							meSeq
-            , DATE_FORMAT(ME_RGST_DT,'%Y.%m.%d') meRgstDt
-            , ME_RGST_SEQ 						meRgstSeq
-            , ME_CNUM 							meCnum
-            , ME_MNAM 							meMnam
-            , ME_CALL 							meCall
-            , ME_BUSU 							meBusu
-            , ME_LEVE 							meLeve
-            , ME_STADATE 						meStaDate
-            , ME_ENDDATE						meEndDate
-            , ME_VAC 							meVac
-            , ME_TOTAL 							meTotaL
-            , ME_ADRE 							meAdre
-            , ME_GOOD 							meGood
-            , ME_YEAR 							meYear
-            , ME_MAIL 							meMail
-            , ME_TID 							meTid
-            , ME_NAME							meRgstSeq
-            , ME_CONT							meCont
-           FROM  T_MEMBER 
-          WHERE  ME_USE_YN='Y'   
-             AND ME_SEQ = #{meSeq}
+           SELECT ME_SEQ 							meSeq
+	            , DATE_FORMAT(ME_RGST_DT,'%Y.%m.%d') meRgstDt
+	            , ME_RGST_SEQ 						meRgstSeq
+	            , ME_CNUM 							meCnum
+	            , ME_MNAM 							meMnam
+	            , ME_CALL 							meCall
+	            , ME_BUSU 							meBusu
+	            , ME_LEVE 							meLeve
+	            , ME_STADATE 						meStaDate
+	            , ME_ENDDATE						meEndDate
+	            , ME_VAC 							meVac
+	            , ME_TOTAL 							meTotaL
+	            , ME_ADRE 							meAdre
+	            , ME_GOOD 							meGood
+	            , ME_YEAR 							meYear
+	            , ME_MAIL 							meMail
+	          	, ME_TID 							meTid
+	            , ME_NAME							meRgstSeq
+	           	, ME_CONT							meCont
+             FROM T_MEMBER 
+            WHERE ME_USE_YN='Y'   
+              AND ME_SEQ = #{meSeq}
       ]]>
 	</select>
 
@@ -55,32 +54,31 @@
 		resultType="memberVO">
 		/* Member.selectList */
       <![CDATA[
-          SELECT  
-              ME_SEQ 							meSeq
-            , DATE_FORMAT(ME_RGST_DT,'%Y.%m.%d') meRgstDt
-            , ME_RGST_SEQ 						meRgstSeq
-            , ME_CNUM 							meCnum
-            , ME_MNAM 							meMnam
-            , ME_CALL 							meCall
-            , ME_BUSU 							meBusu
-            , ME_LEVE 							meLeve
-            , ME_STADATE 						meStaDate
-            , ME_ENDDATE						meEndDate
-            , ME_VAC 							meVac
-            , ME_TOTAL 							meTotaL
-            , ME_ADRE 							meAdre
-            , ME_GOOD 							meGood
-            , ME_YEAR 							meYear
-            , ME_MAIL 							meMail
-            , ME_TID 							meTid
-            , ME_CONT							meCont
-           FROM T_MEMBER 
-          WHERE ME_USE_YN='Y'   
+	       SELECT ME_SEQ 							meSeq
+	            , DATE_FORMAT(ME_RGST_DT,'%Y.%m.%d') meRgstDt
+	            , ME_RGST_SEQ 						meRgstSeq
+	            , ME_CNUM 							meCnum
+	            , ME_MNAM 							meMnam
+	            , ME_CALL 							meCall
+	            , ME_BUSU 							meBusu
+	            , ME_LEVE 							meLeve
+	            , ME_STADATE 						meStaDate
+	            , ME_ENDDATE						meEndDate
+	            , ME_VAC 							meVac
+	            , ME_TOTAL 							meTotaL
+	            , ME_ADRE 							meAdre
+	            , ME_GOOD 							meGood
+	            , ME_YEAR 							meYear
+	            , ME_MAIL 							meMail
+	            , ME_TID 							meTid
+	            , ME_CONT							meCont
+             FROM T_MEMBER 
+            WHERE ME_USE_YN='Y'   
          ]]>
 		<include refid="Where" />    
         <![CDATA[ 
              ORDER BY ME_SEQ DESC
-            LIMIT  #{firstIndex} , #{recordCountPerPage}
+             LIMIT #{firstIndex} , #{recordCountPerPage}
       ]]>
 	</select>
 
@@ -89,10 +87,9 @@
 		resultType="int">
 		/* Member.selectCount */
       <![CDATA[
-         SELECT 
-            COUNT(ME_SEQ) cnt 
-         FROM T_MEMBER
-         WHERE ME_USE_YN='Y' 
+         SELECT COUNT(ME_SEQ) cnt 
+           FROM T_MEMBER
+          WHERE ME_USE_YN='Y' 
       ]]>
 		<include refid="Where" />
 	</select>
@@ -100,43 +97,43 @@
 	<insert id="insertContents" parameterType="memberVO">
 		/* Member.insertContents */
       <![CDATA[
-         INSERT INTO T_MEMBER(
-              ME_SEQ 
-            , ME_RGST_SEQ 
-            , ME_CNUM 
-            , ME_MNAM
-            , ME_CALL 
-            , ME_BUSU 
-            , ME_LEVE
-            , ME_STADATE
-            , ME_ENDDATE 							
-            , ME_VAC 							
-            , ME_TOTAL 							
-            , ME_ADRE 							
-            , ME_GOOD 							
-            , ME_YEAR 							
-            , ME_MAIL
-            , ME_TID 
-            , ME_CONT
-         )
+           INSERT INTO T_MEMBER(
+	              ME_SEQ 
+	            , ME_RGST_SEQ 
+	            , ME_CNUM 
+	            , ME_MNAM
+	            , ME_CALL 
+	            , ME_BUSU 
+	            , ME_LEVE
+	            , ME_STADATE
+	            , ME_ENDDATE 							
+	            , ME_VAC 							
+	            , ME_TOTAL 							
+	            , ME_ADRE 							
+	            , ME_GOOD 							
+	            , ME_YEAR 							
+	            , ME_MAIL
+	            , ME_TID 
+	            , ME_CONT
+	         )
          VALUES (
              (SELECT IFNULL(MAX(ME.ME_SEQ)+1,1) FROM T_MEMBER ME)
-            , #{loginSeq}
-            , #{meCnum}
-            , #{meMnam}
-            , #{meCall}
-            , #{meBusu}
-            , #{meLeve}
-            , #{meStaDate}
-            , #{meEndDate}
-            , #{meVac}
-            , #{meTotaL}
-            , #{meAdre}
-            , #{meGood}
-            , #{meYear}
-            , #{meMail}
-            , #{meTid}
-            , #{meCont}
+	            , #{loginSeq}
+	            , #{meCnum}
+	            , #{meMnam}
+	            , #{meCall}
+	            , #{meBusu}
+	            , #{meLeve}
+	            , #{meStaDate}
+	            , #{meEndDate}
+	            , #{meVac}
+	            , #{meTotaL}
+	            , #{meAdre}
+	            , #{meGood}
+	            , #{meYear}
+	            , #{meMail}
+	            , #{meTid}
+	            , #{meCont}
          )
       ]]>
 	</insert>
@@ -145,35 +142,33 @@
 		/* Member.updateContents */
       <![CDATA[
          UPDATE T_MEMBER     
-          SET 
-     		  ME_RGST_SEQ = #{meRgstSeq}	          
-            , ME_CNUM = #{meCnum} 
-            , ME_MNAM = #{meMnam}
-            , ME_CALL  = #{meCall}
-            , ME_BUSU  = #{meBusu}
-            , ME_LEVE = #{meLeve}
-            , ME_STADATE = #{meStaDate}
-            , ME_ENDDATE = #{meEndDate}
-            , ME_VAC = #{meVac}
-            , ME_TOTAL = #{meTotaL}
-            , ME_ADRE = #{meAdre}
-            , ME_GOOD = #{meGood}
-            , ME_YEAR = #{meYear}
-            , ME_MAIL = #{meMail}
-            , ME_TID = #{meTid}
-            , ME_CONT = #{meCont}
-            , ME_RVSE_DT = NOW()
-         WHERE  ME_SEQ = #{meSeq}  
+          SET ME_RGST_SEQ 	= #{meRgstSeq}	          
+            , ME_CNUM 		= #{meCnum} 
+            , ME_MNAM 		= #{meMnam}
+            , ME_CALL  		= #{meCall}
+            , ME_BUSU  		= #{meBusu}
+            , ME_LEVE 		= #{meLeve}
+            , ME_STADATE 	= #{meStaDate}
+            , ME_ENDDATE 	= #{meEndDate}
+            , ME_VAC 		= #{meVac}
+            , ME_TOTAL 		= #{meTotaL}
+            , ME_ADRE 		= #{meAdre}
+            , ME_GOOD 		= #{meGood}
+            , ME_YEAR 		= #{meYear}
+            , ME_MAIL 		= #{meMail}
+            , ME_TID 		= #{meTid}
+            , ME_CONT 		= #{meCont}
+            , ME_RVSE_DT 	= NOW()
+       WHERE  ME_SEQ		= #{meSeq}  
       ]]>
 	</update>
 
 	<update id="deleteContents" parameterType="memberVO">
 		/* Member.deleteContents */
       <![CDATA[
-         UPDATE T_MEMBER
-             SET
-                 ME_USE_YN='N'
-         WHERE ME_SEQ=#{meSeq}
+         	 UPDATE T_MEMBER
+             	SET ME_USE_YN='N'
+	          WHERE ME_SEQ=#{meSeq}
       ]]>
 	</update>
 
