@@ -27,10 +27,17 @@ public class CtwoVO extends CmmnDefaultVO implements Serializable {
 	private String ctRgstSeq;		// 등록자
 	private String ctRvseSeq;		// 수정자
 	private String ctRvseDt;		// 수정일
+	private String ctTitle;			// 컨텐츠내용
 	private String ctCont;			// 컨텐츠내용
 	private String ctAtchFileSeq;	// 파일첨부
 	
 	
+	public String getCtTitle() {
+		return ctTitle;
+	}
+	public void setCtTitle(String ctTitle) {
+		this.ctTitle = ctTitle;
+	}
 	public String getCtSeq() {
 		return ctSeq;
 	}
