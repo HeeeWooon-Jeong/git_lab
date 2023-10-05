@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.open.Ctwo">
+
+   <sql id="Where">
+      <if test="searchKeyword !=null and searchKeyword !=''">
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==0">
+            AND (TITLE LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like CONCAT('%',#{searchKeyword},'%'))
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==1">
+            AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==2">
+            AND CONT LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+       </if>
+   </sql>
+   
+   <select id="selectContents" parameterType="CtwoVO" resultType="CtwoVO">
+      /* Ctwo.selectContents */
+      <![CDATA[
+           SELECT CT_SEQ 							ctSeq
+	            , DATE_FORMAT(CT_RGST_DT,'%Y.%m.%d')ctRgstDt
+	            , CT_RGST_SEQ 						ctRgstSeq
+                , F_USER_NM(CT_RGST_SEQ) 			ctName
+	            , CT_TITLE 							ctTitle
+	            , CT_CONT 							ctCont
+	            , CT_ATCH_FILE_SEQ 					ctAtchFileSeq
+	         FROM T_CTWO
+            WHERE CT_USE_YN='Y'   
+              AND CT_SEQ = #{ctSeq}
+      ]]>
+   </select>
+   
+   
+   
+   <select id="selectList" parameterType="cmmnDefaultVO" resultType="CtwoVO">
+      /* Ctwo.selectList */
+      <![CDATA[
+           SELECT CT_SEQ 							ctSeq
+	            , DATE_FORMAT(CT_RGST_DT,'%Y.%m.%d') ctRgstDt
+	            , CT_RGST_SEQ 						ctRgstSeq
+                , F_USER_NM(CT_RGST_SEQ) 			ctName
+	            , CT_TITLE 							ctTitle
+	            , CT_CONT 							ctCont
+	            , CT_ATCH_FILE_SEQ 					ctAtchFileSeq
+	         FROM T_CTWO
+	        WHERE CT_USE_YN='Y'   
+         ]]>
+           <include refid="Where"/>    
+        <![CDATA[ 
+             ORDER BY CT_SEQ DESC
+             LIMIT #{firstIndex} , #{recordCountPerPage}
+      ]]>
+   </select>   
+
+
+   <select id="selectCount" parameterType="cmmnDefaultVO" resultType="int">
+      /* Ctwo.selectCount */
+      <![CDATA[
+         SELECT COUNT(CT_SEQ) cnt 
+           FROM T_CTWO
+          WHERE CT_USE_YN='Y' 
+      ]]>
+          <include refid="Where"/>
+   </select>
+   
+   <insert id="insertContents" parameterType="CtwoVO">
+      /* Ctwo.insertContents */
+      <![CDATA[
+           INSERT INTO T_CTWO(
+	              CT_SEQ 
+	            , CT_RGST_SEQ 
+	            , CT_TITLE
+	            , CT_CONT
+	            , CT_ATCH_FILE_SEQ 
+	         )
+         VALUES (
+             (SELECT IFNULL(MAX(CT.CT_SEQ)+1,1) FROM T_CTWO CT)
+	            , #{loginSeq}
+	            , #{ctTitle}
+	            , #{ctCont}
+	            , #{ctAtchFileSeq}
+	         )
+      ]]>
+   </insert>
+   
+   <update id="updateContents" parameterType="CtwoVO">
+      /* Ctwo.updateContents */
+      <![CDATA[
+           UPDATE T_CTWO     
+	          SET CT_ERUM 			= #{ctErum} 
+	            , CT_RVSE_DT 		= NOW()
+                , CT_RVSE_SEQ		= #{loginSeq}
+                , CT_TITLE			= #{ctTitle}
+	            , CT_CONT 			= #{ctCont}
+	            , CT_ATCH_FILE_SEQ 	= #{ctAtchFileSeq}
+	        WHERE CT_SEQ = #{ctSeq}  
+      ]]>
+   </update>
+   
+   <update id="deleteContents" parameterType="CtwoVO">
+      /* Ctwo.deleteContents */
+      <![CDATA[
+          UPDATE T_CTWO
+             SET CT_USE_YN='N'
+           WHERE CT_SEQ=#{ctSeq}
+      ]]>
+   </update>
+
+
+   
+   
+   
+   
+</mapper>

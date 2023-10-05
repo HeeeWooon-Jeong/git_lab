@@ -3,16 +3,33 @@
 	<!-- datasource 설정(propertyConfigurer 활용) -->
 	<alias name="dataSource" alias="dataSource" />
 	<alias name="dataSource" alias="egov.dataSource" />
+<!-- 위의 XML 코드는 Spring Framework에서 빈 (Bean)에 별칭 (Alias)을 부여하는 부분을 나타냅니다. 
+별칭은 동일한 빈을 여러 이름으로 참조할 때 사용됩니다. 
+주로 빈의 이름을 간략하게 만들거나 다른 컴포넌트에서 빈을 참조할 때 사용합니다. 
+ 이 코드는 동일한 "dataSource" 빈에 더 많은 별칭인 "egov.dataSource"를 부여합니다. 
+ 이제 "egov.dataSource"라는 별칭을 사용하여 빈을 참조할 수 있습니다. 
+ 이렇게 하면 "dataSource"와 "egov.dataSource" 모두 동일한 빈을 가리키게 됩니다
+-->
 
 	<!-- oracle -->
 	
+	
 	<!-- mysql(로컬) -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3307/isp" />
-		<property name="username" value="root" />
-		<property name="password" value="1111" />
+<!-- 
+데이터 소스 빈을 정의합니다. 이 빈은 Apache Commons DBCP2 라이브러리의 BasicDataSource 클래스를 사용하여 생성됩니다. 
+destroy-method 속성은 이 빈이 소멸될 때 호출할 메서드를 지정하며, 여기서는 close 메서드를 호출하여 데이터베이스 연결을 닫습니다. 
+-->	
+
+		<property 	name="driverClassName" 	value="com.mysql.jdbc.Driver" />
+		<property 	name="url" 				value="jdbc:mysql://localhost:3306/isp" />
+		<property 	name="username" 		value="root" />
+		<property 	name="password" 		value="1111" />
 	</bean> 
+<!-- : 데이터베이스 드라이버 클래스 이름을 설정합니다. 
+이 경우에는 MySQL 데이터베이스를 사용하므로 "com.mysql.jdbc.Driver" 클래스가 지정되었습니다. -->
+
+
 	
 	
 </beans>

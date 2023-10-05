@@ -22,6 +22,7 @@
            SELECT CA_SEQ 							caSeq
 	            , DATE_FORMAT(CA_RGST_DT,'%Y.%m.%d')caRgstDt
 	            , CA_RGST_SEQ 						caRgstSeq
+                , F_USER_NM(CA_RGST_SEQ) 			caName
 	            , CA_ERUM 							caErum
 	            , CA_PHON 							caPhon
 	            , CA_VEHI 							caVehi
@@ -36,6 +37,8 @@
 	            , CA_CODE 							caCode
 	            , CA_LEV 							caLev
 	            , CA_SCO 							caSco
+	            , CA_PRD 							caPrd
+	            , CA_COST 							caCost
 	            , CA_CONT 							caCont
 	            , CA_ATCH_FILE_SEQ 					caAtchFileSeq
 	         FROM T_CARE 
@@ -52,6 +55,7 @@
            SELECT CA_SEQ 							caSeq
 	            , DATE_FORMAT(CA_RGST_DT,'%Y.%m.%d') caRgstDt
 	            , CA_RGST_SEQ 						caRgstSeq
+                , F_USER_NM(CA_RGST_SEQ) 			caName
 	            , CA_ERUM 							caErum
 	            , CA_PHON 							caPhon
 	            , CA_VEHI 							caVehi
@@ -66,6 +70,8 @@
 	            , CA_CODE 							caCode
 	            , CA_LEV 							caLev
 	            , CA_SCO 							caSco
+	            , CA_PRD 							caPrd
+	            , CA_COST 							caCost
 	            , CA_CONT 							caCont
 	            , CA_ATCH_FILE_SEQ 					caAtchFileSeq
 	         FROM T_CARE 
@@ -109,12 +115,14 @@
 	            , CA_CODE
 	            , CA_LEV
 	            , CA_SCO
+	            , CA_PRD
+	            , CA_COST
 	            , CA_CONT
 	            , CA_ATCH_FILE_SEQ 
 	         )
          VALUES (
              (SELECT IFNULL(MAX(CA.CA_SEQ)+1,1) FROM T_CARE CA)
-	            , #{caRgstSeq}
+	            , #{loginSeq}
 	            , #{caErum}
 	            , #{caPhon}
 	            , #{caVehi}
@@ -129,6 +137,8 @@
 	            , #{caCode}
 	            , #{caLev}
 	            , #{caSco}
+	            , #{caPrd}
+	            , #{caCost}
 	            , #{caCont}
 	            , #{caAtchFileSeq}
 	         )
@@ -141,6 +151,7 @@
            UPDATE T_CARE     
 	          SET CA_ERUM 			= #{caErum} 
 	            , CA_RVSE_DT 		= NOW()
+                , CA_RVSE_SEQ		= #{loginSeq}
 	            , CA_PHON 			= #{caPhon}
 	            , CA_VEHI  			= #{caVehi}
 	            , CA_NUM  			= #{caNum}
@@ -154,6 +165,8 @@
 	            , CA_CODE 			= #{caCode}
 	            , CA_LEV 			= #{caLev}
 	            , CA_SCO 			= #{caSco}
+	            , CA_PRD			= #{caPrd}
+	            , CA_COST 			= #{caCost}
 	            , CA_CONT 			= #{caCont}
 	            , CA_ATCH_FILE_SEQ 	= #{caAtchFileSeq}
 	        WHERE CA_SEQ = #{caSeq}  

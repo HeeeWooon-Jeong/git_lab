@@ -37,7 +37,7 @@
 						<td colspan="1">
 							<input type="text" name="meCall" id="meCall" class="text w100p"  value="${memberVO.meCall}" />
 						</td>
-						<th scope="row">부서</th>
+						<th scope="row"><strong class="th_tit">부서</strong></th>
 						<td colspan="1">
 							<input type="text" name="meBusu" id="meBusu" class="text w100p"  value="${memberVO.meBusu}" />
 						</td>
@@ -53,7 +53,7 @@
 						</td>						
 					</tr>
 					<tr>
-						<th scope="row">직급</th>
+						<th scope="row"><strong class="th_tit">직급</strong></th>
 						<td colspan="1">
 							<input type="text" name="meLeve" id="meLeve" class="text w100p"  value="${memberVO.meLeve}" />
 						</td>
@@ -83,7 +83,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">이메일</th>
+						<th scope="row"><strong class="th_tit">이메일</strong></th>
 						<td colspan="1">
 							<input type="text" name="meMail" id="meMail" class="text w100p"  value="${memberVO.meMail}" />
 						</td>
@@ -136,12 +136,31 @@
 	<%-- 예전에는 bind 썻는데 요즘은 on 쓰니까 bind 보이면 on 해주자--%>
 		$("#btn_submit").on("click", function() {
 
-				if (!$("#meCnum").val()) {
-					alert("제목을 입력해주세요");
-					$("#meCnum").focus();
-					return false;
-				}
-				
+			if (!$("#meCnum").val()) {
+				alert("사번을 입력해주세요");
+				$("#meCnum").focus();
+				return false;
+			}else if (!$("#meMnam").val()) {
+				alert("이름을 입력해주세요");
+				$("#meMnam").focus();
+				return false;
+			}else if (!$("#meCall").val()) {
+				alert("연락처를 입력해주세요");
+				$("#meCall").focus();
+				return false;
+			}else if (!$("#meBusu").val()) {
+				alert("부서를 입력해주세요");
+				$("#meBusu").focus();
+				return false;
+			}else if (!$("#meLeve").val()) {
+				alert("직급을 입력해주세요");
+				$("#meLeve").focus();
+				return false;
+			}else if (!$("#meMail").val()) {
+				alert("이메일을 입력해주세요");
+				$("#meMail").focus();
+				return false;
+			}
 				fncPageBoard('submit', '${searchVO.procType}Proc.do');
 				return false;
 			});

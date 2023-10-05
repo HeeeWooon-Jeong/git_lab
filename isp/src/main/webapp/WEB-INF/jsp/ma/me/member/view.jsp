@@ -5,7 +5,7 @@
 <div class="Content_box">
 	<form:form commandName="searchVO" name="defaultFrm" id="defaultFrm" method="post">
 		<form:hidden path="meSeq" id="meSeq"/>
-		<form:hidden path="pageIndex" id="pageIndex"/> 
+		<%-- <form:hidden path="pageIndex" id="pageIndex"/>  --%>
 		<%-- <form:hidden path="atchFileSeq" id="atchFileSeq"/> --%>
 		<jsp:directive.include file="/WEB-INF/jsp/cmmn/inc/incSearchForm.jsp"/>
 		<!-- tbl -->

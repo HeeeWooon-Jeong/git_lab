@@ -41,8 +41,13 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	private String caCode;			// 사원코드
 	private String caLev;			// 사원레벨
 	private String caSco;			// 인사평점
+	private String caPrd;			// 배송물품
+	private String caCost;			// 물품가격
 	private String caCont;			// 컨텐츠내용
+	private String caName;			// 등록자
 	private String caAtchFileSeq;	// 파일첨부
+	
+	
 
 	public String getCaSeq() {
 		return caSeq;
@@ -158,11 +163,29 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	public void setCaSco(String caSco) {
 		this.caSco = caSco;
 	}
+	public String getCaPrd() {
+		return caPrd;
+	}
+	public void setCaPrd(String caPrd) {
+		this.caPrd = caPrd;
+	}
+	public String getCaCost() {
+		return caCost;
+	}
+	public void setCaCost(String caCost) {
+		this.caCost = caCost;
+	}
 	public String getCaCont() {
 		return caCont;
 	}
 	public void setCaCont(String caCont) {
 		this.caCont = caCont;
+	}
+	public String getCaName() {
+		return caName;
+	}
+	public void setCaName(String caName) {
+		this.caName = caName;
 	}
 	public String getCaAtchFileSeq() {
 		return caAtchFileSeq;

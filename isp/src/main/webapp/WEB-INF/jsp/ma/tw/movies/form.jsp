@@ -2,9 +2,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp" />
 <c:set var="url"
 	value="${requestScope['javax.servlet.forward.request_uri']}" />
-<script type="text/javascript" src="/publish/ma/js/board.js"></script>
-<script type="text/javascript"
-	src="/resource/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+
 
 <div class="content_box">
 	<form:form commandName="moviesVO" name="defaultFrm" id="defaultFrm"
@@ -40,7 +38,7 @@
 						<td colspan="2"><input type="text" name="twETitle" id="twETitle" class="text w100p" value="${moviesVO.twETitle }" />
 					</tr>
 					<tr>
-						<th scope="row">영화코드</th>
+						<th scope="row"><strong class="th_tit">영화코드</strong></th>
 						<td colspan="2"><input type="text" name="twCode" id="twCode" class="text w100p" value="${moviesVO.twCode}" />
 
 						<th scope="row">제작년도</th>
@@ -63,11 +61,11 @@
 							<label for="twEndDate">
 								<input type="date" name="twEndDate" id="twEndDate" class="text w100p" maxlength="10" value="${moviesVO.twEndDate}" />
 							</label>
-						<th scope="row">장르</th>
+						<th scope="row"><strong class="th_tit">장르</strong></th>
 						<td colspan="1"><input type="text" name="twGenre" id="twGenre" class="text w100p" value="${moviesVO.twGenre}" />
 					</tr>
 					<tr>
-						<th scope="row">감독</th>
+						<th scope="row"><strong class="th_tit">감독</strong></th>
 						<td colspan="1"><input type="text" name="twDirector" id="twDirector" class="text w100p" value="${moviesVO.twDirector}" />
 						<th scope="row">배우</th>
 						<td colspan="1"><input type="text" name="twActor" id="twActor" class="text w100p" value="${moviesVO.twActor}" />
@@ -75,10 +73,11 @@
 						<td colspan="1"><input type="text" name="twCompany" id="twCompany" class="text w100p" value="${moviesVO.twCompany}" />
 					</tr>
 					<tr>
-						<th scope="row">배급사</th>
+						<th scope="row"><strong class="th_tit">배급사</strong></th>
 						<td colspan="2"><input type="text" name="twTcom" id="twTcom" class="text w100p" value="${moviesVO.twTcom}" />
 						<th scope="row">평점</th>
-						<td colspan="2"><input type="text" name="twLati" id="twLati" class="text w100p" value="${moviesVO.twLati}" />
+						<td colspan="2"><input type="text" name="twLati" id="twLati" class="text w100p" value="${moviesVO.twLati}" min="0" max="5" step="0.1" />
+
 					</tr>
 					<tr>
 						<th scope="row">내용</th>
@@ -98,17 +97,17 @@
 		</div>
 		
 		<div class="btn_area">
-			<a href="#"
-				class="btn btn_mdl btn_${searchVO.procType eq 'update'? 'rewrite':'save'}"
-				id="btn_submit">${searchVO.procType eq  'update' ? '수정' : '등록'}</a>
+			<a href="javascript:void(0);" class="btn btn_mdl btn_${searchVO.procType eq 'update'? 'rewrite':'save'}" id="btn_submit">${searchVO.procType eq  'update' ? '수정' : '등록'}</a>
 			<c:if test="${searchVO.procType eq  'update'}">
-				<a href="#" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
+				<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
 			</c:if>
 			<c:if test="${searchVO.procType ne  'update'}">
-				<a href="#" class="btn btn_mdl btn_cancel" id="btn_list">취소</a>
+				<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_list">취소</a>
 			</c:if>
 		</div> 
 	</form:form>
+<script type="text/javascript" src="/publish/ma/js/board.js"></script>
+<script type="text/javascript" src="/resource/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		var oEditors = [];
 		$(document).ready(function() {
@@ -125,6 +124,22 @@
 				if (!$("#twTitle").val()) {
 					alert("제목을 입력해주세요");
 					$("#twTitle").focus();
+					return false;
+				}else if (!$("#twCode").val()) {
+					alert("영화코드를 입력해주세요");
+					$("#twCode").focus();
+					return false;
+				}else if (!$("#twGenre").val()) {
+					alert("장르를 입력해주세요");
+					$("#twGenre").focus();
+					return false;
+				}else if (!$("#twTcom").val()) {
+					alert("배급사를 입력해주세요");
+					$("#twTcom").focus();
+					return false;
+				}else if (!$("#twDirector").val()) {
+					alert("영화감독을 입력해주세요");
+					$("#twDirector").focus();
 					return false;
 				}
 				oEditors.getById["twCont"].exec("UPDATE_CONTENTS_FIELD", []);/* 에디터 */

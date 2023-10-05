@@ -1,75 +1,84 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?> <!-- XML버전 1.0 -->
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+<!-- 이 부분은 XML 네임스페이스 및 스키마 위치를 정의합니다. 
+Spring 컨테이너에서 사용되는 Spring Bean 구성을 정의할 때 특정 네임스페이스와 스키마를 사용합니다. 
+여기에서는 Spring Bean 구성에 대한 네임스페이스를 http://www.springframework.org/schema/beans로 정의하고, 
+XML 스키마 위치를 http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd로 설정합니다. 
+이것은 Spring 4.0 버전에 해당하는 스키마를 사용하겠다는 것을 나타냅니다. 
+이 설정 파일은 Spring 애플리케이션의 빈 (Bean) 구성을 정의하는 데 사용됩니다. 
+Spring 빈은 Spring 컨테이너에서 관리되는 객체로서 애플리케이션에서 필요한 서비스나 구성 요소를 표현합니다. 
+이 파일은 빈의 정의와 빈 간의 의존성을 설정하는 데 사용될 것으로 예상됩니다. 이어지는 부분에서 빈 정의와 구성에 대한 내용이 나올 것입니다.--> 
 
 	<bean name="fileIdGnrService" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">
-		<property name="dataSource" ref="dataSource" />
-		<property name="strategy" ref="mixPrefixFile" />
-		<property name="blockSize" 	value="1"/>
-		<property name="table"	   	value="T_IDS"/>
-		<property name="tableName"	value="FILE"/>
+		<property name="dataSource" ref="dataSource" /> 	<!-- DB연결하는 부분 -->
+		<property name="strategy" 	ref="mixPrefixFile" />	<!-- mixPrefixFile의 생성 방식을 참조해서 생성 전략을 지정해라 -->
+		<property name="blockSize" 	value="1"/>				<!-- 한번에 생성하는 ID의 개수를 지정하는것 쉽게 말해서 1씩 증가한다 IDX 개념이네 -->
+		<property name="table"	   	value="T_IDS"/>			<!-- DB의 T_IDS 테이블에다가 생성하는거 -->
+		<property name="tableName"	value="FILE"/>			<!-- DB의 T_IDS 테이블의 FILE에다가 생성하는거 --> 
 	</bean>
 	
 	<bean name="mixPrefixFile" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
-		<property name="prefix" value="FILE" /> <!-- 앞부분은 FILE 로 -->
-		<property name="cipers" value="16" /> <!-- 중간은 16자로 채우고 -->
-		<property name="fillChar" value="0" /> <!-- 0으로 채워라 -->
+		<property name="prefix" 	value="FILE" /> 	<!-- 앞부분은 FILE 로 -->
+		<property name="cipers" 	value="16" /> 		<!-- 중간은 16자로 채우고 -->
+		<property name="fillChar" 	value="0" /> 		<!-- 0으로 채워라 -->
 	</bean>	
 	
-	<bean name="cntntIdGnrService" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">
+	<bean name="cntntIdGnrService" 	class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
-		<property name="strategy" ref="mixPrefixCntnt" />
+		<property name="strategy" 	ref="mixPrefixCntnt" />
 		<property name="blockSize" 	value="1"/>
 		<property name="table"	   	value="T_IDS"/>
 		<property name="tableName"	value="CNTNT"/>
 	</bean>
 	
-	<bean name="mixPrefixCntnt" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
-		<property name="prefix" value="CNTNT" />
-		<property name="cipers" value="15" />
-		<property name="fillChar" value="0" />
+	<bean name="mixPrefixCntnt" 	class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
+		<property name="prefix" 	value="CNTNT" />
+		<property name="cipers" 	value="15" />
+		<property name="fillChar" 	value="0" />
 	</bean>	
 	
-	<bean name="typeIdGnrService" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">
+	<bean name="typeIdGnrService" 	class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
-		<property name="strategy" ref="mixPrefixType" />
+		<property name="strategy" 	ref="mixPrefixType" />
 		<property name="blockSize" 	value="1"/>
 		<property name="table"	   	value="T_IDS"/>
 		<property name="tableName"	value="TYPE"/>
 	</bean>
 	
-	<bean name="mixPrefixType" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
-		<property name="prefix" value="TYPE" />
-		<property name="cipers" value="16" />
-		<property name="fillChar" value="0" />
+	<bean name="mixPrefixType" 		class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
+		<property name="prefix" 	value="TYPE" />
+		<property name="cipers" 	value="16" />
+		<property name="fillChar"	value="0" />
 	</bean>	
 	
-	<bean name="mgrIdGnrService" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">
+	<bean name="mgrIdGnrService" 	class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
-		<property name="strategy" ref="mixPrefixMgr" />
+		<property name="strategy" 	ref="mixPrefixMgr" />
 		<property name="blockSize" 	value="1"/>
 		<property name="table"	   	value="T_IDS"/>
 		<property name="tableName"	value="MGR"/>
 	</bean>
 	
-	<bean name="mixPrefixMgr" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
-		<property name="prefix" value="MGR" />
-		<property name="cipers" value="17" />
-		<property name="fillChar" value="0" />
+	<bean name="mixPrefixMgr" 		class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
+		<property name="prefix" 	value="MGR" />
+		<property name="cipers" 	value="17" />
+		<property name="fillChar" 	value="0" />
 	</bean>	
 	
-	<bean name="frtIdGnrService" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">
+	<bean name="frtIdGnrService" 	class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" destroy-method="destroy">
 		<property name="dataSource" ref="dataSource" />
-		<property name="strategy" ref="mixPrefixFrt" />
+		<property name="strategy" 	ref="mixPrefixFrt" />
 		<property name="blockSize" 	value="1"/>
 		<property name="table"	   	value="T_IDS"/>
 		<property name="tableName"	value="FRT"/>
 	</bean>
 	
-	<bean name="mixPrefixFrt" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
-		<property name="prefix" value="FRT" />
-		<property name="cipers" value="17" />
-		<property name="fillChar" value="0" />
+	<bean name="mixPrefixFrt" 		class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
+		<property name="prefix" 	value="FRT" />
+		<property name="cipers" 	value="17" />
+		<property name="fillChar" 	value="0" />
 	</bean>	
 	
 	

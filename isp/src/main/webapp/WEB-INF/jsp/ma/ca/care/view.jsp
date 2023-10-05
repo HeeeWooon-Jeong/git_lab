@@ -5,7 +5,7 @@
 <div class="Content_box">
 	<form:form commandName="searchVO" name="defaultFrm" id="defaultFrm" method="post">
 		<form:hidden path="caSeq" id="caSeq"/>
-		<form:hidden path="pageIndex" id="pageIndex"/> 
+		<%-- <form:hidden path="pageIndex" id="pageIndex"/>  --%>
 		<form:hidden path="caAtchFileSeq" id="caAtchFileSeq"/>
 		<jsp:directive.include file="/WEB-INF/jsp/cmmn/inc/incSearchForm.jsp"/>
 		<!-- tbl -->
@@ -22,7 +22,7 @@
 					<tr>
 						<th scope="row"><strong>등록자</strong></th>
 						<td>
-							${careVO.caRgstSeq }
+							${careVO.caName }
 						</td>
 	                    <th scope="row"><strong>등록일</strong></th>
 						<td>${careVO.caRgstDt }</td>
