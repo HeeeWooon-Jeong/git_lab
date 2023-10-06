@@ -20,14 +20,20 @@
 				</colgroup>
 				<tbody>
 					<tr>
+						<th scope="row"><strong>제목</strong></th>
+						<td colspan="3">
+							${ctwoVO.ctTitle }
+						</td>
+					</tr>
+					<tr>
 						<th scope="row"><strong>등록자</strong></th>
-						<td>
-							${ctwoVO.ctName }
+						<td colspan="3">
+							${ctwoVO.ctRgstSeq }
 						</td>
 					</tr>
 					<!-- content , file --> 
 					<tr>
-						<th scope="row"><strong>줄거리</strong></th>
+						<th scope="row"><strong>내용</strong></th>
 						<td colspan="3">
 							<div class="text_area">
 								<c:out value="${util:unEscape(ctwoVO.ctCont)}" escapeXml="false"/>
@@ -38,6 +44,7 @@
 						<th scope="row"><strong>첨부파일</strong></th>
 						<td colspan="3">
 							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${ctwoVO.ctAtchFileSeq}&fileCnt=5&atchFileIdNm=ctAtchFileSeq&updateType=view" style="width: 100%;" height="70" frameborder="0" title="파일 업로드 폼"></iframe>
+
 						</td>
 					</tr>
 				</tbody>

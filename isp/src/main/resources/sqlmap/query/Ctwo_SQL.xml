@@ -5,10 +5,10 @@
    <sql id="Where">
       <if test="searchKeyword !=null and searchKeyword !=''">
          <if test="searchCondition !=null and searchCondition !='' and searchCondition ==0">
-            AND (TITLE LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like CONCAT('%',#{searchKeyword},'%'))
+            AND ( LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like CONCAT('%',#{searchKeyword},'%'))
          </if>
          <if test="searchCondition !=null and searchCondition !='' and searchCondition ==1">
-            AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')
+            AND  LIKE CONCAT('%',#{searchKeyword},'%')
          </if>
          <if test="searchCondition !=null and searchCondition !='' and searchCondition ==2">
             AND CONT LIKE CONCAT('%',#{searchKeyword},'%')
@@ -16,13 +16,15 @@
        </if>
    </sql>
    
-   <select id="selectContents" parameterType="CtwoVO" resultType="CtwoVO">
+   <select id="selectContents" parameterType="ctwoVO" resultType="ctwoVO">
       /* Ctwo.selectContents */
       <![CDATA[
            SELECT CT_SEQ 							ctSeq
 	            , DATE_FORMAT(CT_RGST_DT,'%Y.%m.%d')ctRgstDt
 	            , CT_RGST_SEQ 						ctRgstSeq
                 , F_USER_NM(CT_RGST_SEQ) 			ctName
+                , CT_RVSE_SEQ						ctRvseSeq
+                , CT_RVSE_DT						ctRvseDT
 	            , CT_TITLE 							ctTitle
 	            , CT_CONT 							ctCont
 	            , CT_ATCH_FILE_SEQ 					ctAtchFileSeq
@@ -34,17 +36,19 @@
    
    
    
-   <select id="selectList" parameterType="cmmnDefaultVO" resultType="CtwoVO">
+   <select id="selectList" parameterType="cmmnDefaultVO" resultType="ctwoVO">
       /* Ctwo.selectList */
       <![CDATA[
            SELECT CT_SEQ 							ctSeq
 	            , DATE_FORMAT(CT_RGST_DT,'%Y.%m.%d') ctRgstDt
 	            , CT_RGST_SEQ 						ctRgstSeq
-                , F_USER_NM(CT_RGST_SEQ) 			ctName
+                , CT_RVSE_DT						ctRvseDT
+	            , CT_RVSE_SEQ						ctRvseSeq
+                , CT_RGST_SEQ 						ctName
 	            , CT_TITLE 							ctTitle
 	            , CT_CONT 							ctCont
 	            , CT_ATCH_FILE_SEQ 					ctAtchFileSeq
-	         FROM T_CTWO
+	         FROM T_CTWO          
 	        WHERE CT_USE_YN='Y'   
          ]]>
            <include refid="Where"/>    
@@ -65,41 +69,41 @@
           <include refid="Where"/>
    </select>
    
-   <insert id="insertContents" parameterType="CtwoVO">
+   <insert id="insertContents" parameterType="ctwoVO">
       /* Ctwo.insertContents */
       <![CDATA[
            INSERT INTO T_CTWO(
-	              CT_SEQ 
-	            , CT_RGST_SEQ 
-	            , CT_TITLE
-	            , CT_CONT
+	              CT_SEQ   
+	            , CT_TITLE 
+	            , CT_CONT  
 	            , CT_ATCH_FILE_SEQ 
-	         )
+	            , CT_RGST_SEQ
+   	         )
          VALUES (
              (SELECT IFNULL(MAX(CT.CT_SEQ)+1,1) FROM T_CTWO CT)
-	            , #{loginSeq}
-	            , #{ctTitle}
-	            , #{ctCont}
+	            , #{ctTitle}  
+	            , #{ctCont}   
 	            , #{ctAtchFileSeq}
+	            , #{ctRgstSeq}
 	         )
       ]]>
    </insert>
    
-   <update id="updateContents" parameterType="CtwoVO">
+   <update id="updateContents" parameterType="ctwoVO">
       /* Ctwo.updateContents */
       <![CDATA[
            UPDATE T_CTWO     
-	          SET CT_ERUM 			= #{ctErum} 
+	          SET CT_TITLE 			= #{ctTitle} 
+	            , CT_CONT 			= #{ctCont}
 	            , CT_RVSE_DT 		= NOW()
                 , CT_RVSE_SEQ		= #{loginSeq}
                 , CT_TITLE			= #{ctTitle}
-	            , CT_CONT 			= #{ctCont}
 	            , CT_ATCH_FILE_SEQ 	= #{ctAtchFileSeq}
 	        WHERE CT_SEQ = #{ctSeq}  
       ]]>
    </update>
    
-   <update id="deleteContents" parameterType="CtwoVO">
+   <update id="deleteContents" parameterType="ctwoVO">
       /* Ctwo.deleteContents */
       <![CDATA[
           UPDATE T_CTWO

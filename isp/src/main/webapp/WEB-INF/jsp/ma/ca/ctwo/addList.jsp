@@ -37,7 +37,7 @@
 							<%-- <td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.twName }</td> --%>
 							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.ctRgstSeq}</td>
 							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.ctRgstDt}</td>
-							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.ctRvseSeq}</td>
+							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.ctName}</td>
 							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.ctRvseDt}</td>
 						</tr>
 					</c:forEach>

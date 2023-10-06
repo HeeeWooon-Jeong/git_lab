@@ -132,9 +132,9 @@ public class CtwoController {
 	public String view(@ModelAttribute("searchVO") CtwoVO searchVO, Model model, HttpServletRequest request) throws Exception {
 		
 		/* 게시판 상세정보 */
-		CtwoVO careVO = new CtwoVO();
-		careVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID );
-		model.addAttribute("careVO", careVO);
+		CtwoVO ctwoVO = new CtwoVO();
+		ctwoVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID );
+		model.addAttribute("ctwoVO", ctwoVO);
 		
 		return ".mLayout:"+ folderPath + "view";
 	}
@@ -151,14 +151,14 @@ public class CtwoController {
 	@RequestMapping(folderPath + "{procType}Form.do")
 	public String form(@ModelAttribute("searchVO") CtwoVO searchVO, Model model,@PathVariable String procType, HttpServletRequest request) throws Exception {
 		
-		CtwoVO careVO = new CtwoVO();
+		CtwoVO ctwoVO = new CtwoVO();
 		if (procType.equals("update")) {
-			careVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
+			ctwoVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
 
 		}
 		searchVO.setProcType(procType);
-		careVO.setSearchVO(searchVO);
-		model.addAttribute("careVO", careVO);
+		ctwoVO.setSearchVO(searchVO);
+		model.addAttribute("ctwoVO", ctwoVO);
 
 		return ".mLayout:"+ folderPath + "form";
 	}
@@ -191,7 +191,7 @@ public class CtwoController {
 			
 			if(procType.equals("update")){
 				model.addAttribute("message", "수정되었습니다.");
-				model.addAttribute("pName", "caSeq");	
+				model.addAttribute("pName", "ctSeq");	
 				model.addAttribute("pValue", searchVO.getCtSeq());
 				model.addAttribute("cmmnScript", "view.do");
 				return "cmmn/execute";

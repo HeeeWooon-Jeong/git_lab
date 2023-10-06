@@ -22,12 +22,12 @@
 				<tbody>
 					<tr>
 						<th scope="row"><strong class="th_tit" style="font-weight:bold; !important;">제목</strong></th>
-						<td>
+						<td colspan="3">
 							<input type="text" name="ctTitle" id="ctTitle" class="text w100p" value="${ctwoVO.ctTitle}" />
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">컨텐츠</th>
+						<th scope="row">내용</th>
 						<td colspan="3">
 							<textarea name="ctCont" id="ctCont" class="txt_area w_100p" style="position: absolute; width: 100%;" height="100%" left:0; top:0; frameborder="0">${util:unEscape(ctwoVO.ctCont)}</textarea>
 						</td> 
@@ -35,9 +35,9 @@
 					<tr>
 						<th scope="row">첨부파일</th>
 						<td colspan="3">
-							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?ctAtchFileSeq=${ctwoVO.ctAtchFileSeq }&fileCnt=5&atchFileIdNm=ctAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
+							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${ctwoVO.ctAtchFileSeq }&fileCnt=5&atchFileIdNm=ctAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
 						</td>
-					</tr> 
+					</tr>    
 				</tbody>
 			</table>
 		</div>
@@ -67,10 +67,6 @@
 			if (!$("#ctTitle").val()) {
 				alert("제목을 입력해주세요");
 				$("#ctTitle").focus();
-				return false;
-			}else if (!$("#ctCont").val()) {
-				alert("내용을 입력해주세요");
-				$("#ctCont").focus();
 				return false;
 			}
 				oEditors.getById["ctCont"].exec("UPDATE_CONTENTS_FIELD", []);/* 에디터 */

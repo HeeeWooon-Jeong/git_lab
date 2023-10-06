@@ -25,8 +25,9 @@ public class CtwoVO extends CmmnDefaultVO implements Serializable {
 	private String ctSeq;			// 시퀀스 넘버
 	private String ctRgstDt;		// 등록일
 	private String ctRgstSeq;		// 등록자
-	private String ctRvseSeq;		// 수정자
 	private String ctRvseDt;		// 수정일
+	private String ctRvseSeq;		// 수정자
+	private String ctName;			// 컨텐츠내용
 	private String ctTitle;			// 컨텐츠내용
 	private String ctCont;			// 컨텐츠내용
 	private String ctAtchFileSeq;	// 파일첨부
@@ -80,5 +81,13 @@ public class CtwoVO extends CmmnDefaultVO implements Serializable {
 	public void setCtAtchFileSeq(String ctAtchFileSeq) {
 		this.ctAtchFileSeq = ctAtchFileSeq;
 	}
+	public String getCtName() {
+		return ctName;
+	}
+	public void setCtName(String ctName) {
+		this.ctName = ctName;
+	}
+
+
 	
 }
