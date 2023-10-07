@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.open.Btwo">
+
+   <sql id="Where">
+      <if test="searchKeyword !=null and searchKeyword !=''">
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==0">
+            AND ( LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like CONCAT('%',#{searchKeyword},'%'))
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==1">
+            AND  LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==2">
+            AND CONT LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+       </if>
+   </sql>
+   
+   <select id="selectContents" parameterType="btwoVO" resultType="btwoVO">
+      /* Btwo.selectContents */
+      <![CDATA[
+           SELECT BT_SEQ 							btSeq
+	            , DATE_FORMAT(BT_RGST_DT,'%Y.%m.%d')btRgstDt
+	            , BT_RGST_SEQ 						btRgstSeq
+                , F_USER_NM(BT_RGST_SEQ) 			btName
+                , BT_RVSE_SEQ						btRvseSeq
+                , BT_RVSE_DT						btRvseDT
+	            , BT_TITLE 							btTitle
+	            , BT_CONT 							btCont
+	            , BT_ATCH_FILE_SEQ 					btAtchFileSeq
+	         FROM T_BTWO
+            WHERE BT_USE_YN='Y'   
+              AND BT_SEQ = #{btSeq}
+      ]]>
+   </select>
+   
+   
+   
+   <select id="selectList" parameterType="cmmnDefaultVO" resultType="btwoVO">
+      /* Btwo.selectList */
+      <![CDATA[
+			SELECT BT_SEQ            					btSeq
+			     , DATE_FORMAT(BT_RGST_DT,'%Y.%m.%d') 	btRgstDt
+			     , BT_RGST_SEQ        					btRgstSeq
+			     , BT_RVSE_DT         					btRvseDT
+			     , BT_RVSE_SEQ        					btRvseSeq
+			     , F_USER_NM(BT_RGST_SEQ) 				btName
+			     , BT_TITLE           					btTitle
+			     , BT_CONT            					btCont
+			     , BT_ATCH_FILE_SEQ   					btAtchFileSeq
+			  FROM T_BTWO          
+			 WHERE BT_USE_YN='Y'
+
+         ]]>
+           <include refid="Where"/>    
+        <![CDATA[ 
+             ORDER BY BT_SEQ DESC
+             LIMIT #{firstIndex} , #{recordCountPerPage}
+      ]]>
+   </select>   
+
+
+   <select id="selectCount" parameterType="cmmnDefaultVO" resultType="int">
+      /* Btwo.selectCount */
+      <![CDATA[
+         SELECT COUNT(BT_SEQ) cnt 
+           FROM T_BTWO
+          WHERE BT_USE_YN='Y' 
+      ]]>
+          <include refid="Where"/>
+   </select>
+   
+   <insert id="insertContents" parameterType="btwoVO">
+      /* Btwo.insertContents */
+      <![CDATA[
+			INSERT INTO T_BTWO(
+			    BT_SEQ   
+			  , BT_TITLE 
+			  , BT_CONT  
+			  , BT_ATCH_FILE_SEQ 
+			  , BT_RGST_SEQ
+			)
+			VALUES (
+			    (SELECT IFNULL(MAX(BT.BT_SEQ)+1,1) FROM T_BTWO BT)
+			  , #{btTitle}  
+			  , #{btCont}   
+			  , #{btAtchFileSeq}
+			  , #{loginSeq}
+			)
+
+      ]]>
+   </insert>
+   
+   <update id="updateContents" parameterType="btwoVO">
+      /* Btwo.updateContents */
+      <![CDATA[
+			UPDATE T_BTWO     
+			    SET BT_TITLE            = #{btTitle} 
+			      , BT_CONT            = #{btCont}
+			      , BT_RVSE_DT         = NOW()
+			      , BT_RVSE_SEQ        = #{loginSeq}
+			      , BT_TITLE           = #{btTitle}
+			      , BT_ATCH_FILE_SEQ   = #{btAtchFileSeq}
+			WHERE BT_SEQ = #{btSeq}
+
+      ]]>
+   </update>
+   
+   <update id="deleteContents" parameterType="btwoVO">
+      /* Btwo.deleteContents */
+      <![CDATA[
+          UPDATE T_BTWO
+             SET BT_USE_YN='N'
+           WHERE BT_SEQ=#{btSeq}
+      ]]>
+   </update>
+
+
+   
+   
+   
+   
+</mapper>
