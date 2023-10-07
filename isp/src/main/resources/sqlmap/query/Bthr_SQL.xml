@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.open.Bthr">
+
+   <sql id="Where">
+      <if test="searchKeyword !=null and searchKeyword !=''">
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==0">
+            AND ( LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like CONCAT('%',#{searchKeyword},'%'))
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==1">
+            AND  LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==2">
+            AND CONT LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+       </if>
+   </sql>
+   
+   <select id="selectContents" parameterType="bthrVO" resultType="bthrVO">
+      /* Bthr.selectContents */
+      <![CDATA[
+           SELECT BH_SEQ 							bhSeq
+	            , DATE_FORMAT(BH_RGST_DT,'%Y.%m.%d')bhRgstDt
+	            , BH_RGST_SEQ 						bhRgstSeq
+                , F_USER_NM(BH_RGST_SEQ) 			bhName
+                , BH_RVSE_SEQ						bhRvseSeq
+                , BH_RVSE_DT						bhRvseDT
+	            , BH_TITLE 							bhTitle
+	            , BH_CONT 							bhCont
+	            , BH_ATCH_FILE_SEQ 					bhAtchFileSeq
+	         FROM T_BTHR
+            WHERE BH_USE_YN='Y'   
+              AND BH_SEQ = #{bhSeq}
+      ]]>
+   </select>
+   
+   
+   
+   <select id="selectList" parameterType="cmmnDefaultVO" resultType="bthrVO">
+      /* Bthr.selectList */
+      <![CDATA[
+			SELECT BH_SEQ            					bhSeq
+			     , DATE_FORMAT(BH_RGST_DT,'%Y.%m.%d') 	bhRgstDt
+			     , BH_RGST_SEQ        					bhRgstSeq
+			     , BH_RVSE_DT         					bhRvseDT
+			     , BH_RVSE_SEQ        					bhRvseSeq
+			     , F_USER_NM(BH_RGST_SEQ) 				bhName
+			     , BH_TITLE           					bhTitle
+			     , BH_CONT            					bhCont
+			     , BH_ATCH_FILE_SEQ   					bhAtchFileSeq
+			  FROM T_BTHR          
+			 WHERE BH_USE_YN='Y'
+
+
+         ]]>
+           <include refid="Where"/>    
+        <![CDATA[ 
+             ORDER BY BH_SEQ DESC
+             LIMIT #{firstIndex} , #{recordCountPerPage}
+      ]]>
+   </select>   
+
+
+   <select id="selectCount" parameterType="cmmnDefaultVO" resultType="int">
+      /* Bthr.selectCount */
+      <![CDATA[
+         SELECT COUNT(BH_SEQ) cnt 
+           FROM T_BTHR
+          WHERE BH_USE_YN='Y' 
+      ]]>
+          <include refid="Where"/>
+   </select>
+   
+   <insert id="insertContents" parameterType="bthrVO">
+      /* Bthr.insertContents */
+      <![CDATA[
+			INSERT INTO T_BTHR(
+			    BH_SEQ   
+			  , BH_TITLE 
+			  , BH_CONT  
+			  , BH_ATCH_FILE_SEQ 
+			  , BH_RGST_SEQ
+			)
+			VALUES (
+			    (SELECT IFNULL(MAX(BH.BH_SEQ)+1,1) FROM T_BTHR BH)
+			  , #{bhTitle}  
+			  , #{bhCont}   
+			  , #{bhAtchFileSeq}
+			  , #{loginSeq}
+			)
+
+      ]]>
+   </insert>
+   
+   <update id="updateContents" parameterType="bthrVO">
+      /* Bthr.updateContents */
+      <![CDATA[
+			UPDATE T_BTHR     
+			    SET BH_TITLE            = #{bhTitle} 
+			      , BH_CONT            = #{bhCont}
+			      , BH_RVSE_DT         = NOW()
+			      , BH_RVSE_SEQ        = #{loginSeq}
+			      , BH_TITLE           = #{bhTitle}
+			      , BH_ATCH_FILE_SEQ   = #{bhAtchFileSeq}
+			WHERE BH_SEQ = #{bhSeq}
+
+      ]]>
+   </update>
+   
+   <update id="deleteContents" parameterType="bthrVO">
+      /* Bthr.deleteContents */
+      <![CDATA[
+          UPDATE T_BTHR
+             SET BH_USE_YN='N'
+           WHERE BH_SEQ=#{bhSeq}
+      ]]>
+   </update>
+
+
+   
+   
+   
+   
+</mapper>
