@@ -4,9 +4,9 @@
 
 <div class="Content_box">
 	<form:form commandName="searchVO" name="defaultFrm" id="defaultFrm" method="post">
-		<form:hidden path="ctSeq" id="ctSeq"/>
+		<form:hidden path="boSeq" id="boSeq"/>
 		<%-- <form:hidden path="pageIndex" id="pageIndex"/>  --%>
-		<form:hidden path="ctAtchFileSeq" id="ctAtchFileSeq"/>
+		<form:hidden path="boAtchFileSeq" id="boAtchFileSeq"/>
 		<jsp:directive.include file="/WEB-INF/jsp/cmmn/inc/incSearchForm.jsp"/>
 		<!-- tbl -->
 		<div class="tbl_wrap">
@@ -22,13 +22,13 @@
 					<tr>
 						<th scope="row"><strong>제목</strong></th>
 						<td colspan="3">
-							${ctwoVO.ctTitle }
+							${boneVO.boTitle }
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><strong>등록자</strong></th>
 						<td colspan="3">
-							${ctwoVO.ctName }
+							${boneVO.boName }
 						</td>
 					</tr>
 					<!-- content , file --> 
@@ -36,14 +36,14 @@
 						<th scope="row"><strong>내용</strong></th>
 						<td colspan="3">
 							<div class="text_area">
-								<c:out value="${util:unEscape(ctwoVO.ctCont)}" escapeXml="false"/>
+								<c:out value="${util:unEscape(boneVO.boCont)}" escapeXml="false"/>
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<th scope="row"><strong>첨부파일</strong></th>
 						<td colspan="3">
-							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${ctwoVO.ctAtchFileSeq}&fileCnt=5&atchFileIdNm=ctAtchFileSeq&updateType=view" style="width: 100%;" height="70" frameborder="0" title="파일 업로드 폼"></iframe>
+							<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${boneVO.boAtchFileSeq}&fileCnt=5&atchFileIdNm=boAtchFileSeq&updateType=view" style="width: 100%;" height="70" frameborder="0" title="파일 업로드 폼"></iframe>
 
 						</td>
 					</tr>

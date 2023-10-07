@@ -1,10 +1,9 @@
-package com.open.ma.ca.ctwo;
+package com.open.ma.ca.bone;
 
 import java.util.List;
 import java.util.Properties;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import com.open.cmmn.model.CmmnDefaultVO;
 import com.open.cmmn.service.CmmnService;
 import com.open.cmmn.service.FileMngService;
-import com.open.ma.ca.ctwo.service.CtwoVO;
+import com.open.ma.ca.bone.service.BoneVO;
 
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -30,7 +29,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 /** 공지사항 게시판을 관리하는 컨트롤러 클래스를 정의한다.
  */
 @Controller
-public class CtwoController {
+public class BoneController {
 
 	@Resource(name = "cmmnService")
     protected CmmnService cmmnService;
@@ -54,10 +53,10 @@ public class CtwoController {
 	
 	
     /** Program ID **/
-    private final static String PROGRAM_ID = "Ctwo";
+    private final static String PROGRAM_ID = "Bone";
 
     /** folderPath **/
-    private final static String folderPath = "/ma/ca/ctwo/";
+    private final static String folderPath = "/ma/ca/bone/";
 
 	//@Resource(name = "beanValidator")
 	//protected DefaultBeanValidator beanValidator;
@@ -111,7 +110,7 @@ public class CtwoController {
 		model.addAttribute("paginationInfo", paginationInfo);
 
 		@SuppressWarnings("unchecked")
-		List<CtwoVO> resultList = (List<CtwoVO>) cmmnService.selectList(searchVO, PROGRAM_ID );
+		List<BoneVO> resultList = (List<BoneVO>) cmmnService.selectList(searchVO, PROGRAM_ID );
 		model.addAttribute("resultList", resultList);
 		
 		return folderPath + "addList";
@@ -129,12 +128,12 @@ public class CtwoController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(folderPath +"view.do")
-	public String view(@ModelAttribute("searchVO") CtwoVO searchVO, ModelMap model) throws Exception {
+	public String view(@ModelAttribute("searchVO") BoneVO searchVO, ModelMap model) throws Exception {
 		
 		/* 게시판 상세정보 */
-		CtwoVO ctwoVO = new CtwoVO();
-		ctwoVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID );
-		model.addAttribute("ctwoVO", ctwoVO);
+		BoneVO boneVO = new BoneVO();
+		boneVO = (BoneVO) cmmnService.selectContents(searchVO, PROGRAM_ID );
+		model.addAttribute("boneVO", boneVO);
 		
 		return ".mLayout:"+ folderPath + "view";
 	}
@@ -149,16 +148,16 @@ public class CtwoController {
 	 * @throws Exception
 	 */
 	@RequestMapping(folderPath + "{procType}Form.do")
-	public String form(@ModelAttribute("searchVO") CtwoVO searchVO, ModelMap model,@PathVariable String procType) throws Exception {
+	public String form(@ModelAttribute("searchVO") BoneVO searchVO, ModelMap model,@PathVariable String procType) throws Exception {
 		
-		CtwoVO ctwoVO = new CtwoVO();
+		BoneVO boneVO = new BoneVO();
 		if (procType.equals("update")) {
-			ctwoVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
+			boneVO = (BoneVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
 
 		}
 		searchVO.setProcType(procType);
-		ctwoVO.setSearchVO(searchVO);
-		model.addAttribute("ctwoVO", ctwoVO);
+		boneVO.setSearchVO(searchVO);
+		model.addAttribute("boneVO", boneVO);
 
 		return ".mLayout:"+ folderPath + "form";
 	}
@@ -174,7 +173,7 @@ public class CtwoController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = folderPath + "{procType}Proc.do", method = RequestMethod.POST)
-	public String proc(@ModelAttribute("searchVO") CtwoVO searchVO, ModelMap model, SessionStatus status,@PathVariable String procType) throws Exception {
+	public String proc(@ModelAttribute("searchVO") BoneVO searchVO, Model model, SessionStatus status,@PathVariable String procType) throws Exception {
 		
 		
 		if(procType != null){
@@ -191,8 +190,8 @@ public class CtwoController {
 			
 			if(procType.equals("update")){
 				model.addAttribute("message", "수정되었습니다.");
-				model.addAttribute("pName", "ctSeq");	
-				model.addAttribute("pValue", searchVO.getCtSeq());
+				model.addAttribute("pName", "boSeq");	
+				model.addAttribute("pValue", searchVO.getBoSeq());
 				model.addAttribute("cmmnScript", "view.do");
 				return "cmmn/execute";
 	    	}else if(procType.equals("insert")){

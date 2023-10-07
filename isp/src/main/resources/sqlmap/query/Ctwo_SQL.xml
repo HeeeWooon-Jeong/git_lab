@@ -44,7 +44,7 @@
 	            , CT_RGST_SEQ 						ctRgstSeq
                 , CT_RVSE_DT						ctRvseDT
 	            , CT_RVSE_SEQ						ctRvseSeq
-                , CT_RGST_SEQ 						ctName
+                , F_USER_NM(CT_RGST_SEQ)			ctName
 	            , CT_TITLE 							ctTitle
 	            , CT_CONT 							ctCont
 	            , CT_ATCH_FILE_SEQ 					ctAtchFileSeq
@@ -84,7 +84,7 @@
 	            , #{ctTitle}  
 	            , #{ctCont}   
 	            , #{ctAtchFileSeq}
-	            , #{ctRgstSeq}
+	            , #{loginSeq}
 	         )
       ]]>
    </insert>

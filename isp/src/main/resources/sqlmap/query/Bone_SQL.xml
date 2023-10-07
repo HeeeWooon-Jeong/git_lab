@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.open.Bone">
+
+   <sql id="Where">
+      <if test="searchKeyword !=null and searchKeyword !=''">
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==0">
+            AND ( LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like CONCAT('%',#{searchKeyword},'%'))
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==1">
+            AND  LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+         <if test="searchCondition !=null and searchCondition !='' and searchCondition ==2">
+            AND CONT LIKE CONCAT('%',#{searchKeyword},'%')
+         </if>
+       </if>
+   </sql>
+   
+   <select id="selectContents" parameterType="boneVO" resultType="boneVO">
+      /* Bone.selectContents */
+      <![CDATA[
+           SELECT BO_SEQ 							boSeq
+	            , DATE_FORMAT(BO_RGST_DT,'%Y.%m.%d')boRgstDt
+	            , BO_RGST_SEQ 						boRgstSeq
+                , F_USER_NM(BO_RGST_SEQ) 			boName
+                , BO_RVSE_SEQ						boRvseSeq
+                , BO_RVSE_DT						boRvseDT
+	            , BO_TITLE 							boTitle
+	            , BO_CONT 							boCont
+	            , BO_ATCH_FILE_SEQ 					boAtchFileSeq
+	         FROM T_BONE
+            WHERE BO_USE_YN='Y'   
+              AND BO_SEQ = #{boSeq}
+      ]]>
+   </select>
+   
+   
+   
+   <select id="selectList" parameterType="cmmnDefaultVO" resultType="boneVO">
+      /* Bone.selectList */
+      <![CDATA[
+           SELECT BO_SEQ 							boSeq
+	            , DATE_FORMAT(BO_RGST_DT,'%Y.%m.%d') boRgstDt
+	            , BO_RGST_SEQ 						boRgstSeq
+                , BO_RVSE_DT						boRvseDT
+	            , BO_RVSE_SEQ						boRvseSeq
+                , F_USER_NM(BO_RGST_SEQ)			boName
+	            , BO_TITLE 							boTitle
+	            , BO_CONT 							boCont
+	            , BO_ATCH_FILE_SEQ 					boAtchFileSeq
+	         FROM T_BONE          
+	        WHERE BO_USE_YN='Y'   
+         ]]>
+           <include refid="Where"/>    
+        <![CDATA[ 
+             ORDER BY BO_SEQ DESC
+             LIMIT #{firstIndex} , #{recordCountPerPage}
+      ]]>
+   </select>   
+
+
+   <select id="selectCount" parameterType="cmmnDefaultVO" resultType="int">
+      /* Bone.selectCount */
+      <![CDATA[
+         SELECT COUNT(BO_SEQ) cnt 
+           FROM T_BONE
+          WHERE BO_USE_YN='Y' 
+      ]]>
+          <include refid="Where"/>
+   </select>
+   
+   <insert id="insertContents" parameterType="boneVO">
+      /* Bone.insertContents */
+      <![CDATA[
+           INSERT INTO T_BONE(
+	              BO_SEQ   
+	            , BO_TITLE 
+	            , BO_CONT  
+	            , BO_ATCH_FILE_SEQ 
+	            , BO_RGST_SEQ
+   	         )
+         VALUES (
+             (SELECT IFNULL(MAX(BO.BO_SEQ)+1,1) FROM T_BONE BO)
+	            , #{boTitle}  
+	            , #{boCont}   
+	            , #{boAtchFileSeq}
+	            , #{loginSeq}
+	         )
+      ]]>
+   </insert>
+   
+   <update id="updateContents" parameterType="boneVO">
+      /* Bone.updateContents */
+      <![CDATA[
+           UPDATE T_BONE     
+	          SET BO_TITLE 			= #{boTitle} 
+	            , BO_CONT 			= #{boCont}
+	            , BO_RVSE_DT 		= NOW()
+                , BO_RVSE_SEQ		= #{loginSeq}
+                , BO_TITLE			= #{boTitle}
+	            , BO_ATCH_FILE_SEQ 	= #{boAtchFileSeq}
+	        WHERE BO_SEQ = #{boSeq}  
+      ]]>
+   </update>
+   
+   <update id="deleteContents" parameterType="boneVO">
+      /* Bone.deleteContents */
+      <![CDATA[
+          UPDATE T_BONE
+             SET BO_USE_YN='N'
+           WHERE BO_SEQ=#{boSeq}
+      ]]>
+   </update>
+
+
+   
+   
+   
+   
+</mapper>

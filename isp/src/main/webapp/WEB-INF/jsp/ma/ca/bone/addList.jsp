@@ -30,15 +30,15 @@
 				<c:when test="${fn:length(resultList) gt 0}">
 					<c:forEach var="result" items="${resultList}" varStatus="status">
 						<tr class="cursor">
-							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">
+							<td onclick="fncPageBoard('view','view.do','${result.boSeq}','boSeq')">
 								${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageUnit + status.count)}
 							</td>
-							<td class="subject" onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${util:cutText(result.ctTitle,30,'...') }</td>
-							<%-- <td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.twName }</td> --%>
-							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.ctName}</td>
-							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.ctRgstDt}</td>
-							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.ctName}</td>
-							<td onclick="fncPageBoard('view','view.do','${result.ctSeq}','ctSeq')">${result.ctRvseDt}</td>
+							<td class="subject" onclick="fncPageBoard('view','view.do','${result.boSeq}','boSeq')">${util:cutText(result.boTitle,30,'...') }</td>
+							<%-- <td onclick="fncPageBoard('view','view.do','${result.boSeq}','boSeq')">${result.twName }</td> --%>
+							<td onclick="fncPageBoard('view','view.do','${result.boSeq}','boSeq')">${result.boName}</td>
+							<td onclick="fncPageBoard('view','view.do','${result.boSeq}','boSeq')">${result.boRgstDt}</td>
+							<td onclick="fncPageBoard('view','view.do','${result.boSeq}','boSeq')">${result.boName}</td>
+							<td onclick="fncPageBoard('view','view.do','${result.boSeq}','boSeq')">${result.boRvseDt}</td>
 						</tr>
 					</c:forEach>
 				</c:when>
