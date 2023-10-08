@@ -154,7 +154,6 @@ public class CtwoController {
 		CtwoVO ctwoVO = new CtwoVO();
 		if (procType.equals("update")) {
 			ctwoVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
-
 		}
 		searchVO.setProcType(procType);
 		ctwoVO.setSearchVO(searchVO);

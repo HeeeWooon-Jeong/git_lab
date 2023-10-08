@@ -31,8 +31,16 @@ public class BtwoVO extends CmmnDefaultVO implements Serializable {
 	private String btTitle;			// 컨텐츠내용
 	private String btCont;			// 컨텐츠내용
 	private String btAtchFileSeq;	// 파일첨부
+	private String btDat;	// 파일첨부
 	
 	
+	
+	public String getBtDat() {
+		return btDat;
+	}
+	public void setBtDat(String btDat) {
+		this.btDat = btDat;
+	}
 	public String getBtSeq() {
 		return btSeq;
 	}

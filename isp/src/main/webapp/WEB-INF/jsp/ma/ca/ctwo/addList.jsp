@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <jsp:directive.include file="/WEB-INF/jsp/cmmn/incTagLib.jsp"/>
+
 <div class="tbl_top">
 	<div class="tbl_left"><i class="i_all"></i><span>전체 : <strong>${paginationInfo.totalRecordCount}</strong> 건(${searchVO.pageIndex}/${paginationInfo.totalPageCount} Page) </span></div>
 	<div class="tbl_right"></div>
@@ -46,6 +47,7 @@
 					<tr><td colspan="6" class="no_data">데이터가 없습니다.</td></tr>
 				</c:otherwise>
 			</c:choose>
+			
 		</tbody>
 	</table>
 </div>
@@ -60,3 +62,16 @@
 	</div>
 </div>
 <%-- //paging end--%>
+
+
+
+
+
+
+
+
+
+
+
+
+

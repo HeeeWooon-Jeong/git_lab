@@ -91,6 +91,10 @@ public class MoviesController {
 		// ".mLayout:"라는 문자열은 뷰 리졸버(View Resolver)에 의해 처리될 수 있는 논리적인 뷰 이름의 일부로
 		// 사용
 	}
+/*	@ModelAttribute("searchVO") CmmnDefaultVO searchVO: 
+ * 이 부분은 스프링 프레임워크에서 사용되는 어노테이션으로, HTTP 요청 파라미터를 Java 객체로 바인딩하는 역할을 합니다. 
+ * searchVO라는 이름으로 모델에 바인딩된다는 의미이며, 이 모델 객체는 HTTP 요청에서 전달된 데이터를 가지고 있을 것입니다. 
+ * CmmnDefaultVO 클래스는 이 메서드에서 사용되는 검색 조건 정보를 저장하는 클래스로 보입니다*/
 	/*
 	 * 컨트롤러 메서드는 요청을 처리하고 모델을 설정한 후, 뷰의 이름을 반환하여 웹 애플리케이션의 화면을 렌더링하는 데 사용됩니다. 이
 	 * 코드 조각은 Spring MVC 패턴을 따르고 있으며, 컨트롤러와 뷰 간의 데이터 흐름을 관리하기 위해 Spring
@@ -150,7 +154,30 @@ public class MoviesController {
 
 		return folderPath + "addList";
 	}
+/*	주어진 코드는 페이지네이션(pagination)을 구현하고 영화 목록 데이터를 검색하여 모델에 추가하고, 그 결과를 JSP 페이지에 전달하는 Spring 컨트롤러 메서드입니다. 코드를 간단히 설명하겠습니다.
 
+	1. `PaginationInfo` 객체를 생성하고 초기화합니다.
+	   - 현재 페이지 번호(`searchVO.getPageIndex()`)와 페이지당 레코드 수(`searchVO.getPageUnit()`)를 설정합니다.
+	   - 페이지 리스트의 크기(`searchVO.getPageSize()`)를 설정합니다.
+	   - `paginationInfo` 객체에서 검색을 위한 첫 번째와 마지막 인덱스(`searchVO.getFirstIndex()`, `searchVO.getLastIndex()`)를 설정합니다.
+	   - `paginationInfo` 객체에서 페이지당 레코드 수(`searchVO.getRecordCountPerPage()`)를 설정합니다.
+
+	2. `cmmnService`를 사용하여 데이터베이스에서 총 레코드 수(`totCnt`)를 검색합니다. `selectCount` 메서드는 `searchVO` 객체와 프로그램 ID(`PROGRAM_ID`)를 사용하여 
+	검색 조건에 따른 레코드 수를 가져옵니다.
+
+	3. `paginationInfo` 객체에 총 레코드 수(`totCnt`)를 설정합니다. 이렇게 하면 페이지네이션을 위한 총 레코드 수가 설정됩니다.
+
+	4. 영화 목록 데이터를 검색합니다. `cmmnService`의 `selectList` 메서드를 사용하여 `searchVO` 객체와 프로그램 ID(`PROGRAM_ID`)를 기반으로 영화 목록 데이터를 가져옵니다. 
+	결과는 `resultList`에 저장됩니다.
+
+	5. 모델에 `paginationInfo` 객체와 `resultList`를 추가합니다. 이러한 데이터는 JSP 페이지에서 사용할 수 있도록 모델에 저장됩니다.
+
+	6. 마지막으로, JSP 페이지의 경로(`folderPath + "addList"`)로 이동하여 데이터를 표시할 뷰를 렌더링합니다.
+
+	이 코드는 Spring MVC를 사용하여 페이지네이션 및 데이터 검색을 구현한 예제입니다. 페이지네이션 정보와 검색 결과가 모델에 추가되어 JSP 페이지로 전달되고, 
+	JSP 페이지에서는 해당 데이터를 사용하여 웹 페이지를 렌더링합니다.*/
+	
+	
 	/**
 	 * 메뉴권한 상세화면
 	 * 

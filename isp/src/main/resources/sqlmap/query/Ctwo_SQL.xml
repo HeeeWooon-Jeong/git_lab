@@ -19,15 +19,24 @@
    <select id="selectContents" parameterType="ctwoVO" resultType="ctwoVO">
       /* Ctwo.selectContents */
       <![CDATA[
-           SELECT CT_SEQ 							ctSeq
-	            , DATE_FORMAT(CT_RGST_DT,'%Y.%m.%d')ctRgstDt
-	            , CT_RGST_SEQ 						ctRgstSeq
-                , F_USER_NM(CT_RGST_SEQ) 			ctName
-                , CT_RVSE_SEQ						ctRvseSeq
-                , CT_RVSE_DT						ctRvseDT
-	            , CT_TITLE 							ctTitle
-	            , CT_CONT 							ctCont
-	            , CT_ATCH_FILE_SEQ 					ctAtchFileSeq
+           SELECT CT_SEQ 								ctSeq
+	            , DATE_FORMAT(CT_RGST_DT,'%Y.%m.%d')	ctRgstDt
+	            , CT_RGST_SEQ 							ctRgstSeq
+                , F_USER_NM(CT_RGST_SEQ) 				ctName
+                , CT_RVSE_SEQ							ctRvseSeq
+                , CT_RVSE_DT							ctRvseDT
+	            , CT_TITLE 								ctTitle
+	            , CT_CONT 								ctCont
+	            , CT_ATCH_FILE_SEQ 						ctAtchFileSeq
+	            , CT_DAT_SEQ							ctDatSeq
+				, DATE_FORMAT(CT_DAT_RGST_DT,'%Y.%m.%d')ctDatRgstDt
+	            , CT_DAT_RGST_SEQ 						ctDatRgstSeq
+                , F_USER_NM(CT_RGST_SEQ) 			ctDatName
+                , F_USER_NM(CT_RGST_SEQ)				ctDatRvseSeq
+                , CT_DAT_RVSE_DT						ctDatRvseDT
+	            , CT_DAT_TITLE 							ctDatTitle
+	            , CT_DAT_CONT 							ctDatCont
+	            , CT_DAT_ATCH_FILE_SEQ 					ctDatAtchFileSeq	            
 	         FROM T_CTWO
             WHERE CT_USE_YN='Y'   
               AND CT_SEQ = #{ctSeq}
@@ -48,6 +57,14 @@
 	            , CT_TITLE 							ctTitle
 	            , CT_CONT 							ctCont
 	            , CT_ATCH_FILE_SEQ 					ctAtchFileSeq
+   	            , CT_DAT_SEQ							ctDatSeq
+	            , CT_DAT_RGST_SEQ 						ctDatRgstSeq
+                , F_USER_NM(CT_RGST_SEQ) 				ctDatName
+                , CT_DAT_RVSE_SEQ						ctDatRvseSeq
+                , CT_DAT_RVSE_DT						ctDatRvseDT
+	            , CT_DAT_TITLE 							ctDatTitle
+	            , CT_DAT_CONT 							ctDatCont
+	            , CT_DAT_ATCH_FILE_SEQ 					ctDatAtchFileSeq	            
 	         FROM T_CTWO          
 	        WHERE CT_USE_YN='Y'   
          ]]>
@@ -93,12 +110,19 @@
       /* Ctwo.updateContents */
       <![CDATA[
            UPDATE T_CTWO     
-	          SET CT_TITLE 			= #{ctTitle} 
-	            , CT_CONT 			= #{ctCont}
-	            , CT_RVSE_DT 		= NOW()
-                , CT_RVSE_SEQ		= #{loginSeq}
-                , CT_TITLE			= #{ctTitle}
-	            , CT_ATCH_FILE_SEQ 	= #{ctAtchFileSeq}
+	          SET CT_TITLE 						= #{ctTitle} 
+           		, CT_CONT 						= #{ctCont}
+	            , CT_RVSE_DT 					= NOW()
+                , CT_RVSE_SEQ					= #{loginSeq}
+                , CT_TITLE						= #{ctTitle}
+            	, CT_DAT_SEQ 					= #{ctDatRgstDt}
+           		, CT_DAT_RGST_SEQ 				= #{ctDatRgstSeq}
+	            , CT_DAT_RVSE_SEQ 				= #{loginSeq}
+	            , F_USER_NM(CT_DAT_RGST_SEQ) 	= #{ctDatName}
+	            , CT_DAT_RVSE_DT 				= #{}
+	            , CT_DAT_TITLE 					= #{ctDatTitle}
+	            , CT_DAT_CONT 					= #{ctDatCont}
+	            , CT_DAT_ATCH_FILE_SEQ 			= #{ctDatAtchFileSeq}
 	        WHERE CT_SEQ = #{ctSeq}  
       ]]>
    </update>

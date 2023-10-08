@@ -59,22 +59,22 @@ public class CmmnDAO {
 	 * @exception Exception Exception
 	 */
 	public List<?> selectList(final Object paramVO, final String queryId) throws Exception {
-		// 데이터베이스에서 데이터를 조회하고 그 결과를 리스트로 반환하는 메서드입니다.
+// 데이터베이스에서 데이터를 조회하고 그 결과를 리스트로 반환하는 메서드입니다.
 		String mQueryId = "";
-		// mQueryId라는 빈 문자열을 생성합니다. 이 변수는 SQL 쿼리 ID를 재구성하기 위해 사용됩니다.
+// mQueryId라는 빈 문자열을 생성합니다. 이 변수는 SQL 쿼리 ID를 재구성하기 위해 사용됩니다.
 		if (queryId != null && (queryId.equals("") || queryId.indexOf(".") < 0)) {
-			//queryId가 null이 아니고, 빈 문자열이거나 점(.)을 포함하지 않는 경우를 체크합니다.
+// queryId가 null이 아니고, 빈 문자열이거나 점(.)을 포함하지 않는 경우를 체크합니다.
 			mQueryId = queryId + ".selectList";
-//			SQL 쿼리 ID가 유효한 형태가 아니면, queryId에 ".selectList"를 추가하여 적절한 형태로 만듭니다.
+// SQL 쿼리 ID가 유효한 형태가 아니면, queryId에 ".selectList"를 추가하여 적절한 형태로 만듭니다.
 		} else {
 			mQueryId = queryId;
 		}
 		return template.selectList(PACKAGE_NAME + mQueryId, paramVO);
-//		SQL 쿼리 ID가 유효한 형태가 아니면, queryId에 ".selectList"를 추가하여 적절한 형태로 만듭니다.
-//		PACKAGE_NAME은 클래스에서 정의된 상수 문자열이고, mQueryId는 위에서 재구성한 SQL 쿼리 ID입니다.
-//		조회된 데이터는 List<?> 형태로 반환됩니다.
+// SQL 쿼리 ID가 유효한 형태가 아니면, queryId에 ".selectList"를 추가하여 적절한 형태로 만듭니다.
+// PACKAGE_NAME은 클래스에서 정의된 상수 문자열이고, mQueryId는 위에서 재구성한 SQL 쿼리 ID입니다.
+// 조회된 데이터는 List<?> 형태로 반환됩니다.
 	}
-	// 이 코드는 MyBatis를 사용하여 데이터베이스에서 데이터를 조회하는 메서드의 예시
+// 이 코드는 MyBatis를 사용하여 데이터베이스에서 데이터를 조회하는 메서드의 예시
 
 	
 
