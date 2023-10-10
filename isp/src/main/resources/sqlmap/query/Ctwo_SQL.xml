@@ -110,22 +110,28 @@
       /* Ctwo.updateContents */
       <![CDATA[
            UPDATE T_CTWO     
-	          SET CT_TITLE 						= #{ctTitle} 
-           		, CT_CONT 						= #{ctCont}
-	            , CT_RVSE_DT 					= NOW()
-                , CT_RVSE_SEQ					= #{loginSeq}
-                , CT_TITLE						= #{ctTitle}
-            	, CT_DAT_SEQ 					= #{ctDatRgstDt}
-           		, CT_DAT_RGST_SEQ 				= #{ctDatRgstSeq}
-	            , CT_DAT_RVSE_SEQ 				= #{loginSeq}
-	            , F_USER_NM(CT_DAT_RGST_SEQ) 	= #{ctDatName}
-	            , CT_DAT_RVSE_DT 				= #{}
-	            , CT_DAT_TITLE 					= #{ctDatTitle}
+	          SET  CT_DAT_TITLE 					= #{ctDatTitle}
 	            , CT_DAT_CONT 					= #{ctDatCont}
 	            , CT_DAT_ATCH_FILE_SEQ 			= #{ctDatAtchFileSeq}
 	        WHERE CT_SEQ = #{ctSeq}  
       ]]>
    </update>
+   
+      <update id="updateDatContents" parameterType="ctwoVO">
+      /* Ctwo.updateDatContents */
+      <![CDATA[
+           UPDATE T_CTWO     
+	          SET  CT_DAT_TITLE 					= #{ctDatTitle}
+	            , CT_DAT_CONT 					= #{ctDatCont}
+	            , CT_DAT_ATCH_FILE_SEQ 			= #{ctDatAtchFileSeq}
+	        WHERE CT_SEQ = #{ctSeq}  
+      ]]>
+   </update>
+   
+   
+   
+   
+   
    
    <update id="deleteContents" parameterType="ctwoVO">
       /* Ctwo.deleteContents */

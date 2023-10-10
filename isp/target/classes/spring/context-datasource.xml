@@ -22,7 +22,7 @@ destroy-method 속성은 이 빈이 소멸될 때 호출할 메서드를 지정�
 -->	
 
 		<property 	name="driverClassName" 	value="com.mysql.jdbc.Driver" />
-		<property 	name="url" 				value="jdbc:mysql://localhost:3307/isp" />
+		<property 	name="url" 				value="jdbc:mysql://localhost:3306/isp" />
 		<property 	name="username" 		value="root" />
 		<property 	name="password" 		value="1111" />
 	</bean> 

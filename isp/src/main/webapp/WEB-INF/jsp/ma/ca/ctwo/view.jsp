@@ -7,6 +7,7 @@
 <div class="Content_box">
 	<form:form commandName="searchVO" name="defaultFrm" id="defaultFrm" method="post">
 		<form:hidden path="ctSeq" id="ctSeq"/>
+		<form:hidden path="ctDatName" id="ctDatName"/>
 		<%-- <form:hidden path="pageIndex" id="pageIndex"/>  --%>
 		<form:hidden path="ctAtchFileSeq" id="ctAtchFileSeq"/>
 		<jsp:directive.include file="/WEB-INF/jsp/cmmn/inc/incSearchForm.jsp"/>
@@ -61,15 +62,7 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	<div class="top_title clear">
-		<h3 class="tit_page">댓글 목록</h3>
-	</div>
+			
 			
 				<div class="tbl_wrap" >
 					<table class="tbl_row_type01"> 
@@ -103,12 +96,13 @@
 					</table>
 				</div>
 			<div class="btn_area">
-				<a href="javascript:void(0);" class="btn btn_mdl btn_${searchVO.procType eq 'update'? 'rewrite':'save'}" id="btn_submit">${searchVO.procType eq  'update' ? '수정' : '등록'}</a>
+				<a href="javascript:void(0);" class="btn btn_mdl btn_save" id="btn_submit" >등록</a>
+				
 				<c:if test="${searchVO.procType eq  'update'}">
 					<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
 				</c:if>
 				<c:if test="${searchVO.procType ne  'update'}">
-					<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_list">취소</a>
+					<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
 				</c:if>
 			</div>
 	
@@ -141,7 +135,7 @@
 					return false;
 				}
 
-				fncPageBoard('submit', '${searchVO.procType}Proc.do');
+				fncPageBoard('submit', 'update2Form.do');
 				return false;
 			});
 

@@ -42,6 +42,8 @@ public class CtwoVO extends CmmnDefaultVO implements Serializable {
 	private String ctDatTitle;				// 댓글 제목
 	private String ctDatCont;				// 댓글 내용
 	private String ctDatAtchFileSeq;		// 댓글 첨부파일
+	private String ctDatName;					// 컨텐츠내용
+
 	
 	
 	
@@ -146,6 +148,12 @@ public class CtwoVO extends CmmnDefaultVO implements Serializable {
 	}
 	public void setCtDatAtchFileSeq(String ctDatAtchFileSeq) {
 		this.ctDatAtchFileSeq = ctDatAtchFileSeq;
+	}
+	public String getCtDatName() {
+		return ctDatName;
+	}
+	public void setCtDatName(String ctDatName) {
+		this.ctDatName = ctDatName;
 	}
 
 	

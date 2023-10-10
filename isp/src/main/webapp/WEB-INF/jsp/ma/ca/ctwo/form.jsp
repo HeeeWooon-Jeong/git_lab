@@ -43,10 +43,10 @@
 		</div>
 		<div class="btn_area">
 			<a href="javascript:void(0);" class="btn btn_mdl btn_${searchVO.procType eq 'update'? 'rewrite':'save'}" id="btn_submit">${searchVO.procType eq  'update' ? '수정' : '등록'}</a>
-			<c:if test="${searchVO.procType eq  'update'}">
+			<c:if test="${searchVO.procType eq 'update'}">
 				<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
 			</c:if>
-			<c:if test="${searchVO.procType ne  'update'}">
+			<c:if test="${searchVO.procType ne 'update'}">
 				<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_list">취소</a>
 			</c:if>
 		</div>

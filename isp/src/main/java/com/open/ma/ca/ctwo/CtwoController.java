@@ -154,6 +154,16 @@ public class CtwoController {
 		CtwoVO ctwoVO = new CtwoVO();
 		if (procType.equals("update")) {
 			ctwoVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
+		}else if(procType.equals("update2")){
+			cmmnService.updateContents(searchVO, PROGRAM_ID);				
+		}
+		
+		if(procType.equals("update2")){
+			model.addAttribute("message", "수정되었습니다.");
+			model.addAttribute("pName", "ctSeq");	
+			model.addAttribute("pValue", searchVO.getCtSeq());
+			model.addAttribute("cmmnScript", "view.do");
+			return "cmmn/execute";
 		}
 		searchVO.setProcType(procType);
 		ctwoVO.setSearchVO(searchVO);
