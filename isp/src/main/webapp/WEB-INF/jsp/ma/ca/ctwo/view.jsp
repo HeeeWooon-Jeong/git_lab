@@ -60,8 +60,56 @@
 		<a href="javascript:void(0);" id="btn_list" class="btn btn_mdl btn_list" >목록</a>
 	</div>	
 	
+<h3 class="tit_page">댓글 목록</h3>
 	
-	
+	<div class="tbl_top">
+	<div class="tbl_left"><i class="i_all"></i><span>전체 : <strong>${paginationInfo.totalRecordCount}</strong> 건(${searchVO.pageIndex}/${paginationInfo.totalPageCount} Page) </span></div>
+	<div class="tbl_right"></div>
+</div>
+<div class="tbl_wrap">
+	<table class="tbl_col_type01">
+		<caption>목록</caption>
+		<colgroup> 
+			<col style="width:5%">
+			<col style="width:65%">
+			<col style="width:15%">
+			<col style="width:15%">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col">번호</th>
+				<th scope="col" class="subject">제목</th>
+				<th scope="col">등록자</th>
+				<th scope="col">등록일</th> 
+			</tr>
+
+		</thead>
+		<tbody>
+			
+			<c:choose>
+				<c:when test="${empty ctwoVO.ctDatSeq}">
+					<tr style="heigh:200;"><td colspan="6" class="no_data">데이터가 없습니다.</td></tr>
+				</c:when>
+				<c:otherwise>
+							<tr class="cursor">
+							<td>${ctwoVO.ctDatSeq}</td>
+							<td>${ctwoVO.ctDatTitle}</td>
+							<td>${ctwoVO.ctDatName}</td>
+							<td>${ctwoVO.ctDatRgstDt}</td>
+						</tr>
+						<tr>
+							<th scope="row">첨부파일</th>
+							<td colspan="3">
+								<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${ctwoVO.ctDatAtchFileSeq }&fileCnt=5&atchFileIdNm=ctDatAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
+							</td>
+						</tr>  
+				</c:otherwise>
+			</c:choose>
+			
+		</tbody>
+	</table>
+</div>
+<%-- //tbl end --%>
 			
 			
 				<div class="tbl_wrap" >
@@ -97,10 +145,6 @@
 				</div>
 			<div class="btn_area">
 				<a href="javascript:void(0);" class="btn btn_mdl btn_save" id="btn_submit" >등록</a>
-				
-				<c:if test="${searchVO.procType eq  'update'}">
-					<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
-				</c:if>
 				<c:if test="${searchVO.procType ne  'update'}">
 					<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
 				</c:if>

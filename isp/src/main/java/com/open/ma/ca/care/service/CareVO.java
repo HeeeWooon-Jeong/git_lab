@@ -27,28 +27,24 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	private String caRgstSeq;		// 등록자
 	private String caRvseSeq;		// 수정자
 	private String caRvseDt;		// 수정일
-	private String caErum;			// 이름
-	private String caPhon;			// 연락처
-	private String caVehi;			// 관리차량
-	private String caNum;			// 차량번호
-	private String caDel;			// 배송지
-	private String caLocal;			// 방문지역
-	private String caTf;			// 배송여부
-	private String caEtc;			// 특이사항
-	private String caStart;			// 출근시간
-	private String caEnd;			// 퇴근시간
-	private String caVac;			// 휴가일
-	private String caCode;			// 사원코드
-	private String caLev;			// 사원레벨
-	private String caSco;			// 인사평점
-	private String caPrd;			// 배송물품
-	private String caCost;			// 물품가격
-	private String caCont;			// 컨텐츠내용
 	private String caName;			// 등록자
+	private String caTitle;			// 컨텐츠 제목
+	private String caCont;			// 컨텐츠 내용
 	private String caAtchFileSeq;	// 파일첨부
+// 댓글
+	private String caDatSeq;			// 댓글 시퀀스 넘버
+	private String caDatRgstDt;			// 댓글 등록일
+	private String caDatRgstSeq;		// 댓글 등록자
+	private String caDatRvseSeq;		// 댓글 수정자
+	private String caDatRvseDt;			// 댓글 수정일
+	private String caDatTitle;			// 댓글 컨텐츠 제목
+	private String caDatCont;			// 댓글 컨텐츠내용
+	private String caDatAtchFileSeq;	// 파일첨부
 	
 	
-
+	
+	
+	
 	public String getCaSeq() {
 		return caSeq;
 	}
@@ -79,101 +75,17 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	public void setCaRvseDt(String caRvseDt) {
 		this.caRvseDt = caRvseDt;
 	}
-	public String getCaErum() {
-		return caErum;
+	public String getCaName() {
+		return caName;
 	}
-	public void setCaErum(String caErum) {
-		this.caErum = caErum;
+	public void setCaName(String caName) {
+		this.caName = caName;
 	}
-	public String getCaPhon() {
-		return caPhon;
+	public String getCaTitle() {
+		return caTitle;
 	}
-	public void setCaPhon(String caPhon) {
-		this.caPhon = caPhon;
-	}
-	public String getCaVehi() {
-		return caVehi;
-	}
-	public void setCaVehi(String caVehi) {
-		this.caVehi = caVehi;
-	}
-	public String getCaNum() {
-		return caNum;
-	}
-	public void setCaNum(String caNum) {
-		this.caNum = caNum;
-	}
-	public String getCaDel() {
-		return caDel;
-	}
-	public void setCaDel(String caDel) {
-		this.caDel = caDel;
-	}
-	public String getCaLocal() {
-		return caLocal;
-	}
-	public void setCaLocal(String caLocal) {
-		this.caLocal = caLocal;
-	}
-	public String getCaTf() {
-		return caTf;
-	}
-	public void setCaTf(String caTf) {
-		this.caTf = caTf;
-	}
-	public String getCaEtc() {
-		return caEtc;
-	}
-	public void setCaEtc(String caEtc) {
-		this.caEtc = caEtc;
-	}
-	public String getCaStart() {
-		return caStart;
-	}
-	public void setCaStart(String caStart) {
-		this.caStart = caStart;
-	}
-	public String getCaEnd() {
-		return caEnd;
-	}
-	public void setCaEnd(String caEnd) {
-		this.caEnd = caEnd;
-	}
-	public String getCaVac() {
-		return caVac;
-	}
-	public void setCaVac(String caVac) {
-		this.caVac = caVac;
-	}
-	public String getCaCode() {
-		return caCode;
-	}
-	public void setCaCode(String caCode) {
-		this.caCode = caCode;
-	}
-	public String getCaLev() {
-		return caLev;
-	}
-	public void setCaLev(String caLev) {
-		this.caLev = caLev;
-	}
-	public String getCaSco() {
-		return caSco;
-	}
-	public void setCaSco(String caSco) {
-		this.caSco = caSco;
-	}
-	public String getCaPrd() {
-		return caPrd;
-	}
-	public void setCaPrd(String caPrd) {
-		this.caPrd = caPrd;
-	}
-	public String getCaCost() {
-		return caCost;
-	}
-	public void setCaCost(String caCost) {
-		this.caCost = caCost;
+	public void setCaTitle(String caTitle) {
+		this.caTitle = caTitle;
 	}
 	public String getCaCont() {
 		return caCont;
@@ -181,18 +93,66 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	public void setCaCont(String caCont) {
 		this.caCont = caCont;
 	}
-	public String getCaName() {
-		return caName;
-	}
-	public void setCaName(String caName) {
-		this.caName = caName;
-	}
 	public String getCaAtchFileSeq() {
 		return caAtchFileSeq;
 	}
 	public void setCaAtchFileSeq(String caAtchFileSeq) {
 		this.caAtchFileSeq = caAtchFileSeq;
 	}
+	public String getCaDatSeq() {
+		return caDatSeq;
+	}
+	public void setCaDatSeq(String caDatSeq) {
+		this.caDatSeq = caDatSeq;
+	}
+	public String getCaDatRgstDt() {
+		return caDatRgstDt;
+	}
+	public void setCaDatRgstDt(String caDatRgstDt) {
+		this.caDatRgstDt = caDatRgstDt;
+	}
+	public String getCaDatRgstSeq() {
+		return caDatRgstSeq;
+	}
+	public void setCaDatRgstSeq(String caDatRgstSeq) {
+		this.caDatRgstSeq = caDatRgstSeq;
+	}
+	public String getCaDatRvseSeq() {
+		return caDatRvseSeq;
+	}
+	public void setCaDatRvseSeq(String caDatRvseSeq) {
+		this.caDatRvseSeq = caDatRvseSeq;
+	}
+	public String getCaDatRvseDt() {
+		return caDatRvseDt;
+	}
+	public void setCaDatRvseDt(String caDatRvseDt) {
+		this.caDatRvseDt = caDatRvseDt;
+	}
+	public String getCaDatTitle() {
+		return caDatTitle;
+	}
+	public void setCaDatTitle(String caDatTitle) {
+		this.caDatTitle = caDatTitle;
+	}
+	public String getCaDatCont() {
+		return caDatCont;
+	}
+	public void setCaDatCont(String caDatCont) {
+		this.caDatCont = caDatCont;
+	}
+	public String getCaDatAtchFileSeq() {
+		return caDatAtchFileSeq;
+	}
+	public void setCaDatAtchFileSeq(String caDatAtchFileSeq) {
+		this.caDatAtchFileSeq = caDatAtchFileSeq;
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 }

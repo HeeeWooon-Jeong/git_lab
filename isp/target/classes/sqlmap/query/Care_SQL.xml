@@ -23,22 +23,6 @@
 	            , DATE_FORMAT(CA_RGST_DT,'%Y.%m.%d')caRgstDt
 	            , CA_RGST_SEQ 						caRgstSeq
                 , F_USER_NM(CA_RGST_SEQ) 			caName
-	            , CA_ERUM 							caErum
-	            , CA_PHON 							caPhon
-	            , CA_VEHI 							caVehi
-	            , CA_NUM 							caNum
-	            , CA_DEL 							caDel
-	            , CA_LOCAL 							caLocal
-	            , CA_TF								caTf
-	            , CA_ETC 							caEtc
-	            , CA_START 							caStart
-	            , CA_END 							caEnd
-	            , CA_VAC 							caVac
-	            , CA_CODE 							caCode
-	            , CA_LEV 							caLev
-	            , CA_SCO 							caSco
-	            , CA_PRD 							caPrd
-	            , CA_COST 							caCost
 	            , CA_CONT 							caCont
 	            , CA_ATCH_FILE_SEQ 					caAtchFileSeq
 	         FROM T_CARE 
@@ -56,22 +40,6 @@
 	            , DATE_FORMAT(CA_RGST_DT,'%Y.%m.%d') caRgstDt
 	            , CA_RGST_SEQ 						caRgstSeq
                 , F_USER_NM(CA_RGST_SEQ) 			caName
-	            , CA_ERUM 							caErum
-	            , CA_PHON 							caPhon
-	            , CA_VEHI 							caVehi
-	            , CA_NUM 							caNum
-	            , CA_DEL 							caDel
-	            , CA_LOCAL 							caLocal
-	            , CA_TF								caTf
-	            , CA_ETC 							caEtc
-	            , CA_START 							caStart
-	            , CA_END 							caEnd
-	            , CA_VAC 							caVac
-	            , CA_CODE 							caCode
-	            , CA_LEV 							caLev
-	            , CA_SCO 							caSco
-	            , CA_PRD 							caPrd
-	            , CA_COST 							caCost
 	            , CA_CONT 							caCont
 	            , CA_ATCH_FILE_SEQ 					caAtchFileSeq
 	         FROM T_CARE 
@@ -101,44 +69,12 @@
            INSERT INTO T_CARE(
 	              CA_SEQ 
 	            , CA_RGST_SEQ 
-	            , CA_ERUM 
-	            , CA_PHON
-	            , CA_VEHI 
-	            , CA_NUM 
-	            , CA_DEL
-	            , CA_LOCAL
-	            , CA_TF 							
-	            , CA_ETC 							
-	            , CA_START 							
-	            , CA_END 							
-	            , CA_VAC 							
-	            , CA_CODE
-	            , CA_LEV
-	            , CA_SCO
-	            , CA_PRD
-	            , CA_COST
 	            , CA_CONT
 	            , CA_ATCH_FILE_SEQ 
 	         )
          VALUES (
              (SELECT IFNULL(MAX(CA.CA_SEQ)+1,1) FROM T_CARE CA)
 	            , #{loginSeq}
-	            , #{caErum}
-	            , #{caPhon}
-	            , #{caVehi}
-	            , #{caNum}
-	            , #{caDel}
-	            , #{caLocal}
-	            , #{caTf}
-	            , #{caEtc}
-	            , #{caStart}
-	            , #{caEnd}
-	            , #{caVac}
-	            , #{caCode}
-	            , #{caLev}
-	            , #{caSco}
-	            , #{caPrd}
-	            , #{caCost}
 	            , #{caCont}
 	            , #{caAtchFileSeq}
 	         )
@@ -152,21 +88,6 @@
 	          SET CA_ERUM 			= #{caErum} 
 	            , CA_RVSE_DT 		= NOW()
                 , CA_RVSE_SEQ		= #{loginSeq}
-	            , CA_PHON 			= #{caPhon}
-	            , CA_VEHI  			= #{caVehi}
-	            , CA_NUM  			= #{caNum}
-	            , CA_DEL 			= #{caDel}
-	            , CA_LOCAL 			= #{caLocal}
-	            , CA_TF 			= #{caTf}
-	            , CA_ETC 			= #{caEtc}
-	            , CA_START 			= #{caStart}
-	            , CA_END 			= #{caEnd}
-	            , CA_VAC 			= #{caVac}
-	            , CA_CODE 			= #{caCode}
-	            , CA_LEV 			= #{caLev}
-	            , CA_SCO 			= #{caSco}
-	            , CA_PRD			= #{caPrd}
-	            , CA_COST 			= #{caCost}
 	            , CA_CONT 			= #{caCont}
 	            , CA_ATCH_FILE_SEQ 	= #{caAtchFileSeq}
 	        WHERE CA_SEQ = #{caSeq}  

@@ -177,7 +177,6 @@ public class CmmnDAO {
 		} else {
 			mQueryId = queryId;
 		}
-
 		template.update(PACKAGE_NAME + mQueryId, paramVO);
 	}
 
