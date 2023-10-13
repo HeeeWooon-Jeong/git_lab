@@ -29,7 +29,7 @@
 		</thead>
 		<tbody>
 			<c:choose>
-				<c:when test="${fn:length(resultList) gt 0}">
+				<c:when test=" ${fn:length(resultList) gt 0 }">
 				<%-- 
 <c:when test="${fn:length(resultList) gt 0}">: 
 이 부분은 resultList라는 변수의 길이가 0보다 큰 경우에만 아래 내용을 실행합니다. 

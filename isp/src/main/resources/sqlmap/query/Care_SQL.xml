@@ -5,10 +5,10 @@
    <sql id="Where">
       <if test="searchKeyword !=null and searchKeyword !=''">
          <if test="searchCondition !=null and searchCondition !='' and searchCondition ==0">
-            AND (TITLE LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like CONCAT('%',#{searchKeyword},'%'))
+            AND ( LIKE CONCAT('%',#{searchKeyword},'%') OR CONT like CONCAT('%',#{searchKeyword},'%'))
          </if>
          <if test="searchCondition !=null and searchCondition !='' and searchCondition ==1">
-            AND TITLE LIKE CONCAT('%',#{searchKeyword},'%')
+            AND  LIKE CONCAT('%',#{searchKeyword},'%')
          </if>
          <if test="searchCondition !=null and searchCondition !='' and searchCondition ==2">
             AND CONT LIKE CONCAT('%',#{searchKeyword},'%')
@@ -19,13 +19,25 @@
    <select id="selectContents" parameterType="careVO" resultType="careVO">
       /* Care.selectContents */
       <![CDATA[
-           SELECT CA_SEQ 							caSeq
-	            , DATE_FORMAT(CA_RGST_DT,'%Y.%m.%d')caRgstDt
-	            , CA_RGST_SEQ 						caRgstSeq
-                , F_USER_NM(CA_RGST_SEQ) 			caName
-	            , CA_CONT 							caCont
-	            , CA_ATCH_FILE_SEQ 					caAtchFileSeq
-	         FROM T_CARE 
+           SELECT CA_SEQ 								caSeq
+	            , DATE_FORMAT(CA_RGST_DT,'%Y.%m.%d')	caRgstDt
+	            , CA_RGST_SEQ 							caRgstSeq
+                , F_USER_NM(CA_RGST_SEQ) 				caName
+                , CA_RVSE_SEQ							caRvseSeq
+                , CA_RVSE_DT							caRvseDT
+	            , CA_TITLE 								caTitle
+	            , CA_CONT 								caCont
+	            , CA_ATCH_FILE_SEQ 						caAtchFileSeq
+	            , CA_DAT_SEQ							caDatSeq
+				, DATE_FORMAT(CA_DAT_RGST_DT,'%Y.%m.%d')caDatRgstDt
+	            , CA_DAT_RGST_SEQ 						caDatRgstSeq
+                , F_USER_NM(CA_RGST_SEQ) 				caDatName
+                , F_USER_NM(CA_RGST_SEQ)				caDatRvseSeq
+                , CA_DAT_RVSE_DT						caDatRvseDT
+	            , CA_DAT_TITLE 							caDatTitle
+	            , CA_DAT_CONT 							caDatCont
+	            , CA_DAT_ATCH_FILE_SEQ 					caDatAtchFileSeq	            
+	         FROM T_CARE
             WHERE CA_USE_YN='Y'   
               AND CA_SEQ = #{caSeq}
       ]]>
@@ -39,10 +51,21 @@
            SELECT CA_SEQ 							caSeq
 	            , DATE_FORMAT(CA_RGST_DT,'%Y.%m.%d') caRgstDt
 	            , CA_RGST_SEQ 						caRgstSeq
-                , F_USER_NM(CA_RGST_SEQ) 			caName
+                , CA_RVSE_DT						caRvseDT
+	            , CA_RVSE_SEQ						caRvseSeq
+                , F_USER_NM(CA_RGST_SEQ)			caName
+	            , CA_TITLE 							caTitle
 	            , CA_CONT 							caCont
 	            , CA_ATCH_FILE_SEQ 					caAtchFileSeq
-	         FROM T_CARE 
+   	            , CA_DAT_SEQ							caDatSeq
+	            , CA_DAT_RGST_SEQ 						caDatRgstSeq
+                , F_USER_NM(CA_RGST_SEQ) 				caDatName
+                , CA_DAT_RVSE_SEQ						caDatRvseSeq
+                , CA_DAT_RVSE_DT						caDatRvseDT
+	            , CA_DAT_TITLE 							caDatTitle
+	            , CA_DAT_CONT 							caDatCont
+	            , CA_DAT_ATCH_FILE_SEQ 					caDatAtchFileSeq	            
+	         FROM T_CARE          
 	        WHERE CA_USE_YN='Y'   
          ]]>
            <include refid="Where"/>    
@@ -67,16 +90,18 @@
       /* Care.insertContents */
       <![CDATA[
            INSERT INTO T_CARE(
-	              CA_SEQ 
-	            , CA_RGST_SEQ 
-	            , CA_CONT
+	              CA_SEQ   
+	            , CA_TITLE 
+	            , CA_CONT  
 	            , CA_ATCH_FILE_SEQ 
-	         )
+	            , CA_RGST_SEQ
+   	         )
          VALUES (
              (SELECT IFNULL(MAX(CA.CA_SEQ)+1,1) FROM T_CARE CA)
-	            , #{loginSeq}
-	            , #{caCont}
+	            , #{caTitle}  
+	            , #{caCont}   
 	            , #{caAtchFileSeq}
+	            , #{loginSeq}
 	         )
       ]]>
    </insert>
@@ -85,14 +110,17 @@
       /* Care.updateContents */
       <![CDATA[
            UPDATE T_CARE     
-	          SET CA_ERUM 			= #{caErum} 
-	            , CA_RVSE_DT 		= NOW()
-                , CA_RVSE_SEQ		= #{loginSeq}
-	            , CA_CONT 			= #{caCont}
-	            , CA_ATCH_FILE_SEQ 	= #{caAtchFileSeq}
+	          SET CA_DAT_RGST_DT				= NOW()
+	            , CA_DAT_RVSE_DT				= NOW()
+	            , CA_DAT_SEQ					= (SELECT IFNULL(MAX(CA.CA_DAT_SEQ)+1,1) FROM T_CARE CA)
+	            , CA_DAT_RGST_SEQ				= #{loginSeq}
+	          	, CA_DAT_TITLE 					= #{caDatTitle}
+	            , CA_DAT_CONT 					= #{caDatCont}
+	            , CA_DAT_ATCH_FILE_SEQ 			= #{caDatAtchFileSeq}
 	        WHERE CA_SEQ = #{caSeq}  
       ]]>
    </update>
+   
    
    <update id="deleteContents" parameterType="careVO">
       /* Care.deleteContents */

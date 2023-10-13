@@ -22,29 +22,27 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	 */
 	private static final long serialVersionUID = 2172623835339565860L;
 	
-	private String caSeq;			// 시퀀스 넘버
-	private String caRgstDt;		// 등록일
-	private String caRgstSeq;		// 등록자
-	private String caRvseSeq;		// 수정자
-	private String caRvseDt;		// 수정일
-	private String caName;			// 등록자
-	private String caTitle;			// 컨텐츠 제목
-	private String caCont;			// 컨텐츠 내용
-	private String caAtchFileSeq;	// 파일첨부
-// 댓글
-	private String caDatSeq;			// 댓글 시퀀스 넘버
-	private String caDatRgstDt;			// 댓글 등록일
-	private String caDatRgstSeq;		// 댓글 등록자
-	private String caDatRvseSeq;		// 댓글 수정자
-	private String caDatRvseDt;			// 댓글 수정일
-	private String caDatTitle;			// 댓글 컨텐츠 제목
-	private String caDatCont;			// 댓글 컨텐츠내용
-	private String caDatAtchFileSeq;	// 파일첨부
+	private String caSeq;					// 시퀀스 넘버
+	private String caRgstDt;				// 등록일
+	private String caRgstSeq;				// 등록자
+	private String caRvseDt;				// 수정일
+	private String caRvseSeq;				// 수정자
+	private String caName;					// 컨텐츠내용
+	private String caTitle;					// 컨텐츠내용
+	private String caCont;					// 컨텐츠내용
+	private String caAtchFileSeq;			// 파일첨부
+
 	
-	
-	
-	
-	
+	/*	댓글 부분 */
+	private String caDatSeq;				// 댓글 시퀀스
+	private String caDatRgstDt;				// 댓글 등록일
+	private String caDatRgstSeq;			// 댓글 등록자
+	private String caDatRvseDt;				// 댓글 수정일
+	private String caDatRvseSeq;			// 댓글 수정자
+	private String caDatTitle;				// 댓글 제목
+	private String caDatCont;				// 댓글 내용
+	private String caDatAtchFileSeq;		// 댓글 첨부파일
+	private String caDatName;				// 컨텐츠내용
 	public String getCaSeq() {
 		return caSeq;
 	}
@@ -63,17 +61,17 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	public void setCaRgstSeq(String caRgstSeq) {
 		this.caRgstSeq = caRgstSeq;
 	}
-	public String getCaRvseSeq() {
-		return caRvseSeq;
-	}
-	public void setCaRvseSeq(String caRvseSeq) {
-		this.caRvseSeq = caRvseSeq;
-	}
 	public String getCaRvseDt() {
 		return caRvseDt;
 	}
 	public void setCaRvseDt(String caRvseDt) {
 		this.caRvseDt = caRvseDt;
+	}
+	public String getCaRvseSeq() {
+		return caRvseSeq;
+	}
+	public void setCaRvseSeq(String caRvseSeq) {
+		this.caRvseSeq = caRvseSeq;
 	}
 	public String getCaName() {
 		return caName;
@@ -117,17 +115,17 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	public void setCaDatRgstSeq(String caDatRgstSeq) {
 		this.caDatRgstSeq = caDatRgstSeq;
 	}
-	public String getCaDatRvseSeq() {
-		return caDatRvseSeq;
-	}
-	public void setCaDatRvseSeq(String caDatRvseSeq) {
-		this.caDatRvseSeq = caDatRvseSeq;
-	}
 	public String getCaDatRvseDt() {
 		return caDatRvseDt;
 	}
 	public void setCaDatRvseDt(String caDatRvseDt) {
 		this.caDatRvseDt = caDatRvseDt;
+	}
+	public String getCaDatRvseSeq() {
+		return caDatRvseSeq;
+	}
+	public void setCaDatRvseSeq(String caDatRvseSeq) {
+		this.caDatRvseSeq = caDatRvseSeq;
 	}
 	public String getCaDatTitle() {
 		return caDatTitle;
@@ -147,12 +145,14 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	public void setCaDatAtchFileSeq(String caDatAtchFileSeq) {
 		this.caDatAtchFileSeq = caDatAtchFileSeq;
 	}
+	public String getCaDatName() {
+		return caDatName;
+	}
+	public void setCaDatName(String caDatName) {
+		this.caDatName = caDatName;
+	}
+
 	
 	
-	
-	
-	
-	
-	
-	
+			
 }

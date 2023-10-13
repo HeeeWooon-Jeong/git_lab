@@ -10,6 +10,7 @@
 		<form:hidden path="ctDatName" id="ctDatName"/>
 		<%-- <form:hidden path="pageIndex" id="pageIndex"/>  --%>
 		<form:hidden path="ctAtchFileSeq" id="ctAtchFileSeq"/>
+		<form:hidden path="ctDatAtchFileSeq" id="ctDatAtchFileSeq"/>
 		<jsp:directive.include file="/WEB-INF/jsp/cmmn/inc/incSearchForm.jsp"/>
 		<!-- tbl -->
 		<div class="tbl_wrap">
@@ -129,15 +130,15 @@
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">내용</th>
+								<th scope="row">제목</th>
 								<td colspan="3">
-									<textarea name="ctDatCont" id="ctDatCont" class="txt_area w_100p" style="position: absolute; width: 100%;" height="100%" left:0; top:0; frameborder="0">${util:unEscape(ctwoVO.ctDatCont)}</textarea>
-								</td> 
+									<input type="text" name="ctDatCont" id="ctDatCont" class="text w100p" value="${ctwoVO.ctDatCont}" />
+								</td>
 							</tr>
 							<tr>
 								<th scope="row">첨부파일</th>
 								<td colspan="3">
-									<iframe name="atchFileIdFrame" id="atchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${ctwoVO.ctDatAtchFileSeq }&fileCnt=5&atchFileIdNm=ctDatAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
+									<iframe name="ctDatAtchFileSeq" id="ctDatAtchFileSeq" src="/atch/fileUpload.do?atchFileId=${ctwoVO.ctDatAtchFileSeq }&fileCnt=5&atchFileIdNm=ctDatAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
 								</td>
 							</tr>    
 						</tbody>
@@ -149,40 +150,28 @@
 					<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
 				</c:if>
 			</div>
-	
-	
+			
 	</form:form>
 	
 <script type="text/javascript">
 		var oEditors = [];
 		$(document).ready(function() {
-	<%-- 에디터 --%>
-		nhn.husky.EZCreator.createInIFrame({
-				oAppRef : oEditors,
-				elPlaceHolder : "ctDatCont",
-				sSkinURI : "/resource/editor/SmartEditor2Skin.html",
-				fCreator : "createSEditor2"
-			});
+
 	<%-- 예전에는 bind 썻는데 요즘은 on 쓰니까 bind 보이면 on 해주자--%>
 		$("#btn_submit").on("click", function() {
-
 			if (!$("#ctDatTitle").val()) {
 				alert("제목을 입력해주세요");
 				$("#ctDatTitle").focus();
 				return false;
 			}
-				oEditors.getById["ctDatCont"].exec("UPDATE_CONTENTS_FIELD", []);/* 에디터 */
-
-				if ($("#ctDatCont").val() == '<p>&nbsp;</p>') {
+				if (!$("#ctDatCont").val()) {
 					alert("내용을 입력해주세요");
-					oEditors.getById["ctDatCont"].exec("FOCUS"); /* 에디터 */
+					$("#ctDatCont").focus();
 					return false;
 				}
-
-				fncPageBoard('submit', 'update2Form.do');
+				fncPageBoard('submit', 'updateDatForm.do');
 				return false;
 			});
-
 			$("#btn_returnView").click(function() {
 				$("#boardSeq").val($("#boardGrpSeq").val());
 				fncPageBoard('view', 'view.do');

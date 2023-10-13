@@ -48,66 +48,66 @@
 					<tr>
 						<th scope="row"><strong>등록자</strong></th>
 						<td>
-							${moviesVO.twName }
+							${moviesVO.twName}
 						</td>
 	                    <th scope="row"><strong>등록일</strong></th>
-						<td>${moviesVO.twRgstDt }</td>
+						<td>${moviesVO.twRgstDt}</td>
 					</tr> 
 					<tr>
 						<th scope="row"><strong>개봉일</strong></th>
 						<td>
-							${moviesVO.twStaDate }
+							${moviesVO.twStaDate}
 						</td>
 	                    <th scope="row"><strong>마감일</strong></th>
-						<td>${moviesVO.twEndDate }</td>
+						<td>${moviesVO.twEndDate}</td>
 					</tr> 
 					<tr>
 						<th scope="row"><strong>제목</strong></th>
 						<td>
-							${moviesVO.twTitle }
+							${moviesVO.twTitle}
 						</td>
 	                    <th scope="row"><strong>영문제목</strong></th>
-						<td>${moviesVO.twETitle }</td>
+						<td>${moviesVO.twETitle}</td>
 					</tr> 
 					<tr>
 						<th scope="row"><strong>국가코드</strong></th>
 						<td>
-							${moviesVO.twCode }
+							${moviesVO.twCode}
 						</td>
 	                    <th scope="row"><strong>제작년도</strong></th>
-						<td>${moviesVO.twMakeYear }</td>
+						<td>${moviesVO.twMakeYear}</td>
 					</tr> 
 					<tr>
 						<th scope="row"><strong>제작국가</strong></th>
 						<td>
-							${moviesVO.twNational }
+							${moviesVO.twNational}
 						</td>
 	                    <th scope="row"><strong>유형</strong></th>
-						<td>${moviesVO.twType }</td>
+						<td>${moviesVO.twType}</td>
 					</tr> 
 					<tr>
 						<th scope="row"><strong>장르</strong></th>
 						<td>
-							${moviesVO.twGenre }
+							${moviesVO.twGenre}
 						</td>
 	                    <th scope="row"><strong>감독</strong></th>
-						<td>${moviesVO.twDirector }</td>
+						<td>${moviesVO.twDirector}</td>
 					</tr> 
 					<tr>
 						<th scope="row"><strong>제작사</strong></th>
 						<td>
-							${moviesVO.twCompany }
+							${moviesVO.twCompany}
 						</td>
 	                    <th scope="row"><strong>주연배우</strong></th>
-						<td>${moviesVO.twActor }</td>
+						<td>${moviesVO.twActor}</td>
 					</tr> 
 					<tr>
 						<th scope="row"><strong>배급사</strong></th>
 						<td>
-							${moviesVO.twTcom }
+							${moviesVO.twTcom}
 						</td>
 	                    <th scope="row"><strong>평점</strong></th>
-						<td>${moviesVO.twLati }</td>
+						<td>${moviesVO.twLati}</td>
 					</tr> 
 			
 					<!-- content , file --> 
@@ -142,9 +142,9 @@ twCont가 HTML 특수 문자(예: <, >, & 등)를 포함하고 있더라도 이�
 									
 							코드해석 : src = /atch/fileUpload.do 를 호출 이걸 실행하면 iframe 태그에 내용이 붙여짐
 							
-							webapp->web-inf->jsp->cmmn->fms->fncFileList.jsp 로 이동
+							webapp -> web-inf -> jsp -> cmmn -> fms -> fncFileList.jsp 로 이동
 							ifame 높이설정 부분이 있음 어떤것을 이름을 바꿔야 하는지 알 수 있다
-							 -->
+						-->
 						</td>
 					</tr>
 				</tbody>

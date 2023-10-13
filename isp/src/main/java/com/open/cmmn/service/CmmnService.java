@@ -107,6 +107,8 @@ public interface CmmnService {
 	 */
 	void updateContents(Object paramVO, String queryId) throws Exception;
 
+	
+	void updateDatContents(Object paramVO, String queryId) throws Exception;
 	/**
 	 * <pre>
 	 * Description : 정보를 삭제한다.

@@ -58,7 +58,7 @@ public class CtwoController {
 
     /** folderPath **/
     private final static String folderPath = "/ma/ca/ctwo/";
-
+    
 	//@Resource(name = "beanValidator")
 	//protected DefaultBeanValidator beanValidator;
 	
@@ -106,12 +106,12 @@ public class CtwoController {
 		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 		
-		int totCnt = cmmnService.selectCount(searchVO, PROGRAM_ID );
+		int totCnt = cmmnService.selectCount(searchVO, PROGRAM_ID);
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
 		@SuppressWarnings("unchecked")
-		List<CtwoVO> resultList = (List<CtwoVO>) cmmnService.selectList(searchVO, PROGRAM_ID );
+		List<CtwoVO> resultList = (List<CtwoVO>) cmmnService.selectList(searchVO, PROGRAM_ID);
 		model.addAttribute("resultList", resultList);
 		
 		return folderPath + "addList";
@@ -133,10 +133,10 @@ public class CtwoController {
 		
 		/* 게시판 상세정보 */
 		CtwoVO ctwoVO = new CtwoVO();
-		ctwoVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID );
+		ctwoVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
 		model.addAttribute("ctwoVO", ctwoVO);
 		
-		return ".mLayout:"+ folderPath + "view";
+		return ".mLayout:" + folderPath + "view";
 	}
 
 	/**
@@ -154,18 +154,7 @@ public class CtwoController {
 		CtwoVO ctwoVO = new CtwoVO();
 		if (procType.equals("update")) {
 			ctwoVO = (CtwoVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
-		}else if(procType.equals("update2")){
-			cmmnService.updateContents(searchVO, PROGRAM_ID);				
 		}
-		
-		if(procType.equals("update2")){
-			model.addAttribute("message", "수정되었습니다.");
-			model.addAttribute("pName", "ctSeq");	
-			model.addAttribute("pValue", searchVO.getCtSeq());
-			model.addAttribute("cmmnScript", "view.do");
-			return "cmmn/execute";
-		}
-		searchVO.setProcType(procType);
 		ctwoVO.setSearchVO(searchVO);
 		model.addAttribute("ctwoVO", ctwoVO);
 
@@ -192,13 +181,12 @@ public class CtwoController {
 				cmmnService.insertContents(searchVO, PROGRAM_ID);
 			} else if (procType.equals("update") ) {				
 				cmmnService.updateContents(searchVO, PROGRAM_ID);				
+			} else if(procType.equals("updateDat")){
+				cmmnService.updateDatContents(searchVO, PROGRAM_ID);				
 			} else if (procType.equals("delete")) {				
 				cmmnService.deleteContents(searchVO, PROGRAM_ID);
 			} 
-			
-			status.setComplete(); // 중복 Submit 방지 : 세션에 저장된 model 을 삭제한다.
-			
-			if(procType.equals("update")){
+			if(procType.equals("update")&&procType.equals("updateDat")){
 				model.addAttribute("message", "수정되었습니다.");
 				model.addAttribute("pName", "ctSeq");	
 				model.addAttribute("pValue", searchVO.getCtSeq());
@@ -208,8 +196,8 @@ public class CtwoController {
 				model.addAttribute("message", "등록되었습니다.");
 				model.addAttribute("cmmnScript", "list.do");
 				return "cmmn/execute";
-	    	}else if(procType.equals("delete") ){
-				model.addAttribute("message", "삭제되었습니다..");
+	    	}else if(procType.equals("delete")){
+				model.addAttribute("message", "삭제되었습니다.");
 				model.addAttribute("cmmnScript", "list.do");
 				return "cmmn/execute";
 	    	}else{

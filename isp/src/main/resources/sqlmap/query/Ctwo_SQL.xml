@@ -48,15 +48,15 @@
    <select id="selectList" parameterType="cmmnDefaultVO" resultType="ctwoVO">
       /* Ctwo.selectList */
       <![CDATA[
-           SELECT CT_SEQ 							ctSeq
-	            , DATE_FORMAT(CT_RGST_DT,'%Y.%m.%d') ctRgstDt
-	            , CT_RGST_SEQ 						ctRgstSeq
-                , CT_RVSE_DT						ctRvseDT
-	            , CT_RVSE_SEQ						ctRvseSeq
-                , F_USER_NM(CT_RGST_SEQ)			ctName
-	            , CT_TITLE 							ctTitle
-	            , CT_CONT 							ctCont
-	            , CT_ATCH_FILE_SEQ 					ctAtchFileSeq
+           SELECT CT_SEQ 								ctSeq
+	            , DATE_FORMAT(CT_RGST_DT,'%Y.%m.%d') 	ctRgstDt
+	            , CT_RGST_SEQ 							ctRgstSeq
+                , CT_RVSE_DT							ctRvseDT
+	            , CT_RVSE_SEQ							ctRvseSeq
+                , F_USER_NM(CT_RGST_SEQ)				ctName
+	            , CT_TITLE 								ctTitle
+	            , CT_CONT 								ctCont
+	            , CT_ATCH_FILE_SEQ 						ctAtchFileSeq
    	            , CT_DAT_SEQ							ctDatSeq
 	            , CT_DAT_RGST_SEQ 						ctDatRgstSeq
                 , F_USER_NM(CT_RGST_SEQ) 				ctDatName
@@ -110,6 +110,21 @@
       /* Ctwo.updateContents */
       <![CDATA[
            UPDATE T_CTWO     
+	          SET CT_RGST_DT					= NOW()
+	            , CT_RVSE_DT					= NOW()
+	            , CT_SEQ						= (SELECT IFNULL(MAX(CT.CT_SEQ)+1,1) FROM T_CTWO CT)
+	            , CT_RGST_SEQ					= #{loginSeq}
+	          	, CT_TITLE 						= #{ctTitle}
+	            , CT_CONT 						= #{ctCont}
+	            , CT_ATCH_FILE_SEQ 				= #{ctAtchFileSeq}
+	        WHERE CT_SEQ = #{ctSeq}  
+      ]]>
+   </update>
+   
+   <update id="updateDatContents" parameterType="ctwoVO">
+      /* Ctwo.updateContents */
+      <![CDATA[
+           UPDATE T_CTWO     
 	          SET CT_DAT_RGST_DT				= NOW()
 	            , CT_DAT_RVSE_DT				= NOW()
 	            , CT_DAT_SEQ					= (SELECT IFNULL(MAX(CT.CT_DAT_SEQ)+1,1) FROM T_CTWO CT)
@@ -120,6 +135,7 @@
 	        WHERE CT_SEQ = #{ctSeq}  
       ]]>
    </update>
+   
    
    
    <update id="deleteContents" parameterType="ctwoVO">

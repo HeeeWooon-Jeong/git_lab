@@ -22,8 +22,6 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import com.open.cmmn.model.CmmnDefaultVO;
 import com.open.cmmn.service.CmmnService;
 import com.open.cmmn.service.FileMngService;
-import com.open.cmmn.util.SessionUtil;
-import com.open.cmmn.util.StringUtil;
 import com.open.ma.ca.care.service.CareVO;
 
 import egovframework.rte.fdl.property.EgovPropertyService;
@@ -78,7 +76,7 @@ public class CareController {
 	 * @throws Exception
 	 */
 	@RequestMapping(folderPath + "list.do")
-	public String list(@ModelAttribute("searchVO") CmmnDefaultVO searchVO, ModelMap model, HttpServletRequest request) throws Exception {
+	public String list(@ModelAttribute("searchVO") CmmnDefaultVO searchVO, ModelMap model) throws Exception {
 
 		return ".mLayout:"+ folderPath + "list";
 	}
@@ -131,7 +129,7 @@ public class CareController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(folderPath +"view.do")
-	public String view(@ModelAttribute("searchVO") CareVO searchVO, Model model, HttpServletRequest request) throws Exception {
+	public String view(@ModelAttribute("searchVO") CareVO searchVO, ModelMap model) throws Exception {
 		
 		/* 게시판 상세정보 */
 		CareVO careVO = new CareVO();
@@ -151,12 +149,21 @@ public class CareController {
 	 * @throws Exception
 	 */
 	@RequestMapping(folderPath + "{procType}Form.do")
-	public String form(@ModelAttribute("searchVO") CareVO searchVO, Model model,@PathVariable String procType, HttpServletRequest request) throws Exception {
+	public String form(@ModelAttribute("searchVO") CareVO searchVO, ModelMap model,@PathVariable String procType) throws Exception {
 		
 		CareVO careVO = new CareVO();
 		if (procType.equals("update")) {
 			careVO = (CareVO) cmmnService.selectContents(searchVO, PROGRAM_ID);
-
+		}else if(procType.equals("update2")){
+			cmmnService.updateContents(searchVO, PROGRAM_ID);				
+		}
+		
+		if(procType.equals("update2")){
+			model.addAttribute("message", "수정되었습니다.");
+			model.addAttribute("pName", "ctSeq");	
+			model.addAttribute("pValue", searchVO.getCaSeq());
+			model.addAttribute("cmmnScript", "view.do");
+			return "cmmn/execute";
 		}
 		searchVO.setProcType(procType);
 		careVO.setSearchVO(searchVO);
@@ -176,7 +183,7 @@ public class CareController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = folderPath + "{procType}Proc.do", method = RequestMethod.POST)
-	public String proc(@ModelAttribute("searchVO") CareVO searchVO, Model model, SessionStatus status,@PathVariable String procType, HttpServletRequest request) throws Exception {
+	public String proc(@ModelAttribute("searchVO") CareVO searchVO, ModelMap model, SessionStatus status,@PathVariable String procType) throws Exception {
 		
 		
 		if(procType != null){
@@ -193,7 +200,7 @@ public class CareController {
 			
 			if(procType.equals("update")){
 				model.addAttribute("message", "수정되었습니다.");
-				model.addAttribute("pName", "caSeq");	
+				model.addAttribute("pName", "ctSeq");	
 				model.addAttribute("pValue", searchVO.getCaSeq());
 				model.addAttribute("cmmnScript", "view.do");
 				return "cmmn/execute";

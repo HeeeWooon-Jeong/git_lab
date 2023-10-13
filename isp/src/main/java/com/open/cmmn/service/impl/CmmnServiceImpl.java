@@ -71,6 +71,10 @@ public class CmmnServiceImpl extends EgovAbstractServiceImpl implements CmmnServ
 	public void updateContents(final Object paramVO, final String queryId) throws Exception {
 		cmmnDAO.updateContents(paramVO, queryId);
 	}
+	@Override
+	public void updateDatContents(final Object paramVO, final String queryId) throws Exception {
+		cmmnDAO.updateContents(paramVO, queryId);
+	}
 
 	@Override
 	public void deleteContents(final Object paramVO, final String queryId) throws Exception {
