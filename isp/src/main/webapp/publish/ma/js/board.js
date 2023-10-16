@@ -78,6 +78,12 @@ var fncPageBoard = function(){
 	  case 'update' :  if(seqNm.length > 0 && seqVal.length > 0){ for (var i = 0; i < seqNm.length; i++) { $("#"+seqNm[i]).val('');$("#"+seqNm[i]).val(seqVal[i]); } }
 	  					$("#defaultFrm").attr({"action" : url, "method" : "post", "target" : "_self", "onsubmit" : ""}).submit();//수정폼
 	                   break;
+/*	        seqNm 및 seqVal 두 배열의 길이를 확인하여 두 배열 모두 원소를 가지고 있는지 확인합니다 (length > 0).
+	                   두 배열에 원소가 있는 경우, 반복문을 사용하여 배열을 순회합니다.
+	                   반복문 내에서 각 원소의 인덱스 i에 대해, seqNm[i]로 지정된 ID를 가진 요소를 찾아 해당 요소의 값을 seqVal[i]로 설정합니다.
+	                   반복문을 빠져나온 후, "defaultFrm" ID를 가진 요소를 선택하고 .attr() 메서드를 사용하여 해당 요소의 속성 (action, method, target, onsubmit)을 설정합니다.
+	                   마지막으로, 지정된 URL로 POST 요청을 보내기 위해 "defaultFrm" ID를 가진 폼을 제출합니다.
+	                   이 코드는 양식 데이터 처리와 seqNm 및 seqVal 배열의 값을 기반으로 양식 필드를 동적으로 채우는 데 관련된 것으로 보입니다.*/ 
 	  case 'del'    :  if(confirm("삭제하시겠습니까?")){
 		  					if(seqNm.length > 0 && seqVal.length > 0){ for (var i = 0; i < seqNm.length; i++) { $("#"+seqNm[i]).val('');$("#"+seqNm[i]).val(seqVal[i]); } }
 							$("#defaultFrm").attr({"action" : url, "method" : "post", "target" : "_self", "onsubmit" : ""}).submit();//삭제

@@ -182,11 +182,14 @@ public class CtwoController {
 			} else if (procType.equals("update") ) {				
 				cmmnService.updateContents(searchVO, PROGRAM_ID);				
 			} else if(procType.equals("updateDat")){
-				cmmnService.updateDatContents(searchVO, PROGRAM_ID);				
+				cmmnService.updateDatContents(searchVO, PROGRAM_ID+".updateDatContents");				
 			} else if (procType.equals("delete")) {				
 				cmmnService.deleteContents(searchVO, PROGRAM_ID);
-			} 
-			if(procType.equals("update")&&procType.equals("updateDat")){
+			} else if (procType.equals("deleteDat")) {
+				cmmnService.deleteDatContents(searchVO, PROGRAM_ID+".deleteDatContents");
+			}
+			
+			if(procType.equals("update")){
 				model.addAttribute("message", "수정되었습니다.");
 				model.addAttribute("pName", "ctSeq");	
 				model.addAttribute("pValue", searchVO.getCtSeq());
@@ -196,7 +199,7 @@ public class CtwoController {
 				model.addAttribute("message", "등록되었습니다.");
 				model.addAttribute("cmmnScript", "list.do");
 				return "cmmn/execute";
-	    	}else if(procType.equals("delete")){
+	    	}else if(procType.equals("delete")||procType.equals("deleteDat")){
 				model.addAttribute("message", "삭제되었습니다.");
 				model.addAttribute("cmmnScript", "list.do");
 				return "cmmn/execute";

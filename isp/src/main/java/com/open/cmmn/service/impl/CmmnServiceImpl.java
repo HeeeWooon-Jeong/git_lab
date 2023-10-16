@@ -42,6 +42,10 @@ public class CmmnServiceImpl extends EgovAbstractServiceImpl implements CmmnServ
 		return cmmnDAO.selectList(paramVO, queryId);
 	}
 
+	public List<?> selectDatList(final Object paramVO, final String queryId) throws Exception {
+		return cmmnDAO.selectList(paramVO, queryId);
+	}
+	
 	@Override
 	public Map<?, ?> selectMap(final Object paramVO, final String queryId, final String mapKey) throws Exception {
 		return cmmnDAO.selectMap(paramVO, queryId, mapKey);
@@ -78,6 +82,11 @@ public class CmmnServiceImpl extends EgovAbstractServiceImpl implements CmmnServ
 
 	@Override
 	public void deleteContents(final Object paramVO, final String queryId) throws Exception {
+		cmmnDAO.deleteContents(paramVO, queryId);
+	}
+	
+	@Override
+	public void deleteDatContents(final Object paramVO, final String queryId) throws Exception {
 		cmmnDAO.deleteContents(paramVO, queryId);
 	}
 	

@@ -180,16 +180,6 @@ public class CmmnDAO {
 		template.update(PACKAGE_NAME + mQueryId, paramVO);
 	}
 
-	
-	public void updateDatContents(final Object paramVO, final String queryId) throws Exception {
-		String mQueryId = "";
-		if (queryId != null && (queryId.equals("") || queryId.indexOf(".") < 0)) {
-			mQueryId = queryId + ".updateDatContents";
-		}else{	
-			mQueryId = queryId; 
-		}
-		template.update(PACKAGE_NAME + mQueryId, paramVO);
-	}
 	/**
 	 * <pre>
 	 * Description :  정보를 삭제한다.
@@ -208,6 +198,8 @@ public class CmmnDAO {
 		}
 		template.delete(PACKAGE_NAME + mQueryId, paramVO);
 	}
+	
+
 
 	/**
 	 * <pre>

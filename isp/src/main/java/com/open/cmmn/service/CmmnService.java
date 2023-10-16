@@ -35,6 +35,8 @@ public interface CmmnService {
 	 * @throws Exception Exception
 	 */
 	List<?> selectList(Object paramVO, String queryId) throws Exception;
+	
+	List<?> selectDatList(Object paramVO, String queryId) throws Exception;
 
 	/**
 	 * <pre>
@@ -120,6 +122,8 @@ public interface CmmnService {
 	 */
 	void deleteContents(Object paramVO, String queryId) throws Exception;
 	
+	void deleteDatContents(Object paramVO, String queryId) throws Exception;
+
 	/**
 	 * <pre>
 	 * Description : 다중 정보를 입력한다.

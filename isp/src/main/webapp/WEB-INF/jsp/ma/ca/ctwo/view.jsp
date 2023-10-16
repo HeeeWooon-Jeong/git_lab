@@ -7,6 +7,7 @@
 <div class="Content_box">
 	<form:form commandName="searchVO" name="defaultFrm" id="defaultFrm" method="post">
 		<form:hidden path="ctSeq" id="ctSeq"/>
+		<form:hidden path="ctDatSeq" id="ctDatSeq"/>
 		<form:hidden path="ctDatName" id="ctDatName"/>
 		<%-- <form:hidden path="pageIndex" id="pageIndex"/>  --%>
 		<form:hidden path="ctAtchFileSeq" id="ctAtchFileSeq"/>
@@ -144,12 +145,24 @@
 						</tbody>
 					</table>
 				</div>
-			<div class="btn_area">
-				<a href="javascript:void(0);" class="btn btn_mdl btn_save" id="btn_submit" >등록</a>
-				<c:if test="${searchVO.procType ne  'update'}">
-					<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
-				</c:if>
-			</div>
+			<c:choose>
+				<c:when test="${empty ctwoVO.ctDatSeq}">
+					<div class="btn_area">
+						<a href="javascript:void(0);" class="btn btn_mdl btn_save" id="btn_submit" >등록</a>
+						<c:if test="${searchVO.procType ne  'update'}">
+							<a href="javascript:void(0);" class="btn btn_mdl btn_cancel" id="btn_returnView">취소</a>
+						</c:if>
+					</div>
+				</c:when>		
+				<c:otherwise>
+					<div class="btn_area">
+						<a href="javascript:void(0);" id="btn_submit" class="btn btn_mdl btn_rewrite" >수정</a> 
+						<a href="javascript:void(0);" id="btn_dat_del" class="btn btn_mdl btn_del" >삭제</a>
+						<a href="javascript:void(0);" id="btn_dat_list" class="btn btn_mdl btn_list" >취소</a>
+					</div>	
+				</c:otherwise>
+			</c:choose>
+			
 			
 	</form:form>
 	
@@ -164,17 +177,25 @@
 				$("#ctDatTitle").focus();
 				return false;
 			}
-				if (!$("#ctDatCont").val()) {
-					alert("내용을 입력해주세요");
-					$("#ctDatCont").focus();
-					return false;
-				}
-				fncPageBoard('submit', 'updateDatForm.do');
+			if (!$("#ctDatCont").val()) {
+				alert("내용을 입력해주세요");
+				$("#ctDatCont").focus();
 				return false;
+			}
+			fncPageBoard('submit', 'updateDatProc.do');
+		 	return false;
 			});
 			$("#btn_returnView").click(function() {
 				$("#boardSeq").val($("#boardGrpSeq").val());
 				fncPageBoard('view', 'view.do');
+			});
+			$("#btn_dat_del").on("click", function() {
+				fncPageBoard('del', 'delDatProc.do');
+				return false;
+			});
+			$("#btn_dat_list").on("click", function() {
+				fncPageBoard('addList','addList.do','${searchVO.pageIndex}');		
+				return false;
 			});
 		});
 	</script>
