@@ -128,7 +128,7 @@
 	          SET CT_DAT_RGST_DT				= NOW()
 	            , CT_DAT_RVSE_DT				= NOW()
 	            , CT_DAT_SEQ					= (SELECT IFNULL(MAX(CT.CT_DAT_SEQ)+1,1) FROM T_CTWO CT)
-	            , CT_DAT_RGST_SEQ				= #{loginSeq}
+	            , CT_DAT_RGST_SEQ				= #{loginSeq} 
 	          	, CT_DAT_TITLE 					= #{ctDatTitle}
 	            , CT_DAT_CONT 					= #{ctDatCont}
 	            , CT_DAT_ATCH_FILE_SEQ 			= #{ctDatAtchFileSeq}
@@ -148,21 +148,21 @@
    </update>
 
 
-   <delete id="deleteDatContents" parameterType="ctwoVO">
+   <update id="deleteDatContents" parameterType="ctwoVO">
       /* Ctwo.deleteDatContents */
       <![CDATA[
-			DELETE FROM T_CTWO 
-			WHERE CT_SEQ 				= #{ctSeq}
-			  AND CT_DAT_RVSE_SEQ 		= #{ctDatRvseSeq}
-			  AND CT_DAT_RGST_SEQ 		= #{ctDatRgstSeq}
-			  AND CT_DAT_RVSE_DT 		= #{ctDatRvseDt}
-			  AND CT_DAT_USE_YN 		= #{Y}
-			  AND CT_DAT_TITLE 			= #{ctDatTitle}
-			  AND CT_DAT_CONT 			= #{ctDatCont}
-			  AND CT_DAT_ATCH_FILE_SEQ 	= #{ctDatAtchFileSeq}
-
+			UPDATE T_CTWO
+			   SET CT_DAT_RVSE_SEQ 			= NULL
+			 	 , CT_DAT_RGST_SEQ 			= NULL
+				 , CT_DAT_RVSE_DT 			= NULL
+				 , CT_DAT_USE_YN 			= 'N'
+				 , CT_DAT_SEQ				= NULL
+			 	 , CT_DAT_TITLE 			= NULL
+			 	 , CT_DAT_CONT 				= NULL
+				 , CT_DAT_ATCH_FILE_SEQ 	= NULL
+			 WHERE CT_SEQ 					= #{ctSeq}
       ]]>
-   </delete>
+   </update>
    
    
    

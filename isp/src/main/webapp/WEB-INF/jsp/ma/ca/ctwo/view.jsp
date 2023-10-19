@@ -190,7 +190,7 @@
 				fncPageBoard('view', 'view.do');
 			});
 			$("#btn_dat_del").on("click", function() {
-				fncPageBoard('del', 'delDatProc.do');
+				fncPageBoard('del', 'deleteDatProc.do');
 				return false;
 			});
 			$("#btn_dat_list").on("click", function() {

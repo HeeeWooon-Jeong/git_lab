@@ -26,9 +26,9 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	private String caRgstDt;				// 등록일
 	private String caRgstSeq;				// 등록자
 	private String caRvseDt;				// 수정일
-	private String caRvseSeq;				// 수정자
-	private String caName;					// 컨텐츠내용
-	private String caTitle;					// 컨텐츠내용
+	private String caRvseSeq;				// 수정자 아이디 시퀀스
+	private String caName;					// 수정자 아이디
+	private String caTitle;					// 컨텐츠 제목
 	private String caCont;					// 컨텐츠내용
 	private String caAtchFileSeq;			// 파일첨부
 
@@ -39,10 +39,21 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	private String caDatRgstSeq;			// 댓글 등록자
 	private String caDatRvseDt;				// 댓글 수정일
 	private String caDatRvseSeq;			// 댓글 수정자
-	private String caDatTitle;				// 댓글 제목
 	private String caDatCont;				// 댓글 내용
 	private String caDatAtchFileSeq;		// 댓글 첨부파일
 	private String caDatName;				// 컨텐츠내용
+
+	
+	
+	
+	
+	
+	public String getCaDatName() {
+		return caDatName;
+	}
+	public void setCaDatName(String caDatName) {
+		this.caDatName = caDatName;
+	}
 	public String getCaSeq() {
 		return caSeq;
 	}
@@ -127,12 +138,6 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	public void setCaDatRvseSeq(String caDatRvseSeq) {
 		this.caDatRvseSeq = caDatRvseSeq;
 	}
-	public String getCaDatTitle() {
-		return caDatTitle;
-	}
-	public void setCaDatTitle(String caDatTitle) {
-		this.caDatTitle = caDatTitle;
-	}
 	public String getCaDatCont() {
 		return caDatCont;
 	}
@@ -145,12 +150,7 @@ public class CareVO extends CmmnDefaultVO implements Serializable {
 	public void setCaDatAtchFileSeq(String caDatAtchFileSeq) {
 		this.caDatAtchFileSeq = caDatAtchFileSeq;
 	}
-	public String getCaDatName() {
-		return caDatName;
-	}
-	public void setCaDatName(String caDatName) {
-		this.caDatName = caDatName;
-	}
+	
 
 	
 	
