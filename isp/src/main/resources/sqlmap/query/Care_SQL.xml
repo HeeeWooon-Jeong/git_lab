@@ -142,6 +142,21 @@
       ]]>
    </update>
 
+	
+	<update id="deleteDatContents" parameterType="careVO">
+      /* Care.deleteDatContents */
+      <![CDATA[
+			UPDATE T_CARE
+			   SET CA_DAT_RVSE_SEQ 			= NULL
+			 	 , CA_DAT_RGST_SEQ 			= NULL
+				 , CA_DAT_RVSE_DT 			= NULL
+				 , CA_DAT_USE_YN 			= 'N'
+				 , CA_DAT_SEQ				= NULL
+			 	 , CA_DAT_CONT 				= NULL
+				 , CA_DAT_ATCH_FILE_SEQ 	= NULL
+			 WHERE CA_SEQ 					= #{caSeq}
+      ]]>
+   </update>
 
    
    

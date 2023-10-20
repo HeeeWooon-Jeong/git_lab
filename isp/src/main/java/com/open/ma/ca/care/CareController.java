@@ -197,7 +197,7 @@ public class CareController {
 				return "cmmn/execute";
 	    	}else if(procType.equals("insert")){
 				model.addAttribute("message", "등록되었습니다.");
-				model.addAttribute("cmmnScript", "list.do");
+				model.addAttribute("cmmnScript", "view.do");
 				return "cmmn/execute";
 	    	}else if(procType.equals("delete")||procType.equals("deleteDat")){
 				model.addAttribute("message", "삭제되었습니다.");

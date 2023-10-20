@@ -49,7 +49,6 @@
 						<th scope="row"><strong>첨부파일</strong></th>
 						<td colspan="3">
 							<iframe name="caAtchFileIdFrame" id="caAtchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${careVO.caAtchFileSeq}&fileCnt=5&atchFileIdNm=caAtchFileSeq&updateType=view" style="width: 100%;" height="70" frameborder="0" title="파일 업로드 폼"></iframe>
-
 						</td>
 					</tr>
 				</tbody>
@@ -65,52 +64,10 @@
 
 <div class="tbl_wrap">
 	<table class="tbl_col_type01">
-		<caption>목록</caption>
-		<colgroup> 
-			<col style="width:5%">
-			<col style="width:65%">
-			<col style="width:15%">
-			<col style="width:15%">
-		</colgroup>
-		<thead>
-			<tr>
-				<th scope="col">번호</th>
-				<th scope="col" class="subject">내용</th>
-				<th scope="col">등록자</th>
-				<th scope="col">등록일</th> 
-			</tr>
-
-		</thead>
 		<tbody>
-			
 			<c:choose>
 				<c:when test="${empty careVO.caDatSeq}">
-					<tr style="heigh:200;"><td colspan="6" class="no_data">데이터가 없습니다.</td></tr>
-				</c:when>
-				<c:otherwise>
-							<tr class="cursor">
-							<td>${careVO.caDatSeq}</td>
-							<td>${careVO.caDatCont}</td>
-							<td>${careVO.caDatName}</td>
-							<td>${careVO.caDatRgstDt}</td>
-						</tr>
-						<tr>
-							<th scope="row">첨부파일</th>
-							<td colspan="3">
-								<iframe name="caAtchFileIdFrame" id="caAtchFileIdFrame" src="/atch/fileUpload.do?atchFileId=${careVO.caDatAtchFileSeq }&fileCnt=5&atchFileIdNm=caDatAtchFileSeq&updateType=view" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
-							</td>
-						</tr>  
-				</c:otherwise>
-			</c:choose>
-			
-		</tbody>
-	</table>
-</div>
-<%-- //tbl end --%>
-			
-				<div class="tbl_wrap" >
 					<table class="tbl_row_type01"> 
-						<caption>내용(제목, 작성자, 작성일 등으로 구성)</caption>
 						<colgroup>
 							<col style="width:15%;">
 							<col style="width:35%;">
@@ -121,18 +78,63 @@
 							<tr>
 								<th scope="row">내용</th>
 								<td colspan="3">
-									<input type="text" name="caDatCont" id="caDatCont" class="text w100p" value="${careVO.caDatCont}" />
+									<input type="text" name="ctDatCont" id="ctDatCont" class="text w100p ctDatCont" value="${ctwoVO.ctDatCont}" />
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">첨부파일</th>
 								<td colspan="3">
-									<iframe name="caDatAtchFileSeq" id="caDatAtchFileSeq" src="/atch/fileUpload.do?atchFileId=${careVO.caDatAtchFileSeq}&fileCnt=5&atchFileIdNm=caDatAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
+									<iframe name="ctDatAtchFileSeq" id="ctDatAtchFileSeq" src="/atch/fileUpload.do?atchFileId=${ctwoVO.ctDatAtchFileSeq }&fileCnt=5&atchFileIdNm=ctDatAtchFileSeq&updateType=upload" style="width: 100%;" height="100" frameborder="0" title="파일 업로드 폼"></iframe>
 								</td>
 							</tr>    
 						</tbody>
 					</table>
-				</div>
+				</c:when>
+				<c:otherwise>
+					<table class="tbl_row_type01"> 
+						<colgroup>
+							<col style="width:15%;">
+							<col style="width:35%;">
+							<col style="width:15%;">
+							<col style="width:35%;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row"><strong>내용</strong></th>
+								<td colspan="3">
+									<div class="text_area">
+										<c:out value="${util:unEscape(careVO.caCont)}" escapeXml="false"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><strong>등록자</strong></th>
+								<td colspan="3">
+									${careVO.caDatName}
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><strong>등록일자</strong></th>
+								<td colspan="3">
+									${careVO.caRgstDt}
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">첨부파일</th>
+								<td colspan="3">
+									<iframe name="ctDatAtchFileSeq" id="ctDatAtchFileSeq" src="/atch/fileUpload.do?atchFileId=${ctwoVO.ctDatAtchFileSeq }&fileCnt=5&atchFileIdNm=ctDatAtchFileSeq&updateType=view" style="width: 100%;" height="70" frameborder="0" title="파일 업로드 폼"></iframe>
+								</td>
+							</tr>    
+						</tbody>
+					</table>
+				</c:otherwise>
+			</c:choose>
+			
+		</tbody>
+	</table>
+</div>
+<%-- //tbl end --%>
+	
 			<c:choose>
 				<c:when test="${empty careVO.caDatSeq}">
 					<div class="btn_area">
@@ -144,9 +146,9 @@
 				</c:when>		
 				<c:otherwise>
 					<div class="btn_area">
-						<a href="javascript:void(0);" id="btn_submit" class="btn btn_mdl btn_rewrite" >수정</a> 
+						<a href="javascript:void(0);" id="btn_dat_submit" class="btn btn_mdl btn_save" >등록</a> 
+						<a href="javascript:void(0);" id="btn_dat_update" class="btn btn_mdl btn_rewrite" >수정</a> 
 						<a href="javascript:void(0);" id="btn_dat_del" class="btn btn_mdl btn_del" >삭제</a>
-						<a href="javascript:void(0);" id="btn_dat_list" class="btn btn_mdl btn_list" >취소</a>
 					</div>	
 				</c:otherwise>
 			</c:choose>
@@ -159,14 +161,13 @@
 		$(document).ready(function() {
 
 	<%-- 예전에는 bind 썻는데 요즘은 on 쓰니까 bind 보이면 on 해주자--%>
-		$("#btn_submit").on("click", function() {
-			if (!$("#caDatCont").val()) {
-				alert("내용을 입력해주세요");
-				$("#caDatCont").focus();
-				return false;
-			}
-			fncPageBoard('submit', 'updateDatProc.do');
-		 	return false;
+			$("#btn_submit").on("click", function() {
+				fncPageBoard('submit', 'updateProc.do');
+			 	return false;
+			});
+			$("#btn_dat_submit").on("click", function() {
+				fncPageBoard('update', 'updateDatProc.do');
+			 	return false;
 			});
 			$("#btn_returnView").click(function() {
 				$("#boardSeq").val($("#boardGrpSeq").val());

@@ -131,7 +131,7 @@
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">제목</th>
+								<th scope="row">내용</th>
 								<td colspan="3">
 									<input type="text" name="ctDatCont" id="ctDatCont" class="text w100p" value="${ctwoVO.ctDatCont}" />
 								</td>
