@@ -153,7 +153,6 @@
 				</c:otherwise>
 			</c:choose>
 			
-			
 	</form:form>
 	
 <script type="text/javascript">

@@ -24,7 +24,7 @@
 	            , CA_RGST_SEQ 							caRgstSeq
                 , F_USER_NM(CA_RGST_SEQ) 				caName
                 , CA_RVSE_SEQ							caRvseSeq
-                , CA_RVSE_DT							caRvseDT
+                , CA_RVSE_DT							caRvseDt
 	            , CA_TITLE 								caTitle
 	            , CA_CONT 								caCont
 	            , CA_ATCH_FILE_SEQ 						caAtchFileSeq
@@ -33,7 +33,7 @@
 	            , CA_DAT_RGST_SEQ 						caDatRgstSeq
                 , F_USER_NM(CA_DAT_RGST_SEQ) 			caDatName
                 , F_USER_NM(CA_DAT_RGST_SEQ)			caDatRvseSeq
-                , CA_DAT_RVSE_DT						caDatRvseDT
+                , CA_DAT_RVSE_DT						caDatRvseDt
 	            , CA_DAT_CONT 							caDatCont
 	            , CA_DAT_ATCH_FILE_SEQ 					caDatAtchFileSeq	            
 	         FROM T_CARE
@@ -47,20 +47,20 @@
    <select id="selectList" parameterType="cmmnDefaultVO" resultType="careVO">
       /* Care.selectList */
       <![CDATA[
-           SELECT CA_SEQ 							caSeq
-	            , DATE_FORMAT(CA_RGST_DT,'%Y.%m.%d') caRgstDt
-	            , CA_RGST_SEQ 						caRgstSeq
-                , CA_RVSE_DT						caRvseDT
-	            , CA_RVSE_SEQ						caRvseSeq
-                , F_USER_NM(CA_RGST_SEQ)			caName
-	            , CA_TITLE 							caTitle
-	            , CA_CONT 							caCont
-	            , CA_ATCH_FILE_SEQ 					caAtchFileSeq
+           SELECT CA_SEQ 								caSeq
+	            , DATE_FORMAT(CA_RGST_DT,'%Y.%m.%d') 	caRgstDt
+	            , CA_RGST_SEQ 							caRgstSeq
+                , CA_RVSE_DT							caRvseDT
+	            , CA_RVSE_SEQ							caRvseSeq
+                , F_USER_NM(CA_RGST_SEQ)				caName
+	            , CA_TITLE 								caTitle
+	            , CA_CONT 								caCont
+	            , CA_ATCH_FILE_SEQ 						caAtchFileSeq
    	            , CA_DAT_SEQ							caDatSeq
 	            , CA_DAT_RGST_SEQ 						caDatRgstSeq
                 , F_USER_NM(CA_DAT_RGST_SEQ) 			caDatName
                 , CA_DAT_RVSE_SEQ						caDatRvseSeq
-                , CA_DAT_RVSE_DT						caDatRvseDT
+                , CA_DAT_RVSE_DT						caDatRvseDt
 	            , CA_DAT_CONT 							caDatCont
 	            , CA_DAT_ATCH_FILE_SEQ 					caDatAtchFileSeq	            
 	         FROM T_CARE          
